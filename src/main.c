@@ -834,283 +834,283 @@ int	ft_printf(const char *format, ...)
 
 
 
-int	main()
-{	
-	printf("\n\n\n");
+// int	main()
+// {	
+// 	printf("\n\n\n");
 	
-	// setlocale( LC_ALL, "");
-	// char s[9] =  {'s', '4', 's', '5', '6', '5', '2', '3', '\0'};
-	char *s;
-	char *s0 = "this is a plain string";
-	// "h", "l", "j", "z", "hh", "ll"
-	//h, j, l, hh
-	char *s1 = "ft_printf->%*d\n";
-	char *s2 = "this is string number";
-	char *s3 = "we call this one %s";	
-	short k = 270;
-	intmax_t f = -4;
+// 	// setlocale( LC_ALL, "");
+// 	// char s[9] =  {'s', '4', 's', '5', '6', '5', '2', '3', '\0'};
+// 	char *s;
+// 	char *s0 = "this is a plain string";
+// 	// "h", "l", "j", "z", "hh", "ll"
+// 	//h, j, l, hh
+// 	char *s1 = "ft_printf->%*d\n";
+// 	char *s2 = "this is string number";
+// 	char *s3 = "we call this one %s";	
+// 	short k = 270;
+// 	intmax_t f = -4;
 
-	// kills malloc	
-	//    printf("-->%#08x<--", 42);
-	// ft_printf("-->%#08x<--", 42);
-	// seg fault
-	//    printf("   printf: %%+d->%+d\n", 99);	
-	// ft_printf("ft_printf: %%+d->%+d\n", 99);	
+// 	// kills malloc	
+// 	//    printf("-->%#08x<--", 42);
+// 	// ft_printf("-->%#08x<--", 42);
+// 	// seg fault
+// 	//    printf("   printf: %%+d->%+d\n", 99);	
+// 	// ft_printf("ft_printf: %%+d->%+d\n", 99);	
 
 
-	// test 44
-	// conflict between 0 flag, hashtag, and field width
-	// ft_printf("ft_printf: -->%#08x<--\n", 42);	
-	   // printf("   printf: -->%#08x<--\n", 42);
+// 	// test 44
+// 	// conflict between 0 flag, hashtag, and field width
+// 	// ft_printf("ft_printf: -->%#08x<--\n", 42);	
+// 	   // printf("   printf: -->%#08x<--\n", 42);
 	
 
-	// test 0104 
-	// intmax + 1 should be a flipped d
-  	// ft_printf("ft_printf: -->%d<--\n", 2147483648);	
-	  //  printf("   printf: -->%d<--\n", 2147483648);  
+// 	// test 0104 
+// 	// intmax + 1 should be a flipped d
+//   	// ft_printf("ft_printf: -->%d<--\n", 2147483648);	
+// 	  //  printf("   printf: -->%d<--\n", 2147483648);  
 
 
 
 
-	// my problem children
-	// ft_printf("ft_printf: #- +2d->%#- +2d<-\n", 17);	
-	// printf("   printf: #- +2d->%#- +2d<-\n", 17);		
-	// ft_printf("ft_printf: #- +3d->%#- +3d<-\n", 17);	
-	// printf("   printf: #- +3d->%#- +3d<-\n", 17);	
-	// ft_printf("ft_printf: #- +4d->%#- +4d<-\n", 17);	
-	// printf("   printf: #- +4d->%#- +4d<-\n", 17);	
-	// ft_printf("ft_printf: #- +10d->%#- +10d<-\n", 17);	
-	// printf("   printf: #- +10d->%#- +10d<-\n", 17);	
+// 	// my problem children
+// 	// ft_printf("ft_printf: #- +2d->%#- +2d<-\n", 17);	
+// 	// printf("   printf: #- +2d->%#- +2d<-\n", 17);		
+// 	// ft_printf("ft_printf: #- +3d->%#- +3d<-\n", 17);	
+// 	// printf("   printf: #- +3d->%#- +3d<-\n", 17);	
+// 	// ft_printf("ft_printf: #- +4d->%#- +4d<-\n", 17);	
+// 	// printf("   printf: #- +4d->%#- +4d<-\n", 17);	
+// 	// ft_printf("ft_printf: #- +10d->%#- +10d<-\n", 17);	
+// 	// printf("   printf: #- +10d->%#- +10d<-\n", 17);	
 
-	// printf("   printf: %%#d->%#d\n", 99);
-	// printf("   printf: %%#o->%#o\n", 99);
-	// printf("   printf: %%#09.o->%#09.o\n", 99);
-	// printf("   printf: %%#x->%#x\n", -44);		
-	// printf("   printf: %%#x->%#x\n", 0);		
-	// printf("   printf: %%#.4x->%#.4x\n", 99);
-	// printf("   printf: %%#7.3x->%#7.3x\n", 99);
-	// printf("   printf: %%+#-02.7d->%+#-02.7d<-\n", 99);
- //    printf("   printf: %%#02.7o->%#02.7o\n", 99);
- //    printf("   printf:  %%#2.7o->%#2.7o\n", 99);
-	// printf("   printf: %%#02.7x->%#02.7x\n", 15);	
-
-
-	// printf("numerals mfw\n");
-	//       printf("   printf: %%d->%d\n", 99);		
-	//    ft_printf("ft_printf: %%d->%d\n", 99);		
-	//       printf("   printf: %%#d->%#d\n", 99);
-	//    ft_printf("ft_printf: %%#d->%#d\n", 99);
-	//       printf("   printf: %% d->% d\n", 99);	
-	//    ft_printf("ft_printf: %% d->% d\n", 99);	
-	//       printf("   printf: %% d->% d\n", -99);	
-	//    ft_printf("ft_printf: %% d->% d\n", -99);	
-	//       printf("   printf: %%+d->%+d\n", 99);	
-	//    ft_printf("ft_printf: %%+d->%+d\n", 99);	
-	//       printf("   printf: %%+d->%+d\n", -99);
-	//    ft_printf("ft_printf: %%+d->%+d\n", -99);
-	//       printf("   printf: %% +d->% +d\n", 99);	
-	//    ft_printf("ft_printf: %% +d->% +d\n", 99);	
-	//       printf("   printf: %% +d->% +d\n", -99);						
-	//    ft_printf("ft_printf: %% +d->% +d\n", -99);						
-	//       printf("   printf: %%0d->%0d\n", 99);	
-	//    ft_printf("ft_printf: %%0d->%0d\n", 99);	
-	//       printf("   printf: %%-0d->%-0d<-\n", 99);	
-	//    ft_printf("ft_printf: %%-0d->%-0d<-\n", 99);	
-	//       printf("   printf: %%05d->%05d\n", 99);	
-	//    ft_printf("ft_printf: %%05d->%05d\n", 99);	
-	//       printf("   printf: %%05.d->%05.d\n", 99);	
-	//    ft_printf("ft_printf: %%05.d->%05.d\n", 99);	
-	//       printf("   printf: %%05.0d->%05.0d\n", 99);	
-	//    ft_printf("ft_printf: %%05.0d->%05.0d\n", 99);	
-	//       printf("   printf: %%-05d->%-05d<-\n", 99);	
-	//    ft_printf("ft_printf: %%-05d->%-05d<-\n", 99);	
-	//       printf("   printf: %%#-05d->%#-05d<-\n", 99);
-	//    ft_printf("ft_printf: %%#-05d->%#-05d<-\n", 99);
-	//       printf("   printf: %% -05d->% -05d<-\n", 99);
-	//    ft_printf("ft_printf: %% -05d->% -05d<-\n", 99);
-	//       printf("   printf: %%+-05d->%+-05d<-\n", 99);
-	//    ft_printf("ft_printf: %%+-05d->%+-05d<-\n", 99);
-	//       printf("   printf: %%02.7d->%02.7d\n", 99);		
-	//    ft_printf("ft_printf: %%02.7d->%02.7d\n", 99);		
-	//       printf("   printf: %%-02.7d->%-02.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %%-02.7d->%-02.7d<-\n", 99);	
-	//       printf("   printf: %%#02.7d->%#02.7d\n", 99);		
-	//    ft_printf("ft_printf: %%#02.7d->%#02.7d\n", 99);		
-	//       printf("   printf: %%#-02.7d->%#-02.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %%#-02.7d->%#-02.7d<-\n", 99);	
-	//       printf("   printf: %% #-02.7d->% #-02.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %% #-02.7d->% #-02.7d<-\n", 99);	
-	//       printf("   printf: %%+ #-02.7d->%+ #-02.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %%+ #-02.7d->%+ #-02.7d<-\n", 99);	
-	//       printf("   printf: %% +#-02.7d->% +#-02.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %% +#-02.7d->% +#-02.7d<-\n", 99);	
-	//       printf("   printf: %%+#-015.7d->%+#-015.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %%+#-015.7d->%+#-015.7d<-\n", 99);	
-	//       printf("   printf: %%+-015.7d->%+-015.7d<-\n", 99);	
-	//    ft_printf("ft_printf: %%+-015.7d->%+-015.7d<-\n", 99);	
-	//    	printf("\n");
-
-	//       printf("   printf: %%o->%o\n", 99);
-	//    ft_printf("ft_printf: %%o->%o\n", 99);
-	//       printf("   printf: %%#o->%#o\n", 99);
-	//    ft_printf("ft_printf: %%#o->%#o\n", 99);
-	//       printf("   printf: %% o->% o\n", 99);
-	//    ft_printf("ft_printf: %% o->% o\n", 99);
-	//       printf("   printf: %% o->% o\n", -99);
-	//    ft_printf("ft_printf: %% o->% o\n", -99);
-	//       printf("   printf: %%+o->%+o\n", 99);
-	//    ft_printf("ft_printf: %%+o->%+o\n", 99);
-	//       printf("   printf: %%+o->%+o\n", -99);
-	//    ft_printf("ft_printf: %%+o->%+o\n", -99);
-	//       printf("   printf: %% +o->% +o\n", 99);
-	//    ft_printf("ft_printf: %% +o->% +o\n", 99);
-	//       printf("   printf: %% +o->% +o\n", -99);
-	//    ft_printf("ft_printf: %% +o->% +o\n", -99);
-	//       printf("   printf: %%#.3o->%#.3o\n", 99);
-	//    ft_printf("ft_printf: %%#.3o->%#.3o\n", 99);
-	//       printf("   printf: %%#3.3o->%#3.3o\n", 99);
-	//    ft_printf("ft_printf: %%#3.3o->%#3.3o\n", 99);
-	//       printf("   printf: %%0o->%0o\n", 99);
-	//    ft_printf("ft_printf: %%0o->%0o\n", 99);
-	//       printf("   printf: %%-0o->%-0o<-\n", 99);
-	//    ft_printf("ft_printf: %%-0o->%-0o<-\n", 99);
-	//       printf("   printf: %%05o->%05o\n", 99);
-	//    ft_printf("ft_printf: %%05o->%05o\n", 99);
-	//       printf("   printf: %%-05o->%-05o<-\n", 99);
-	//    ft_printf("ft_printf: %%-05o->%-05o<-\n", 99);
-	//       printf("   printf: %%02.7o->%02.7o\n", 99);
-	//    ft_printf("ft_printf: %%02.7o->%02.7o\n", 99);
-	//       printf("   printf: %%-02.7o->%-02.7o<-\n", 99);
-	//    ft_printf("ft_printf: %%-02.7o->%-02.7o<-\n", 99);
-	//       printf("   printf: %%#02.7o->%#02.7o\n", 99);
-	//    ft_printf("ft_printf: %%#02.7o->%#02.7o\n", 99);
-	//       printf("   printf: %%#-02.7o->%#-02.7o<-\n", 99);
-	//    ft_printf("ft_printf: %%#-02.7o->%#-02.7o<-\n", 99);
-	//       printf("   printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
-	//    ft_printf("ft_printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
-	//       printf("   printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
-	//    ft_printf("ft_printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
-	//       printf("   printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
-	//    ft_printf("ft_printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
-	//    	printf("\n");
+// 	// printf("   printf: %%#d->%#d\n", 99);
+// 	// printf("   printf: %%#o->%#o\n", 99);
+// 	// printf("   printf: %%#09.o->%#09.o\n", 99);
+// 	// printf("   printf: %%#x->%#x\n", -44);		
+// 	// printf("   printf: %%#x->%#x\n", 0);		
+// 	// printf("   printf: %%#.4x->%#.4x\n", 99);
+// 	// printf("   printf: %%#7.3x->%#7.3x\n", 99);
+// 	// printf("   printf: %%+#-02.7d->%+#-02.7d<-\n", 99);
+//  //    printf("   printf: %%#02.7o->%#02.7o\n", 99);
+//  //    printf("   printf:  %%#2.7o->%#2.7o\n", 99);
+// 	// printf("   printf: %%#02.7x->%#02.7x\n", 15);	
 
 
-	//       printf("   printf: %%x->%x\n", -44);				   
-	//    ft_printf("ft_printf: %%x->%x\n", -44);				   
-	//       printf("   printf: %%#x->%#x\n", -44);				   
-	//    ft_printf("ft_printf: %%#x->%#x\n", -44);				   
-	//       printf("   printf: %%#x->%#x\n", 0);				   
-	//    ft_printf("ft_printf: %%#x->%#x\n", 0);				   
-	//       printf("   printf: %% x->% x\n", 44);				   
-	//    ft_printf("ft_printf: %% x->% x\n", 44);				   
-	//       printf("   printf: %% x->% x\n", -44);	
-	//    ft_printf("ft_printf: %% x->% x\n", -44);	
-	//       printf("   printf: %%+x->%+x\n", 44);	
-	//    ft_printf("ft_printf: %%+x->%+x\n", 44);	
-	//       printf("   printf: %%+x->%+x\n", -44);	
-	//    ft_printf("ft_printf: %%+x->%+x\n", -44);	
-	//       printf("   printf: %%+ x->%+ x\n", 44);	
-	//    ft_printf("ft_printf: %%+ x->%+ x\n", 44);	
-	//       printf("   printf: %%+ x->%+ x\n", -44);			   
-	//    ft_printf("ft_printf: %%+ x->%+ x\n", -44);			   
-	//       printf("   printf: %%#.3x->%#.3x\n", 99);
-	//    ft_printf("ft_printf: %%#.3x->%#.3x\n", 99);
-	//       printf("   printf: %%#.3x->%.3x\n", 9);
-	//    ft_printf("ft_printf: %%#.3x->%.3x\n", 9);
-	//       printf("   printf: %%#3.3x->%#3.3x\n", 99);
-	//    ft_printf("ft_printf: %%#3.3x->%#3.3x\n", 99);
-	//       printf("   printf: %%0x->%0x\n", -44);	
-	//    ft_printf("ft_printf: %%0x->%0x\n", -44);	
-	//       printf("   printf: %%-0x->%-0x<-\n", -44);	
-	//    ft_printf("ft_printf: %%-0x->%-0x<-\n", -44);	
-	//       printf("   printf: %%05x->%05x\n", 15);
-	//    ft_printf("ft_printf: %%05x->%05x\n", 15);
-	//       printf("   printf: %%-05x->%-05x<-\n", 15);
-	//    ft_printf("ft_printf: %%-05x->%-05x<-\n", 15);
-	//       printf("   printf: %%02.7x->%02.7x\n", 15);				   
-	//    ft_printf("ft_printf: %%02.7x->%02.7x\n", 15);				   
-	//       printf("   printf: %%-02.7x->%-02.7x<-\n", 15);	
-	//    ft_printf("ft_printf: %%-02.7x->%-02.7x<-\n", 15);	
-	//       printf("   printf: %%#02.7x->%#02.7x\n", 15);				   
-	//    ft_printf("ft_printf: %%#02.7x->%#02.7x\n", 15);				   
-	//       printf("   printf: %%#-02.7x->%#-02.7x<-\n", 15);		
-	//    ft_printf("ft_printf: %%#-02.7x->%#-02.7x<-\n", 15);		
- //   	printf("\n");
+// 	// printf("numerals mfw\n");
+// 	//       printf("   printf: %%d->%d\n", 99);		
+// 	//    ft_printf("ft_printf: %%d->%d\n", 99);		
+// 	//       printf("   printf: %%#d->%#d\n", 99);
+// 	//    ft_printf("ft_printf: %%#d->%#d\n", 99);
+// 	//       printf("   printf: %% d->% d\n", 99);	
+// 	//    ft_printf("ft_printf: %% d->% d\n", 99);	
+// 	//       printf("   printf: %% d->% d\n", -99);	
+// 	//    ft_printf("ft_printf: %% d->% d\n", -99);	
+// 	//       printf("   printf: %%+d->%+d\n", 99);	
+// 	//    ft_printf("ft_printf: %%+d->%+d\n", 99);	
+// 	//       printf("   printf: %%+d->%+d\n", -99);
+// 	//    ft_printf("ft_printf: %%+d->%+d\n", -99);
+// 	//       printf("   printf: %% +d->% +d\n", 99);	
+// 	//    ft_printf("ft_printf: %% +d->% +d\n", 99);	
+// 	//       printf("   printf: %% +d->% +d\n", -99);						
+// 	//    ft_printf("ft_printf: %% +d->% +d\n", -99);						
+// 	//       printf("   printf: %%0d->%0d\n", 99);	
+// 	//    ft_printf("ft_printf: %%0d->%0d\n", 99);	
+// 	//       printf("   printf: %%-0d->%-0d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%-0d->%-0d<-\n", 99);	
+// 	//       printf("   printf: %%05d->%05d\n", 99);	
+// 	//    ft_printf("ft_printf: %%05d->%05d\n", 99);	
+// 	//       printf("   printf: %%05.d->%05.d\n", 99);	
+// 	//    ft_printf("ft_printf: %%05.d->%05.d\n", 99);	
+// 	//       printf("   printf: %%05.0d->%05.0d\n", 99);	
+// 	//    ft_printf("ft_printf: %%05.0d->%05.0d\n", 99);	
+// 	//       printf("   printf: %%-05d->%-05d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%-05d->%-05d<-\n", 99);	
+// 	//       printf("   printf: %%#-05d->%#-05d<-\n", 99);
+// 	//    ft_printf("ft_printf: %%#-05d->%#-05d<-\n", 99);
+// 	//       printf("   printf: %% -05d->% -05d<-\n", 99);
+// 	//    ft_printf("ft_printf: %% -05d->% -05d<-\n", 99);
+// 	//       printf("   printf: %%+-05d->%+-05d<-\n", 99);
+// 	//    ft_printf("ft_printf: %%+-05d->%+-05d<-\n", 99);
+// 	//       printf("   printf: %%02.7d->%02.7d\n", 99);		
+// 	//    ft_printf("ft_printf: %%02.7d->%02.7d\n", 99);		
+// 	//       printf("   printf: %%-02.7d->%-02.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%-02.7d->%-02.7d<-\n", 99);	
+// 	//       printf("   printf: %%#02.7d->%#02.7d\n", 99);		
+// 	//    ft_printf("ft_printf: %%#02.7d->%#02.7d\n", 99);		
+// 	//       printf("   printf: %%#-02.7d->%#-02.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%#-02.7d->%#-02.7d<-\n", 99);	
+// 	//       printf("   printf: %% #-02.7d->% #-02.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %% #-02.7d->% #-02.7d<-\n", 99);	
+// 	//       printf("   printf: %%+ #-02.7d->%+ #-02.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%+ #-02.7d->%+ #-02.7d<-\n", 99);	
+// 	//       printf("   printf: %% +#-02.7d->% +#-02.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %% +#-02.7d->% +#-02.7d<-\n", 99);	
+// 	//       printf("   printf: %%+#-015.7d->%+#-015.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%+#-015.7d->%+#-015.7d<-\n", 99);	
+// 	//       printf("   printf: %%+-015.7d->%+-015.7d<-\n", 99);	
+// 	//    ft_printf("ft_printf: %%+-015.7d->%+-015.7d<-\n", 99);	
+// 	//    	printf("\n");
 
-	// printf("pointer mfw\n");
-	//       printf("   printf: %%p->%p\n", s0); 	   
-	//    ft_printf("ft_printf: %%p->%p\n", s0); 	   
-	//       printf("   printf: %%#p->%#p\n", s0);
-	//    ft_printf("ft_printf: %%#p->%#p\n", s0);
-	//       printf("   printf: %% p->% p\n", s0); 
-	//    ft_printf("ft_printf: %% p->% p\n", s0); 
-	//       printf("   printf: %%+p->%+p\n", s0); 
-	//    ft_printf("ft_printf: %%+p->%+p\n", s0); 
-	//       printf("   printf: %%0p->%0p\n", s0);			
-	//    ft_printf("ft_printf: %%0p->%0p\n", s0);			
-	//       printf("   printf: %%-0p->%-0p<-\n", s0);	
-	//    ft_printf("ft_printf: %%-0p->%-0p<-\n", s0);	
-	//       printf("   printf: %%05p->%05p\n", s0);	
-	//    ft_printf("ft_printf: %%05p->%05p\n", s0);	
-	//       printf("   printf: %%-05p->%-05p<-\n", s0);	
-	//    ft_printf("ft_printf: %%-05p->%-05p<-\n", s0);	
-	//       printf("   printf: %%02.7p->%02.7p\n", s0);			
-	//    ft_printf("ft_printf: %%02.7p->%02.7p\n", s0);			
-	//       printf("   printf: %%-02.7p->%-02.7p<-\n", s0);	
-	//     ft_printf("ft_printf: %%-02.7p->%-02.7p<-\n", s0);	
- //  	printf("\n");
+// 	//       printf("   printf: %%o->%o\n", 99);
+// 	//    ft_printf("ft_printf: %%o->%o\n", 99);
+// 	//       printf("   printf: %%#o->%#o\n", 99);
+// 	//    ft_printf("ft_printf: %%#o->%#o\n", 99);
+// 	//       printf("   printf: %% o->% o\n", 99);
+// 	//    ft_printf("ft_printf: %% o->% o\n", 99);
+// 	//       printf("   printf: %% o->% o\n", -99);
+// 	//    ft_printf("ft_printf: %% o->% o\n", -99);
+// 	//       printf("   printf: %%+o->%+o\n", 99);
+// 	//    ft_printf("ft_printf: %%+o->%+o\n", 99);
+// 	//       printf("   printf: %%+o->%+o\n", -99);
+// 	//    ft_printf("ft_printf: %%+o->%+o\n", -99);
+// 	//       printf("   printf: %% +o->% +o\n", 99);
+// 	//    ft_printf("ft_printf: %% +o->% +o\n", 99);
+// 	//       printf("   printf: %% +o->% +o\n", -99);
+// 	//    ft_printf("ft_printf: %% +o->% +o\n", -99);
+// 	//       printf("   printf: %%#.3o->%#.3o\n", 99);
+// 	//    ft_printf("ft_printf: %%#.3o->%#.3o\n", 99);
+// 	//       printf("   printf: %%#3.3o->%#3.3o\n", 99);
+// 	//    ft_printf("ft_printf: %%#3.3o->%#3.3o\n", 99);
+// 	//       printf("   printf: %%0o->%0o\n", 99);
+// 	//    ft_printf("ft_printf: %%0o->%0o\n", 99);
+// 	//       printf("   printf: %%-0o->%-0o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%-0o->%-0o<-\n", 99);
+// 	//       printf("   printf: %%05o->%05o\n", 99);
+// 	//    ft_printf("ft_printf: %%05o->%05o\n", 99);
+// 	//       printf("   printf: %%-05o->%-05o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%-05o->%-05o<-\n", 99);
+// 	//       printf("   printf: %%02.7o->%02.7o\n", 99);
+// 	//    ft_printf("ft_printf: %%02.7o->%02.7o\n", 99);
+// 	//       printf("   printf: %%-02.7o->%-02.7o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%-02.7o->%-02.7o<-\n", 99);
+// 	//       printf("   printf: %%#02.7o->%#02.7o\n", 99);
+// 	//    ft_printf("ft_printf: %%#02.7o->%#02.7o\n", 99);
+// 	//       printf("   printf: %%#-02.7o->%#-02.7o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%#-02.7o->%#-02.7o<-\n", 99);
+// 	//       printf("   printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
+// 	//       printf("   printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
+// 	//       printf("   printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
+// 	//    ft_printf("ft_printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
+// 	//    	printf("\n");
 
 
-	// printf("char mfw\n");
-	//       printf("   printf: %%c->%c\n", 'f');
-	//    ft_printf("ft_printf: %%c->%c\n", 'f');
-	//       printf("   printf: %%#c->%#c\n", 'f');
-	//    ft_printf("ft_printf: %%#c->%#c\n", 'f');
-	//       printf("   printf: %% c->% c\n", 'f');
-	//    ft_printf("ft_printf: %% c->% c\n", 'f');
-	//       printf("   printf: %%+c->%+c\n", 'f');
-	//    ft_printf("ft_printf: %%+c->%+c\n", 'f');
-	//       printf("   printf: %%0c->%0c\n", 'f');	 
-	//    ft_printf("ft_printf: %%0c->%0c\n", 'f');	 
-	//       printf("   printf: %%-0c->%-0c<-\n", 'f');	
-	//    ft_printf("ft_printf: %%-0c->%-0c<-\n", 'f');	
-	//       printf("   printf: %%07c->%07c\n", 'f');	
-	//    ft_printf("ft_printf: %%07c->%07c\n", 'f');	
-	//       printf("   printf: %%-07c->%-07c<-\n", 'f');	
-	//    ft_printf("ft_printf: %%-07c->%-07c<-\n", 'f');	
-	//       printf("   printf: %%06.10c->%06.10c\n", 'f');	 
-	//    ft_printf("ft_printf: %%06.10c->%06.10c\n", 'f');	 
-	//       printf("   printf: %%-06.10c->%-06.10c<-\n", 'f');	
-	//    ft_printf("ft_printf: %%-06.10c->%-06.10c<-\n", 'f');	
- //   	printf("\n");
+// 	//       printf("   printf: %%x->%x\n", -44);				   
+// 	//    ft_printf("ft_printf: %%x->%x\n", -44);				   
+// 	//       printf("   printf: %%#x->%#x\n", -44);				   
+// 	//    ft_printf("ft_printf: %%#x->%#x\n", -44);				   
+// 	//       printf("   printf: %%#x->%#x\n", 0);				   
+// 	//    ft_printf("ft_printf: %%#x->%#x\n", 0);				   
+// 	//       printf("   printf: %% x->% x\n", 44);				   
+// 	//    ft_printf("ft_printf: %% x->% x\n", 44);				   
+// 	//       printf("   printf: %% x->% x\n", -44);	
+// 	//    ft_printf("ft_printf: %% x->% x\n", -44);	
+// 	//       printf("   printf: %%+x->%+x\n", 44);	
+// 	//    ft_printf("ft_printf: %%+x->%+x\n", 44);	
+// 	//       printf("   printf: %%+x->%+x\n", -44);	
+// 	//    ft_printf("ft_printf: %%+x->%+x\n", -44);	
+// 	//       printf("   printf: %%+ x->%+ x\n", 44);	
+// 	//    ft_printf("ft_printf: %%+ x->%+ x\n", 44);	
+// 	//       printf("   printf: %%+ x->%+ x\n", -44);			   
+// 	//    ft_printf("ft_printf: %%+ x->%+ x\n", -44);			   
+// 	//       printf("   printf: %%#.3x->%#.3x\n", 99);
+// 	//    ft_printf("ft_printf: %%#.3x->%#.3x\n", 99);
+// 	//       printf("   printf: %%#.3x->%.3x\n", 9);
+// 	//    ft_printf("ft_printf: %%#.3x->%.3x\n", 9);
+// 	//       printf("   printf: %%#3.3x->%#3.3x\n", 99);
+// 	//    ft_printf("ft_printf: %%#3.3x->%#3.3x\n", 99);
+// 	//       printf("   printf: %%0x->%0x\n", -44);	
+// 	//    ft_printf("ft_printf: %%0x->%0x\n", -44);	
+// 	//       printf("   printf: %%-0x->%-0x<-\n", -44);	
+// 	//    ft_printf("ft_printf: %%-0x->%-0x<-\n", -44);	
+// 	//       printf("   printf: %%05x->%05x\n", 15);
+// 	//    ft_printf("ft_printf: %%05x->%05x\n", 15);
+// 	//       printf("   printf: %%-05x->%-05x<-\n", 15);
+// 	//    ft_printf("ft_printf: %%-05x->%-05x<-\n", 15);
+// 	//       printf("   printf: %%02.7x->%02.7x\n", 15);				   
+// 	//    ft_printf("ft_printf: %%02.7x->%02.7x\n", 15);				   
+// 	//       printf("   printf: %%-02.7x->%-02.7x<-\n", 15);	
+// 	//    ft_printf("ft_printf: %%-02.7x->%-02.7x<-\n", 15);	
+// 	//       printf("   printf: %%#02.7x->%#02.7x\n", 15);				   
+// 	//    ft_printf("ft_printf: %%#02.7x->%#02.7x\n", 15);				   
+// 	//       printf("   printf: %%#-02.7x->%#-02.7x<-\n", 15);		
+// 	//    ft_printf("ft_printf: %%#-02.7x->%#-02.7x<-\n", 15);		
+//  //   	printf("\n");
+
+// 	// printf("pointer mfw\n");
+// 	//       printf("   printf: %%p->%p\n", s0); 	   
+// 	//    ft_printf("ft_printf: %%p->%p\n", s0); 	   
+// 	//       printf("   printf: %%#p->%#p\n", s0);
+// 	//    ft_printf("ft_printf: %%#p->%#p\n", s0);
+// 	//       printf("   printf: %% p->% p\n", s0); 
+// 	//    ft_printf("ft_printf: %% p->% p\n", s0); 
+// 	//       printf("   printf: %%+p->%+p\n", s0); 
+// 	//    ft_printf("ft_printf: %%+p->%+p\n", s0); 
+// 	//       printf("   printf: %%0p->%0p\n", s0);			
+// 	//    ft_printf("ft_printf: %%0p->%0p\n", s0);			
+// 	//       printf("   printf: %%-0p->%-0p<-\n", s0);	
+// 	//    ft_printf("ft_printf: %%-0p->%-0p<-\n", s0);	
+// 	//       printf("   printf: %%05p->%05p\n", s0);	
+// 	//    ft_printf("ft_printf: %%05p->%05p\n", s0);	
+// 	//       printf("   printf: %%-05p->%-05p<-\n", s0);	
+// 	//    ft_printf("ft_printf: %%-05p->%-05p<-\n", s0);	
+// 	//       printf("   printf: %%02.7p->%02.7p\n", s0);			
+// 	//    ft_printf("ft_printf: %%02.7p->%02.7p\n", s0);			
+// 	//       printf("   printf: %%-02.7p->%-02.7p<-\n", s0);	
+// 	//     ft_printf("ft_printf: %%-02.7p->%-02.7p<-\n", s0);	
+//  //  	printf("\n");
 
 
-	// printf("char* mfw\n");
-	//       printf("   printf: %%s->%s\n", "ssss");
-	//    ft_printf("ft_printf: %%s->%s\n", "ssss");
-	//       printf("   printf: %%#s->%#s\n", "ssss");
-	//    ft_printf("ft_printf: %%#s->%#s\n", "ssss");
-	//       printf("   printf: %% s->% s\n", "ssss");
-	//    ft_printf("ft_printf: %% s->% s\n", "ssss");
-	//       printf("   printf: %%+s->%+s\n", "ssss");
-	//    ft_printf("ft_printf: %%+s->%+s\n", "ssss");
-	//       printf("   printf: %%0s->%0s\n", "ssss");		
-	//    ft_printf("ft_printf: %%0s->%0s\n", "ssss");		
-	//       printf("   printf: %%-0s->%-0s<-\n", "ssss");
-	//    ft_printf("ft_printf: %%-0s->%-0s<-\n", "ssss");
-	//       printf("   printf: %%07s->%07s\n", "ssss");	
-	//    ft_printf("ft_printf: %%07s->%07s\n", "ssss");	
-	//       printf("   printf: %%-07s->%-07s<-\n", "ssss");	
-	//    ft_printf("ft_printf: %%-07s->%-07s<-\n", "ssss");	
-	//       printf("   printf: %%06.10s->%06.10s\n", "ssss");		
-	//    ft_printf("ft_printf: %%06.10s->%06.10s\n", "ssss");		
-	//       printf("   printf: %%-06.10s->%-06.10s<-\n", "ssss");		
-	//    ft_printf("ft_printf: %%-06.10s->%-06.10s<-\n", "ssss");		
- //   	printf("\n");
+// 	// printf("char mfw\n");
+// 	//       printf("   printf: %%c->%c\n", 'f');
+// 	//    ft_printf("ft_printf: %%c->%c\n", 'f');
+// 	//       printf("   printf: %%#c->%#c\n", 'f');
+// 	//    ft_printf("ft_printf: %%#c->%#c\n", 'f');
+// 	//       printf("   printf: %% c->% c\n", 'f');
+// 	//    ft_printf("ft_printf: %% c->% c\n", 'f');
+// 	//       printf("   printf: %%+c->%+c\n", 'f');
+// 	//    ft_printf("ft_printf: %%+c->%+c\n", 'f');
+// 	//       printf("   printf: %%0c->%0c\n", 'f');	 
+// 	//    ft_printf("ft_printf: %%0c->%0c\n", 'f');	 
+// 	//       printf("   printf: %%-0c->%-0c<-\n", 'f');	
+// 	//    ft_printf("ft_printf: %%-0c->%-0c<-\n", 'f');	
+// 	//       printf("   printf: %%07c->%07c\n", 'f');	
+// 	//    ft_printf("ft_printf: %%07c->%07c\n", 'f');	
+// 	//       printf("   printf: %%-07c->%-07c<-\n", 'f');	
+// 	//    ft_printf("ft_printf: %%-07c->%-07c<-\n", 'f');	
+// 	//       printf("   printf: %%06.10c->%06.10c\n", 'f');	 
+// 	//    ft_printf("ft_printf: %%06.10c->%06.10c\n", 'f');	 
+// 	//       printf("   printf: %%-06.10c->%-06.10c<-\n", 'f');	
+// 	//    ft_printf("ft_printf: %%-06.10c->%-06.10c<-\n", 'f');	
+//  //   	printf("\n");
+
+
+// 	// printf("char* mfw\n");
+// 	//       printf("   printf: %%s->%s\n", "ssss");
+// 	//    ft_printf("ft_printf: %%s->%s\n", "ssss");
+// 	//       printf("   printf: %%#s->%#s\n", "ssss");
+// 	//    ft_printf("ft_printf: %%#s->%#s\n", "ssss");
+// 	//       printf("   printf: %% s->% s\n", "ssss");
+// 	//    ft_printf("ft_printf: %% s->% s\n", "ssss");
+// 	//       printf("   printf: %%+s->%+s\n", "ssss");
+// 	//    ft_printf("ft_printf: %%+s->%+s\n", "ssss");
+// 	//       printf("   printf: %%0s->%0s\n", "ssss");		
+// 	//    ft_printf("ft_printf: %%0s->%0s\n", "ssss");		
+// 	//       printf("   printf: %%-0s->%-0s<-\n", "ssss");
+// 	//    ft_printf("ft_printf: %%-0s->%-0s<-\n", "ssss");
+// 	//       printf("   printf: %%07s->%07s\n", "ssss");	
+// 	//    ft_printf("ft_printf: %%07s->%07s\n", "ssss");	
+// 	//       printf("   printf: %%-07s->%-07s<-\n", "ssss");	
+// 	//    ft_printf("ft_printf: %%-07s->%-07s<-\n", "ssss");	
+// 	//       printf("   printf: %%06.10s->%06.10s\n", "ssss");		
+// 	//    ft_printf("ft_printf: %%06.10s->%06.10s\n", "ssss");		
+// 	//       printf("   printf: %%-06.10s->%-06.10s<-\n", "ssss");		
+// 	//    ft_printf("ft_printf: %%-06.10s->%-06.10s<-\n", "ssss");		
+//  //   	printf("\n");
 
 	  	
-	return (0);
-}
+// 	return (0);
+// }
 
 
 
