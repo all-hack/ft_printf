@@ -29,4 +29,5 @@ char	*ft_printf_strupper(char *str)
 		}			
 		return (str);
 	}
+	return (NULL);
 }

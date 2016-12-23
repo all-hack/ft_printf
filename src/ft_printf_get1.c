@@ -17,7 +17,7 @@ void	ft_printf_get_u(t_mod *conv, va_list args)
 	if (!(conv->length))
 		ft_printf_chng_uint(conv, va_arg(args, unsigned int));	
 	else if (ft_printf_strcmp(conv->length, "h") == 0)
-		ft_printf_chng_ushort(conv, va_arg(args, unsigned short));
+		ft_printf_chng_ushort(conv, va_arg(args, unsigned int));
 	else if (ft_printf_strcmp(conv->length, "j") == 0)
 		ft_printf_chng_uintmax_t(conv, va_arg(args, uintmax_t));
 	else if (ft_printf_strcmp(conv->length, "l") == 0)		
@@ -25,7 +25,7 @@ void	ft_printf_get_u(t_mod *conv, va_list args)
 	else if (ft_printf_strcmp(conv->length, "z") == 0)		
 		ft_printf_chng_size_t(conv, va_arg(args, size_t));
 	else if (ft_printf_strcmp(conv->length, "hh") == 0)
-		ft_printf_chng_uchar(conv, va_arg(args, unsigned char));
+		ft_printf_chng_uchar(conv, va_arg(args, unsigned int));
 	else if (ft_printf_strcmp(conv->length, "ll") == 0)		
 		ft_printf_chng_ulonglong(conv, va_arg(args, unsigned long long));
 }
@@ -35,7 +35,7 @@ void	ft_printf_get_o(t_mod *conv, va_list args)
 	if (!(conv->length))
 		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 8, 0);	
 	else if (ft_printf_strcmp(conv->length, "h") == 0)
-		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned short), 8, 0);
+		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 8, 0);
 	else if (ft_printf_strcmp(conv->length, "j") == 0)
 		conv->substring = ft_printf_itoa_base(va_arg(args, uintmax_t), 8, 0);
 	else if (ft_printf_strcmp(conv->length, "l") == 0)		
@@ -43,7 +43,7 @@ void	ft_printf_get_o(t_mod *conv, va_list args)
 	else if (ft_printf_strcmp(conv->length, "z") == 0)	
 		conv->substring = ft_printf_itoa_base(va_arg(args, size_t), 8, 0);		
 	else if (ft_printf_strcmp(conv->length, "hh") == 0)
-		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned char), 8, 0);
+		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 8, 0);
 	else if (ft_printf_strcmp(conv->length, "ll") == 0)		
 		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long long), 8, 0);		
 }
@@ -53,7 +53,7 @@ void	ft_printf_get_x(t_mod *conv, va_list args)
 	if (!(conv->length))
 		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 16, 0);	
 	else if (ft_printf_strcmp(conv->length, "h") == 0)
-		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned short), 16, 0);
+		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 16, 0);
 	else if (ft_printf_strcmp(conv->length, "j") == 0)
 		conv->substring = ft_printf_itoa_base(va_arg(args, uintmax_t), 16, 0);
 	else if (ft_printf_strcmp(conv->length, "l") == 0)		
@@ -61,7 +61,7 @@ void	ft_printf_get_x(t_mod *conv, va_list args)
 	else if (ft_printf_strcmp(conv->length, "z") == 0)	
 		conv->substring = ft_printf_itoa_base(va_arg(args, size_t), 16, 0);		
 	else if (ft_printf_strcmp(conv->length, "hh") == 0)
-		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned char), 16, 0);
+		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned int), 16, 0);
 	else if (ft_printf_strcmp(conv->length, "ll") == 0)		
 		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long long), 16, 0);		
 }

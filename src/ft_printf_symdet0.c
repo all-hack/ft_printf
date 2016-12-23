@@ -12,7 +12,7 @@
 
 #include "../include/libftprintf.h"
 
-void	ft_printf_symdet_flags(char const **seq, t_mod *conv)
+void	ft_printf_symdet_flags(char **seq, t_mod *conv)
 {	
 	size_t	delim_index;	
 	size_t	i;
@@ -29,7 +29,7 @@ void	ft_printf_symdet_flags(char const **seq, t_mod *conv)
 	}
 }
 
-void	ft_printf_symdet_mfw(char const **seq, t_mod *conv)
+void	ft_printf_symdet_mfw(char **seq, t_mod *conv)
 {	
 	size_t	delim_index;	
 	size_t	i;
@@ -46,7 +46,7 @@ void	ft_printf_symdet_mfw(char const **seq, t_mod *conv)
 	}
 }
 
-void	ft_printf_symdet_prec(char const **seq, t_mod *conv)
+void	ft_printf_symdet_prec(char **seq, t_mod *conv)
 {	
 	size_t	delim_index;	
 	size_t	i;
@@ -69,7 +69,7 @@ void	ft_printf_symdet_prec(char const **seq, t_mod *conv)
 	}
 }
 
-void	ft_printf_symdet_length(char const **seq, t_mod *conv)
+void	ft_printf_symdet_length(char **seq, t_mod *conv)
 {	
 	size_t	delim_index;	
 	size_t	i;
@@ -87,7 +87,7 @@ void	ft_printf_symdet_length(char const **seq, t_mod *conv)
 
 }
 
-void	ft_printf_symdet_conv(char const **seq, t_mod *conv)
+void	ft_printf_symdet_conv(char **seq, t_mod *conv)
 {	
 	size_t	delim_index;	
 	size_t	i;

@@ -12,7 +12,7 @@
 
 #include "../include/libftprintf.h"
 
-char	*ft_printf_strncat(char *s1, char const *s2, size_t n)
+char	*ft_printf_strncat(char *s1, unsigned char const *s2, size_t n)
 {
 	size_t	end;
 	size_t	i;

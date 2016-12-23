@@ -154,7 +154,7 @@ void	ft_printf_reset_struct(t_mod **this)
 
 
 
-void		(*g_printf_parse[6]) (char const **seq, t_mod *conv) = {
+void		(*g_printf_parse[6]) (char **seq, t_mod *conv) = {
 	ft_printf_symdet_flags, 
 	ft_printf_symdet_mfw, 
 	ft_printf_symdet_prec, 
@@ -266,7 +266,7 @@ void	(*g_printf_get[90]) (t_mod *conv, va_list args)= {
 
 void	ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater, va_list *arg, char c)
 {
-	intmax_t i;
+	size_t i;
 	if (ft_printf_strchri(*data, '*', &i) == 1)
 		*size = va_arg(*arg, int);
 	else
@@ -456,6 +456,7 @@ void	ft_printf_app_conv(t_mod *conv)
 void	ft_printf_app_precision(t_mod *conv)
 {
 	char		*tmp;
+	size_t		i;
 	intmax_t	index;
 	intmax_t	len;	
 
@@ -466,10 +467,10 @@ void	ft_printf_app_precision(t_mod *conv)
 	if (conv->precision)
 	{		
 		// printf("1conv->substring: %s\n", conv->substring);
-		if (ft_printf_stric(conv->conversion, "diouDOUxX", &index) == 1)
+		if (ft_printf_stric(conv->conversion, "diouDOUxX", &i) == 1)
 		{	
 			len = ft_printf_strlen(conv->substring);
-			if(ft_printf_strchri(conv->substring, '-', &index) == 1)
+			if(ft_printf_strchri(conv->substring, '-', &i) == 1)
 				len -= 1;
 			index = -1;								
 			ft_printf_strdel(&(conv->precision));			
@@ -483,10 +484,10 @@ void	ft_printf_app_precision(t_mod *conv)
 				// printf("conv->cprec: %c\n", conv->cprec);
 				// printf("3conv->substring: %s\n", conv->substring);	
 
-				if(ft_printf_strchri(conv->substring, '-', &index) == 1)
+				if(ft_printf_strchri(conv->substring, '-', &i) == 1)
 				{
 					// printf("7conv->substring: %s\n", conv->substring);
-					conv->substring = ft_printf_strinsert(conv->substring, conv->precision, index + 1, index + 1);			
+					conv->substring = ft_printf_strinsert(conv->substring, conv->precision, i + 1, i + 1);			
 				}
 				else
 				{
@@ -507,7 +508,8 @@ void	ft_printf_app_mfieldwidth(t_mod *conv)
 {
 	char		*tmp;
 	intmax_t	index;
-	intmax_t	len;	
+	intmax_t	len;
+	size_t		i;
 
 	// printf("conv->cmfw: %c\n", conv->cmfw);
 	// printf("conv->mfw: %jd\n", conv->mfw);
@@ -515,7 +517,7 @@ void	ft_printf_app_mfieldwidth(t_mod *conv)
 
 	if (conv->mfieldwidth)
 	{		
-		if (ft_printf_stric(conv->conversion, "sSdDioOuUxXcCb", &index) == 1)
+		if (ft_printf_stric(conv->conversion, "sSdDioOuUxXcCb", &i) == 1)
 		{	
 			len = ft_printf_strlen(conv->substring);
 			index = -1;								
@@ -740,7 +742,7 @@ void	ft_printf_app_flags(t_mod *conv)
 void		(*g_printf_apply[5]) (t_mod *conv) = {ft_printf_app_conv, ft_printf_app_precision, ft_printf_app_mfieldwidth, ft_printf_app_flags, 0};
 
 
-void ft_printf_flow(char const **seq, t_mod *conv, va_list args)
+void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 {
 	int	i;
 
@@ -774,7 +776,7 @@ void ft_printf_flow(char const **seq, t_mod *conv, va_list args)
 
 
 
-char	*ft_printf_format_parsing(char *format, t_mod *conv, va_list args)
+void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args)
 {	
 	char	*fsub;
 	char	*rem;
@@ -866,8 +868,8 @@ int	ft_printf(const char *format, ...)
 
 // 	// test 0104 
 // 	// intmax + 1 should be a flipped d
-//   	// ft_printf("ft_printf: -->%d<--\n", 2147483648);	
-// 	  //  printf("   printf: -->%d<--\n", 2147483648);  
+//   	ft_printf("ft_printf: -->%d<--\n", 2147483648);	
+// 	   printf("   printf: -->%d<--\n", 2147483648);  
 
 
 
