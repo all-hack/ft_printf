@@ -24,11 +24,13 @@ int	ft_printf_stric(char const *s, char const *c, size_t *index)
 		{
 			j = -1;
 			while (c[++j])
+			{
 				if (s[i] == c[j])
 				{
-					*index = i;
+					*index = i;					
 					return (1);
 				}
+			}
 			i++;
 		}
 		return (0);

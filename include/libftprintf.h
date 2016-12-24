@@ -39,6 +39,7 @@ typedef struct	s_conversion
 	char		cprec;
 	intmax_t	mfw;
 	intmax_t	prec;
+	size_t		skips;
 	size_t		srt_seq;
 	size_t		end_seq;
 	intmax_t	num;

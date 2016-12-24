@@ -34,6 +34,7 @@ t_mod	*ft_printf_init_struct()
 	here->cprec					= '\0';		
 	here->mfw 					= -1;
 	here->prec					= -1;		
+	here->skips					= 0;		
 	here->srt_seq 				= 0;
 	here->end_seq 				= 0;
 	here->flag					= NULL;
@@ -70,6 +71,7 @@ void	ft_printf_free_struct(t_mod **this)
 			(*this)->cmfw 					= ' ';
 			(*this)->prec					= -1;		
 			(*this)->cprec					= '\0';		
+			(*this)->skips					= 0;		
 			(*this)->srt_seq		 		= 0;
 			(*this)->end_seq 				= 0;
 			va_end((*this)->arg_list);
@@ -113,6 +115,7 @@ void	ft_printf_reset_struct(t_mod **this)
 			if ((*this)->precision)
 				ft_printf_dfree_hack(&((*this)->precision));
 			(*this)->mfw 					= -1;
+			(*this)->skips					= 0;
 			(*this)->prec					= -1;
 			(*this)->cmfw 					= ' ';
 			(*this)->cprec					= '\0';		
@@ -500,7 +503,7 @@ void	ft_printf_app_precision(t_mod *conv)
 				ft_printf_strdel(&tmp);
 			}
 		}
-	}
+	}	
 }
 
 
@@ -656,24 +659,50 @@ void	ft_printf_flag_0(t_mod *conv)
 void	ft_printf_flag_hash(t_mod *conv)
 {
 	size_t	i;
-	size_t	j;
+	size_t	j;	
 	char	*d;
 
 	d = "0123456789abcdef";
+	// printf("0sub->%s\n", conv->substring);
 	if (ft_printf_strchri(conv->conversion, 'o', &i) == 1)
 	{
 		// printf("1conv->precision: %d\n", !(conv->precision));
-		if(ft_printf_stric(conv->substring, "0", &i) || ft_printf_stric(conv->substring, d + 1, &j))
-			if (i > j || !(conv->precision))
-			{
-				// printf("1conv->precision: %s\n", conv->precision);
-				ft_printf_fstrinsert(&(conv->substring), "0", j, j);				
-			}
+		// printf("0sub: %s\n", conv->substring);
+		// printf("1sub->%s\n", conv->substring);		
+		ft_printf_stric(conv->substring, "0", &i);
+		ft_printf_stric(conv->substring, d + 1, &j);  
+		
+		// printf("d + 1: %s\n", d + 1);
+		// printf("j: %d\n", j);
+		// printf("i: %d\n", i);
+		// printf("2sub->%s\n", conv->substring);
+		// printf("mfw: %d\n", conv->mfw);
+		// printf("mfieldwidth: %s\n", conv->mfieldwidth);		
+		if ((i > j || !(conv->precision)) && !(conv->mfieldwidth) && conv->num != 0)
+		{
+			// printf("3sub->%s\n", conv->substring);
+			// printf("1conv->precision: %s\n", conv->precision);
+			ft_printf_fstrinsert(&(conv->substring), "0", j, j);				
+		}
+		else if ((i > j || !(conv->precision)) && conv->mfieldwidth && conv->num != 0)
+		{	
+			// printf("4sub->%s\n", conv->substring);
+			// printf("mfw: %d\n", conv->mfw);
+			// printf("mfieldwidth: %s\n", conv->mfieldwidth);
+			// printf("j: %d\n", j);
+			ft_printf_fstrinsert(&(conv->substring), "0", j - 1, j);
+			ft_printf_fstrinsert(&(conv->mfieldwidth), "", 0, 1);
+			// printf("check\n");
+		}
+		// printf("5sub->%s\n", conv->substring);
+	
 	}
 	else if (ft_printf_stric(conv->conversion, "xX", &i) == 1)
 	{		
+		// printf("2sub: %s\n", conv->substring);
 		if (ft_printf_stric(conv->substring, d + 1, &j))
-		{			
+		{		
+			// printf("3sub: %s\n", conv->substring);	
 			ft_printf_stric(conv->substring, d, &i);
 			// if (i > j)
 			// {
@@ -687,6 +716,7 @@ void	ft_printf_flag_hash(t_mod *conv)
 
 			if (conv->mfieldwidth)
 			{
+				// printf("4sub: %s\n", conv->substring);
 				if(ft_printf_strlen(conv->mfieldwidth) < 2)
 				{
 					// printf("i: %d\n", i);
@@ -705,11 +735,12 @@ void	ft_printf_flag_hash(t_mod *conv)
 			else 
 				ft_printf_fstrinsert(&(conv->substring), (conv->conversion[0] == 'x')? "0x" : "0X", 0 , 0);
 			
-			
+			// printf("5sub: %s\n", conv->substring);
 			// printf("sub: %s\n", conv->substring);
 			// }
 		}
 	}
+	// printf("6sub: %s\n", conv->substring);
 }
 
 void	(*g_printf_flags[6]) (t_mod *conv) = {ft_printf_flag_hash, ft_printf_flag_0, ft_printf_flag_minus, ft_printf_flag_space, ft_printf_flag_plus, 0};
@@ -746,13 +777,13 @@ void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 {
 	int	i;
 
-	// printf("1\n");
+	// printf("1 parse\n");
 	// printf("conv->substring: %s\n", conv->substring);
 	i = 0;
 	while (*g_printf_parse[i] != 0)
 		(*g_printf_parse[i++]) (seq, conv);	
 	// printf("[detection]  conv->flag: %s\n", conv->flag);
-	// printf("2\n");
+	// printf("2 process\n");
 	// printf("conv->substring: %s\n", conv->substring);
 	i = 0;	
 	while (*g_printf_process[i] != 0)
@@ -761,17 +792,17 @@ void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 		(*g_printf_process[i++]) (conv);
 	}
 	// printf("[processing] conv->flag: %s\n", conv->flag);
-	// printf("3\n");
+	// printf("3 apply\n");
 	// printf("conv->substring: %s\n", conv->substring);
 	i = 0;
 	while (*g_printf_apply[i] != 0)	
 	{
 		// printf("i: %d\n", i);
 		// printf("conv->substring: %s\n", conv->substring);
-		(*g_printf_apply[i++]) (conv);
+		(*g_printf_apply[i++]) (conv);		
 	}
 	// printf("4\n");
-	
+	// printf("conv->substring: %s\n", conv->substring);
 }
 
 
@@ -868,10 +899,23 @@ int	ft_printf(const char *format, ...)
 
 // 	// test 0104 
 // 	// intmax + 1 should be a flipped d
-//   	ft_printf("ft_printf: -->%d<--\n", 2147483648);	
-// 	   printf("   printf: -->%d<--\n", 2147483648);  
+//   	// ft_printf("ft_printf: -->%d<--\n", 2147483648);	
+// 	  //  printf("   printf: -->%d<--\n", 2147483648);  
 
+// 	// test 0087
+// 	// breaks malloc hash and fieldwidth modifiers
+//   	// ft_printf("ft_printf: -->%#6o<--\n", 2500);
+// 	   // printf("   printf: -->%#6o<--\n", 2500);  	
+		
+// 	// test 0088
+//     // breaks malloc hash and fieldwidth modifiers
+//   	// ft_printf("ft_printf: -->%-#6o<--\n", 2500);
+//   	   // printf("   printf: -->%-#6o<--\n", 2500);  
 
+//  	// test 0095 	
+//  	// break malloc hash and 0
+// 	// ft_printf("ft_printf: -->%#.o %#.0o<--\n", 0, 0);  	   
+//   	   // printf("   printf: -->%#.o %#.0o<--\n", 0, 0);    
 
 
 // 	// my problem children
