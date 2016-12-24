@@ -39,6 +39,8 @@ static size_t count_digits(uintmax_t num, int base, int extra)
 		num /= base;
 		x++;
 	}
+	if (num == 0)
+		x++;
 	return (x);
 }
 

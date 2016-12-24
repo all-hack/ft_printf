@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <limits.h>
 # define FT_PRINTF_NULLGUARD(INPUT) if ((INPUT) == NULL) return (NULL)
 
 extern const char *g_sequence_symbols;

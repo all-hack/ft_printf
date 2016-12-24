@@ -917,6 +917,42 @@ int	ft_printf(const char *format, ...)
 // 	// ft_printf("ft_printf: -->%#.o %#.0o<--\n", 0, 0);  	   
 //   	   // printf("   printf: -->%#.o %#.0o<--\n", 0, 0);    
 
+// 	// test 0059
+// 	// ft_printf("ft_printf: -->%10s is a string<--\n", "");  	   
+//   	   // printf("   printf: -->%10s is a string<--\n", "");    		  
+
+// 	// // test 0060
+// 	// ft_printf("ft_printf: -->%.2s is a string<--\n", "");  	   
+//  //  	   printf("   printf: -->%.2s is a string<--\n", "");    		  	  
+
+// 	// // test 0061
+// 	// ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
+//  //  	   printf("   printf: -->%5.2s is a string<--\n", "");    		  	  
+
+// 	// // test 0065
+// 	// ft_printf("ft_printf: -->%-10s is a string<--\n", "");  	   
+//  //  	   printf("   printf: -->%-10s is a string<--\n", "");    		  	  
+
+
+// 	// // test 0066
+// 	// ft_printf("ft_printf: -->%-.2s is a string<--\n", "");  	   
+//  //  	   printf("   printf: -->%-.2s is a string<--\n", "");    		  	  
+
+
+// 	// // test 0067
+// 	// ft_printf("ft_printf: -->%-5.2s is a string<--\n", "");  	   
+//  //  	   printf("   printf: -->%-5.2s is a string<--\n", "");    		  	  
+
+
+// 	// ft_printf("ft_printf->%% 4i 42 == |% 4i|\n", 42);
+// 	//    printf("   printf->%% 4i 42 == |% 4i|\n", 42);
+// 	// ft_printf("ft_printf->%%04.2i 42 == |%04.2i|\n", 42);
+// 	//    printf("   printf->%%04.2i 42 == |%04.2i|\n", 42);
+// 	// ft_printf("ft_printf->Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c", 100, L'à', "Ly", 2, 10, 10000, '\n', "ôHohoho");
+// 	//    printf("   printf->Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c", 100, L'à', "Ly", 2, 10, 10000, '\n', "ôHohoho");
+
+
+
 
 // 	// my problem children
 // 	// ft_printf("ft_printf: #- +2d->%#- +2d<-\n", 17);	
@@ -1157,8 +1193,4 @@ int	ft_printf(const char *format, ...)
 	  	
 // 	return (0);
 // }
-
-
-
-
 
