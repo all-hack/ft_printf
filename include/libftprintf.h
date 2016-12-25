@@ -114,6 +114,10 @@ char		*ft_printf_frmvdup(char	**str, size_t size);
 intmax_t	ft_printf_atoi(char const *str);
 void		ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end);
 char		*ft_printf_fstrmcat_conv(char *s1, char const *s2, t_mod *conv);
+void		ft_printf_get_D(t_mod *conv, va_list args);
+void		ft_printf_get_U(t_mod *conv, va_list args);
+void		ft_printf_get_O(t_mod *conv, va_list args);
+
 
 #				include 			<stdio.h>
 #endif

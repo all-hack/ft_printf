@@ -35,3 +35,22 @@ void	ft_printf_get_X(t_mod *conv, va_list args)
 		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long long), 16, 0);		
 	ft_printf_strupper(conv->substring);
 }
+
+void	ft_printf_get_D(t_mod *conv, va_list args)
+{		
+	if (!(conv->length))	
+		ft_printf_chng_long(conv, va_arg(args, long));	
+}
+
+void	ft_printf_get_U(t_mod *conv, va_list args)
+{		
+	if (!(conv->length))
+		ft_printf_chng_ulong(conv, va_arg(args, unsigned long));	
+}
+
+void	ft_printf_get_O(t_mod *conv, va_list args)
+{		
+	if (!(conv->length))		
+		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long), 8, 0);
+}
+

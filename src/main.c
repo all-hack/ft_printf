@@ -972,41 +972,41 @@ int	ft_printf(const char *format, ...)
 //     // ft_printf("Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c", 100, L'à', "Ly", 2, 10, 10000, '\n', "ôHohoho");
 
 //     // d   printf: -->
-//     // ft_printf("ft_printf: -->%D", 42);
-//     //    printf("   printf: -->%D", 42);
+//     ft_printf("ft_printf: -->%D\n", 42);
+//        printf("   printf: -->%D\n", 42);
        
-//     // ft_printf("ft_printf: -->Kashim a %D histoires à raconter", 1001);
-//     //    printf("   printf: -->Kashim a %D histoires à raconter", 1001);
+//     ft_printf("ft_printf: -->Kashim a %D histoires à raconter\n", 1001);
+//        printf("   printf: -->Kashim a %D histoires à raconter\n", 1001);
        
-//     // ft_printf("ft_printf: -->Il fait au moins %D\n", -8000);
-//     //    printf("   printf: -->Il fait au moins %D\n", -8000);
+//     ft_printf("ft_printf: -->Il fait au moins %D\n", -8000);
+//        printf("   printf: -->Il fait au moins %D\n", -8000);
     
-//     // ft_printf("ft_printf: -->%D", -0);
-//     //    printf("   printf: -->%D", -0);
+//     ft_printf("ft_printf: -->%D\n", -0);
+//        printf("   printf: -->%D\n", -0);
     
-//     // ft_printf("ft_printf: -->%D", 0);
-//     //    printf("   printf: -->%D", 0);
+//     ft_printf("ft_printf: -->%D\n", 0);
+//        printf("   printf: -->%D\n", 0);
     
-//     // ft_printf("ft_printf: -->%D", INT_MAX);
-//     //    printf("   printf: -->%D", INT_MAX);
+//     ft_printf("ft_printf: -->%D\n", INT_MAX);
+//        printf("   printf: -->%D\n", INT_MAX);
     
-//     // ft_printf("ft_printf: -->%D", INT_MIN);
-//     //    printf("   printf: -->%D", INT_MIN);
+//     ft_printf("ft_printf: -->%D\n", INT_MIN);
+//        printf("   printf: -->%D\n", INT_MIN);
     
-//     // ft_printf("ft_printf: -->%D", INT_MIN - 1);
-//     //    printf("   printf: -->%D", INT_MIN - 1);
+//     ft_printf("ft_printf: -->%D\n", INT_MIN - 1);
+//        printf("   printf: -->%D\n", INT_MIN - 1);
     
-//     // ft_printf("ft_printf: -->%D", INT_MAX + 1);
-//     //    printf("   printf: -->%D", INT_MAX + 1);
+//     ft_printf("ft_printf: -->%D\n", INT_MAX + 1);
+//        printf("   printf: -->%D\n", INT_MAX + 1);
     
-//     // ft_printf("ft_printf: -->%%D 0000042 == |%D|\n", 0000042);
-//     //    printf("   printf: -->%%D 0000042 == |%D|\n", 0000042);
+//     ft_printf("ft_printf: -->%%D 0000042 == |%D|\n", 0000042);
+//        printf("   printf: -->%%D 0000042 == |%D|\n", 0000042);
     
-//     // ft_printf("ft_printf: -->%%D \t == |%D|\n", '\t');
-//     //    printf("   printf: -->%%D \t == |%D|\n", '\t');
+//     ft_printf("ft_printf: -->%%D \t == |%D|\n", '\t');
+//        printf("   printf: -->%%D \t == |%D|\n", '\t');
     
-//     // ft_printf("ft_printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
-//     //    printf("   printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
+//     ft_printf("ft_printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
+//        printf("   printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
 
 
 
