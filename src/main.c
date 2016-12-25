@@ -764,16 +764,16 @@ int	ft_printf(const char *format, ...)
 		tmp = ft_printf_strsub(format, curr, conv->srt_seq);		
 		printit = ft_printf_fstrmcat(printit, tmp);				
 		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);
-// 		curr = (conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
-// 		// printf("curr: %d\n", curr);
-// 		// printf("printit: %s\n", printit);
-// 		ft_printf_strdel(&tmp);
-// 		ft_printf_reset_struct(&conv);
-// 	}	
-// 	if (format[curr])
-// 		printit = ft_printf_fstrmcat(printit, format + curr);			
-// 	return (ft_printf_putstr(printit, conv));
-// }
+		curr = (conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
+		// printf("curr: %d\n", curr);
+		// printf("printit: %s\n", printit);
+		ft_printf_strdel(&tmp);
+		ft_printf_reset_struct(&conv);
+	}	
+	if (format[curr])
+		printit = ft_printf_fstrmcat(printit, format + curr);			
+	return (ft_printf_putstr(printit, conv));
+}
 
 
 
