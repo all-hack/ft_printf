@@ -99,7 +99,7 @@ void	ft_printf_get_s(t_mod *conv, va_list args)
 			// printf("5\n");
 			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
 			while (tmp[i++] && i < size)				
-				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);			
 		}
 		else 
 		{
@@ -107,7 +107,7 @@ void	ft_printf_get_s(t_mod *conv, va_list args)
 			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
 			while (tmp[i++])				
 				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
-		}
+		}		
 	}
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
 	{
@@ -125,7 +125,9 @@ void	ft_printf_get_s(t_mod *conv, va_list args)
 			while (tmp1[i++])
 				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
 		}
-	}		
+	}	
+	// if (*(conv->substring) == '\0')
+			// ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);	
 	// printf("4\n");
 }
 
@@ -152,5 +154,7 @@ void	ft_printf_get_S(t_mod *conv, va_list args)
 			while (tmp1[i++])
 				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
 		}
+		// if (*(conv->substring) == '\0')
+		// 	ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
 	}		
 }

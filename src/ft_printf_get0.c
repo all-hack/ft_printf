@@ -34,9 +34,12 @@ void	ft_printf_get_c(t_mod *conv, va_list args)
 		conv->substring = ft_printf_chng_wchar_t(conv, va_arg(args, wchar_t), NULL);
 	if (conv->substring[0] == '\0')
 	{
+		ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
 		conv->skips += 1;
 		conv->num = 0;
 	}	
+	
+			
 
 }
 
@@ -46,9 +49,11 @@ void	ft_printf_get_C(t_mod *conv, va_list args)
 		conv->substring = ft_printf_chng_wchar_t(conv, va_arg(args, wchar_t), NULL);
 	if (conv->substring[0] == '\0')
 	{
+		ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
 		conv->skips += 1;
 		conv->num = 0;
 	}
+	
 }
 
 void	ft_printf_get_d(t_mod *conv, va_list args)
