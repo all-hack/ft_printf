@@ -409,6 +409,12 @@ void	ft_printf_app_precision(t_mod *conv)
 				// printf("4conv->substring: %s\n", conv->substring);
 				ft_printf_strdel(&tmp);
 			}
+			if (conv->num == 0 && conv->prec == 0 && conv->mfieldwidth)
+				conv->substring = ft_printf_strinsert(conv->substring, " ", 0, 1);
+			else if (conv->num == 0 && conv->prec == 0 && !conv->mfieldwidth)
+				conv->substring = ft_printf_strinsert(conv->substring, "", 0, 1);
+			// printf("substring: -->%s\n", conv->substring);
+			// printf("99prec: -->%d\n", conv->prec);
 		}
 	}	
 }
@@ -424,23 +430,29 @@ void	ft_printf_app_mfieldwidth(t_mod *conv)
 	// printf("conv->cmfw: %c\n", conv->cmfw);
 	// printf("conv->mfw: %jd\n", conv->mfw);
 	// printf("conv->mfieldwidth: %s\n", conv->mfieldwidth);
-
+	// printf("0substring: -->%s\n", conv->substring);	
 	if (conv->mfieldwidth)
 	{		
-		if (ft_printf_stric(conv->conversion, "sSdDioOuUxXcCb", &i) == 1)
+		// printf("1substring: -->%s\n", conv->substring);
+		if (ft_printf_stric(conv->conversion, "sSdDioOuUxXcCb%", &i) == 1)
 		{	
+			// printf("2substring: -->%s\n", conv->substring);
 			len = ft_printf_strlen(conv->substring);
 			index = -1;								
 			ft_printf_strdel(&(conv->mfieldwidth));			
 			if ((conv->mfw - len) > 0)
 			{	
+				// printf("3substring: -->%s\n", conv->substring);
 				while (++index < (conv->mfw - len))
 					conv->mfieldwidth = ft_printf_fstrappend(conv->mfieldwidth, conv->cmfw);					
 				tmp = conv->substring;						
 				conv->substring = ft_printf_strinsert(conv->substring, conv->mfieldwidth, 0, 0);			
 				ft_printf_strdel(&tmp);
+				// printf("4substring: -->%s\n", conv->substring);
 			}
+			// printf("5substring: -->%s\n", conv->substring);
 		}
+		// printf("6substring: -->%s\n", conv->substring);
 	}
 }
 
@@ -448,6 +460,7 @@ void	ft_printf_flag_plus(t_mod *conv)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
 	// printf("len flag: %d\n", ft_printf_strlen(conv->flag));
 	// printf("conv_>flag:%s\n", conv->flag);
@@ -455,23 +468,54 @@ void	ft_printf_flag_plus(t_mod *conv)
 	// printf("conv->substring: %s\n", conv->substring);
 	if (conv->num >= 0)
 	{
+		if (conv->mfieldwidth)
+			len = ft_printf_strlen(conv->mfieldwidth);
+		else 
+			len = 1;
+
+		// printf("mfw: %d\n", conv->mfw);
 		ft_printf_stric(conv->substring, "0123456789", &i);	
 		// printf("conv->substring: %s<-\n", conv->substring);
 		// printf("(conv->substring)[conv->mfw]: %d\n", (conv->substring)[conv->mfw - 1]);	
-			
+		// printf("0conv->substring:-->%s\n", conv->substring);
 		if (ft_printf_strchri(conv->flag, '0', &i))				
-			ft_printf_fstrinsert(&(conv->substring), "+", 0, 1);
-		else
-			ft_printf_fstrinsert(&(conv->substring), "+", 0, 0);	
-		if ((conv->substring)[conv->mfw - 1] == ' ' && (conv->substring)[conv->mfw] == ' ')
 		{
-			
-			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw - 1, conv->mfw);
-			// printf("conv->substring: %s\n", conv->substring);
+			// printf("-1conv->substring:-->%s\n", conv->substring);
+			ft_printf_fstrinsert(&(conv->substring), "+", 0, 1);
 		}
-		else if ((conv->substring)[conv->mfw] == ' ')
-		{		
-			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw, conv->mfw + 1);
+		else if (!(conv->mfieldwidth) || ft_printf_strchri(conv->flag, '-', &i))
+			{
+				// printf("-2conv->substring:-->%s\n", conv->substring);
+			ft_printf_fstrinsert(&(conv->substring), "+", 0, 0);	
+			}
+		// printf("00conv->substring:-->%s\n", conv->substring);
+		// printf("(conv->substring)[%d]:-->%c, %d\n", conv->mfw, (conv->substring)[conv->mfw],(conv->substring)[conv->mfw]);
+		// if ((conv->substring)[conv->mfw - 1] == ' ' && (conv->substring)[conv->mfw] == ' ')
+		// {
+		// 	printf("000conv->substring:-->%s\n", conv->substring);
+		// 	ft_printf_fstrinsert(&(conv->substring), "", conv->mfw - 1, conv->mfw);
+		// 	// printf("conv->substring: %s\n", conv->substring);
+		// }
+		// else if ((conv->substring)[conv->mfw] == ' ')
+		// {		
+		// 	printf("0000conv->substring:-->%s\n", conv->substring);
+		// 	ft_printf_fstrinsert(&(conv->substring), "", conv->mfw, conv->mfw + 1);
+		// 	printf("you will never see me\n");
+		// }
+		if ((conv->substring)[len - 1] == ' ')
+		{
+			// printf("00000conv->substring:-->%s\n", conv->substring);
+			ft_printf_fstrinsert(&(conv->substring), "+", len - 1, len);	
+		}
+		else if (ft_printf_strchri(conv->flag, '-', &i) && ft_printf_strchri(conv->flag, ' ', &i)) 
+			{
+				// printf("00000conv->substring:-->%s\n", conv->substring);
+			ft_printf_fstrinsert(&(conv->substring), "+", i, i + 1);	
+			}
+		else if (ft_printf_strchri(conv->substring, ' ', &i))
+		{
+			// printf("afafd\n");
+			ft_printf_fstrinsert(&(conv->substring), "", i, i + 1);	
 		}
 	}
 	// else if ()
@@ -504,17 +548,24 @@ void	ft_printf_flag_space(t_mod *conv)
 			ft_printf_fstrinsert(&(conv->substring), " ", 0, 1);
 		else if (!(conv->mfieldwidth))
 			ft_printf_fstrinsert(&(conv->substring), " ", 0, 0);		
-		if ((conv->substring)[conv->mfw - 1] == ' ' && (conv->substring)[conv->mfw] == ' ')
+		else if (ft_printf_strchri(conv->flag, '-', &i) && ft_printf_strchri(conv->substring, ' ', &i))
 		{
-			// printf("00substring: ->%s\n", conv->substring);
-			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw - 1, conv->mfw);
-			// printf("conv->substring: %s\n", conv->substring);
+				
+			ft_printf_fstrinsert(&(conv->substring), "", i, i + 1);
+			ft_printf_fstrinsert(&(conv->substring), " ", 0, 0);	
 		}
-		else if ((conv->substring)[conv->mfw] == ' ')
-		{		
-			// printf("000substring: ->%s\n", conv->substring);
-			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw, conv->mfw + 1);
-		}
+
+		// if ((conv->substring)[conv->mfw - 1] == ' ' && (conv->substring)[conv->mfw] == ' ')
+		// {
+		// 	// printf("00substring: ->%s\n", conv->substring);
+		// 	ft_printf_fstrinsert(&(conv->substring), "", conv->mfw - 1, conv->mfw);
+		// 	// printf("conv->substring: %s\n", conv->substring);
+		// }
+		// else if ((conv->substring)[conv->mfw] == ' ')
+		// {		
+		// 	// printf("000substring: ->%s\n", conv->substring);
+		// 	ft_printf_fstrinsert(&(conv->substring), "", conv->mfw, conv->mfw + 1);
+		// }
 	}
 	// else if ()
 	// ft_printf_fstrinsert(&(conv->mfieldwidth), "", 0, 1);		
@@ -529,7 +580,7 @@ void	ft_printf_flag_minus(t_mod *conv)
 	if (conv->mfieldwidth)
 	{		
 		if (ft_printf_stric(conv->conversion, "p", &j) == 0)
-		{
+		{			
 			j = ft_printf_strlen(conv->mfieldwidth);	
 			ft_printf_fstrinsert(&(conv->substring), conv->mfieldwidth, conv->mfw, conv->mfw);
 			ft_printf_fstrinsert(&(conv->substring), "", 0, j);		
@@ -543,10 +594,13 @@ void	ft_printf_flag_0(t_mod *conv)
 	size_t	i;	
 	size_t	j;
 
+	// printf("0conv->substring:-->%s\n", conv->substring);
 	// if ((ft_printf_stric(conv->precision, "123456789", &i) != 1) && conv->mfieldwidth)
 	// printf("conv->precision: %s\n", conv->precision);
-	if (!(conv->precision) && conv->mfieldwidth && !(ft_printf_stric(conv->conversion, "sS", &i)))
+	// printf("conv->prec: %d\n", conv->prec);
+	if (!(conv->precision) && conv->mfieldwidth && !(ft_printf_stric(conv->conversion, "sS", &i)) && conv->prec < 0)
 	{	
+		// printf("1conv->substring:-->%s\n", conv->substring);
 		// printf("conv->precision: %s\n", conv->precision);
 		i = 0;		
 		j = 0;
@@ -554,7 +608,8 @@ void	ft_printf_flag_0(t_mod *conv)
 		while ((conv->mfieldwidth)[i])		
 			(conv->mfieldwidth)[i++] = '0';
 		if (ft_printf_strchri(conv->substring, 'x', &i))
-		{				
+		{			
+			// printf("2conv->substring:-->%s\n", conv->substring);				
 			// printf("3sub: %s\n", conv->substring);
 			// printf("i: %d, j: %d\n", i, j);			
 			ft_printf_fstrinsert(&(conv->substring), conv->mfieldwidth, i + 1, i + 1);
@@ -562,8 +617,24 @@ void	ft_printf_flag_0(t_mod *conv)
 			// printf("4sub: %s\n", conv->substring);
 		}
 		else
-			ft_printf_fstrinsert(&(conv->substring), conv->mfieldwidth, 0, j);
+		{			
+			// printf("3conv->substring:-->%s\n", conv->substring);
+			if (conv->num < 0)				
+			{
+				// printf("4conv->substring:-->%s\n", conv->substring);
+				ft_printf_strchri(conv->substring, '-', &i);
+				// printf("i: %d, j: %d i+j: %d\n",i,j, i + j );
+				ft_printf_fstrinsert(&(conv->substring), conv->mfieldwidth, i + 1, i + 1);
+				ft_printf_fstrinsert(&(conv->substring), "", 0, j);
+			}
+			else
+			{
+				// printf("5conv->substring:-->%s\n", conv->substring);
+				ft_printf_fstrinsert(&(conv->substring), conv->mfieldwidth, 0, j);
+			}
+		}
 	}
+	// printf("6conv->substring:-->%s\n", conv->substring);
 }
 
 
@@ -665,19 +736,29 @@ void	ft_printf_app_flags(t_mod *conv)
 	char	*flags;
 	size_t	j;
 
-	if (conv->flag)
+	// printf("conv->prec: %d\n", conv->prec);
+	if (conv->prec != 0 || conv->num != 0 )
 	{
-		i = 0;
-		flags = "#0- +";
-		while (*g_printf_flags[i] != 0)
-		{		
-			// printf("%s\n", flags);
-			// printf("%c\n", flags[i]);
-			if (ft_printf_strchri(conv->flag, flags[i], &j))
-				(*g_printf_flags[i]) (conv);
-			i++;
-		}
-	}
+		// if (ft_printf_stric(conv->conversion, "CcsS%", &j))
+		// {
+		// printf("conv->num: %d\n", conv->num);
+		// printf("conv->flag: %s\n", conv->flag);
+			if (conv->flag && !ft_printf_stric(conv->conversion, "p", &j))
+			{
+				// printf("conv->flag: %s\n", conv->flag);
+				i = 0;
+				flags = "#0- +";
+				while (*g_printf_flags[i] != 0)
+				{		
+					// printf("%s\n", flags);
+					// printf("%c\n", flags[i]);			
+					if (ft_printf_strchri(conv->flag, flags[i], &j))
+						(*g_printf_flags[i]) (conv);
+					i++;
+				}
+			}
+		}	
+	// }
 }
 
 
@@ -693,12 +774,18 @@ void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 
 	// printf("1 parse\n");
 	// printf("conv->substring: %s\n", conv->substring);
+	// printf("conv->mfieldwidth: %s\n", conv->mfieldwidth);
+	// printf("conv->precision: %s\n", conv->precision);
+	// printf("conv->flag: %s\n", conv->flag);
 	i = 0;
 	while (*g_printf_parse[i] != 0)
 		(*g_printf_parse[i++]) (seq, conv);	
 	// printf("[detection]  conv->flag: %s\n", conv->flag);
 	// printf("2 process\n");
 	// printf("conv->substring: %s\n", conv->substring);
+	// printf("conv->mfieldwidth: %s\n", conv->mfieldwidth);
+	// printf("conv->precision: %s\n", conv->precision);
+	// printf("conv->flag: %s\n", conv->flag);
 	i = 0;	
 	while (*g_printf_process[i] != 0)
 	{
@@ -708,6 +795,9 @@ void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 	// printf("[processing] conv->flag: %s\n", conv->flag);
 	// printf("3 apply\n");
 	// printf("conv->substring: %s\n", conv->substring);
+	// printf("conv->mfieldwidth: %s\n", conv->mfieldwidth);
+	// printf("conv->precision: %s\n", conv->precision);
+	// printf("conv->flag: %s\n", conv->flag);
 	i = 0;
 	while (*g_printf_apply[i] != 0)	
 	{
@@ -717,6 +807,9 @@ void ft_printf_flow(char **seq, t_mod *conv, va_list args)
 	}
 	// printf("4\n");
 	// printf("conv->substring: %s\n", conv->substring);
+	// printf("conv->mfieldwidth: %s\n", conv->mfieldwidth);
+	// printf("conv->precision: %s\n", conv->precision);
+	// printf("conv->flag: %s\n", conv->flag);
 }
 
 
@@ -771,7 +864,8 @@ int	ft_printf(const char *format, ...)
 		ft_printf_reset_struct(&conv);
 	}	
 	if (format[curr])
-		printit = ft_printf_fstrmcat(printit, format + curr);			
+		printit = ft_printf_fstrmcat(printit, format + curr);		
+
 	return (ft_printf_putstr(printit, conv));
 }
 
@@ -881,8 +975,97 @@ int	ft_printf(const char *format, ...)
 
 // 	// // test 0082 (char)
 // 	// ft_printf("ft_printf: -->% c<--\n", 0);  	   
-//  //  	   printf("   printf: -->% c<--\n", 0);   
+//   	   // printf("   printf: -->% c<--\n", 0);   
   
+// 	// // test 0113 (int)
+// 	// // sometimes segfault
+// 	// ft_printf("ft_printf: -->% +d<--\n",  42);
+//  //  	   printf("   printf: -->% +d<--\n",  42);  
+
+// 	// // test 0131 (int)
+// 	// ft_printf("ft_printf: -->%05d<--\n", -42);
+//  //  	   printf("   printf: -->%05d<--\n", -42);  	
+
+// 	// // test 0132 (int)
+// 	// ft_printf("ft_printf: -->%0+5d<--\n", -42);
+//  //  	   printf("   printf: -->%0+5d<--\n", -42);  
+
+// 	// // test 0167 (int)
+// 	// ft_printf("ft_printf: -->% 10.5d<--\n", 4242);
+//  //  	   printf("   printf: -->% 10.5d<--\n", 4242);  
+
+// 	// // test 0168 (int)
+// 	// ft_printf("ft_printf: -->%+10.5d<--\n", 4242);
+//  //  	   printf("   printf: -->%+10.5d<--\n", 4242);  
+	
+// 	// // test 0169 (int)
+// 	// ft_printf("ft_printf: -->%-+10.5d<--\n", 4242);
+//  //  	   printf("   printf: -->%-+10.5d<--\n", 4242);  
+
+// 	// while (1)	
+// 	// {
+// 	// // test 0119 (int)
+// 	// printf("\n\n\n\n\n");
+// 	// ft_printf("ft_printf: -->%+  d<--\n", 42);
+// 	//    printf("   printf: -->%+  d<--\n", 42);  
+// 	// }
+
+
+
+
+// 	// // test 0119 (int)
+// 	// ft_printf("ft_printf: -->%+ d<--\n", 42);
+// 	//    printf("   printf: -->%+ d<--\n", 42);  
+
+// 	// // test 0119 (int)
+// 	// ft_printf("ft_printf: -->%+    d<--\n", 42);
+// 	//    printf("   printf: -->%+    d<--\n", 42);  
+
+// 	// test 0007 
+// 	// ft_printf("ft_printf: -->%5%<--\n");
+// 	   // printf("   printf: -->%5%<--\n");
+
+// 	// // test 0008 
+// 	// ft_printf("ft_printf: -->%-5%<--\n");
+// 	   // printf("   printf: -->%-5%<--\n");
+
+// 	// // test 0001 
+//  //  	printf("( %d )\n",  ft_printf(""));
+// 	// printf("( %d )\n",     printf(""));
+
+// 	// // test 0047 (int)
+// 	// ft_printf("ft_printf: -->%.x %.0x<--\n", 0, 0);
+// 	//    printf("   printf: -->%.x %.0x<--\n", 0, 0);
+
+
+// 	// // test 0046 (int)
+// 	// ft_printf("ft_printf: -->%#.x %#.0x<--\n", 0, 0);
+// 	//    printf("   printf: -->%#.x %#.0x<--\n", 0, 0);
+
+
+
+// 	// // test 0048 (int)
+// 	// ft_printf("ft_printf: -->%5.x %5.0x<--\n", 0, 0);
+// 	//    printf("   printf: -->%5.x %5.0x<--\n", 0, 0);
+
+
+
+// 	// // // test 0094 (int)
+//  //  	ft_printf("ft_printf: -->%5.o %5.0o<--\n", 0, 0);
+// 	//    printf("   printf: -->%5.o %5.0o<--\n", 0, 0);
+  
+
+// 	// // test 0095 (int)
+//  //  	ft_printf("ft_printf: -->%#.o %#.0o<--\n", 0, 0);
+// 	//    printf("   printf: -->%#.o %#.0o<--\n", 0, 0);
+
+
+// 	// // test 0176 (int)
+//  //  	ft_printf("ft_printf: -->%5.d %5.0d<--\n", 0, 0);
+// 	//    printf("   printf: -->%5.d %5.0d<--\n", 0, 0);
+
+
+
   	
 //   	// c
 //    	// ft_printf("ft_printf: -->%c\n", 42);
@@ -1020,8 +1203,8 @@ int	ft_printf(const char *format, ...)
 // 	   // printf("   printf: -->%04.2i<--\n", 42);
 
 // 	//space
-//    	ft_printf("ft_printf: -->% 4i<--\n", 42);
-// 	   printf("   printf: -->% 4i<--\n", 42);
+//    	// ft_printf("ft_printf: -->% 4i<--\n", 42);
+// 	   // printf("   printf: -->% 4i<--\n", 42);
 
 // 	// ft_printf("ft_printf: -->% 4i<--\n", 4200);
 // 	   // printf("   printf: -->% 4i<--\n", 4200);
@@ -1118,92 +1301,92 @@ int	ft_printf(const char *format, ...)
 // 	//    ft_printf("ft_printf: %%+-015.7d->%+-015.7d<-\n", 99);	
 // 	//    	printf("\n");
 
-// 	//       printf("   printf: %%o->%o\n", 99);
-// 	//    ft_printf("ft_printf: %%o->%o\n", 99);
-// 	//       printf("   printf: %%#o->%#o\n", 99);
-// 	//    ft_printf("ft_printf: %%#o->%#o\n", 99);
-// 	//       printf("   printf: %% o->% o\n", 99);
-// 	//    ft_printf("ft_printf: %% o->% o\n", 99);
-// 	//       printf("   printf: %% o->% o\n", -99);
-// 	//    ft_printf("ft_printf: %% o->% o\n", -99);
-// 	//       printf("   printf: %%+o->%+o\n", 99);
-// 	//    ft_printf("ft_printf: %%+o->%+o\n", 99);
-// 	//       printf("   printf: %%+o->%+o\n", -99);
-// 	//    ft_printf("ft_printf: %%+o->%+o\n", -99);
-// 	//       printf("   printf: %% +o->% +o\n", 99);
-// 	//    ft_printf("ft_printf: %% +o->% +o\n", 99);
-// 	//       printf("   printf: %% +o->% +o\n", -99);
-// 	//    ft_printf("ft_printf: %% +o->% +o\n", -99);
-// 	//       printf("   printf: %%#.3o->%#.3o\n", 99);
-// 	//    ft_printf("ft_printf: %%#.3o->%#.3o\n", 99);
-// 	//       printf("   printf: %%#3.3o->%#3.3o\n", 99);
-// 	//    ft_printf("ft_printf: %%#3.3o->%#3.3o\n", 99);
-// 	//       printf("   printf: %%0o->%0o\n", 99);
-// 	//    ft_printf("ft_printf: %%0o->%0o\n", 99);
-// 	//       printf("   printf: %%-0o->%-0o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%-0o->%-0o<-\n", 99);
-// 	//       printf("   printf: %%05o->%05o\n", 99);
-// 	//    ft_printf("ft_printf: %%05o->%05o\n", 99);
-// 	//       printf("   printf: %%-05o->%-05o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%-05o->%-05o<-\n", 99);
-// 	//       printf("   printf: %%02.7o->%02.7o\n", 99);
-// 	//    ft_printf("ft_printf: %%02.7o->%02.7o\n", 99);
-// 	//       printf("   printf: %%-02.7o->%-02.7o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%-02.7o->%-02.7o<-\n", 99);
-// 	//       printf("   printf: %%#02.7o->%#02.7o\n", 99);
-// 	//    ft_printf("ft_printf: %%#02.7o->%#02.7o\n", 99);
-// 	//       printf("   printf: %%#-02.7o->%#-02.7o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%#-02.7o->%#-02.7o<-\n", 99);
-// 	//       printf("   printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
-// 	//       printf("   printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
-// 	//       printf("   printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
-// 	//    ft_printf("ft_printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
-// 	//    	printf("\n");
+// 	   //    printf("   printf: %%o->%o\n", 99);
+// 	   // ft_printf("ft_printf: %%o->%o\n", 99);
+// 	   //    printf("   printf: %%#o->%#o\n", 99);
+// 	   // ft_printf("ft_printf: %%#o->%#o\n", 99);
+// 	   //    printf("   printf: %% o->% o\n", 99);
+// 	   // ft_printf("ft_printf: %% o->% o\n", 99);
+// 	   //    printf("   printf: %% o->% o\n", -99);
+// 	   // ft_printf("ft_printf: %% o->% o\n", -99);
+// 	   //    printf("   printf: %%+o->%+o\n", 99);
+// 	   // ft_printf("ft_printf: %%+o->%+o\n", 99);
+// 	   //    printf("   printf: %%+o->%+o\n", -99);
+// 	   // ft_printf("ft_printf: %%+o->%+o\n", -99);
+// 	   //    printf("   printf: %% +o->% +o\n", 99);
+// 	   // ft_printf("ft_printf: %% +o->% +o\n", 99);
+// 	   //    printf("   printf: %% +o->% +o\n", -99);
+// 	   // ft_printf("ft_printf: %% +o->% +o\n", -99);
+// 	   //    printf("   printf: %%#.3o->%#.3o\n", 99);
+// 	   // ft_printf("ft_printf: %%#.3o->%#.3o\n", 99);
+// 	   //    printf("   printf: %%#3.3o->%#3.3o\n", 99);
+// 	   // ft_printf("ft_printf: %%#3.3o->%#3.3o\n", 99);
+// 	   //    printf("   printf: %%0o->%0o\n", 99);
+// 	   // ft_printf("ft_printf: %%0o->%0o\n", 99);
+// 	   //    printf("   printf: %%-0o->%-0o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%-0o->%-0o<-\n", 99);
+// 	   //    printf("   printf: %%05o->%05o\n", 99);
+// 	   // ft_printf("ft_printf: %%05o->%05o\n", 99);
+// 	   //    printf("   printf: %%-05o->%-05o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%-05o->%-05o<-\n", 99);
+// 	   //    printf("   printf: %%02.7o->%02.7o\n", 99);
+// 	   // ft_printf("ft_printf: %%02.7o->%02.7o\n", 99);
+// 	   //    printf("   printf: %%-02.7o->%-02.7o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%-02.7o->%-02.7o<-\n", 99);
+// 	   //    printf("   printf: %%#02.7o->%#02.7o\n", 99);
+// 	   // ft_printf("ft_printf: %%#02.7o->%#02.7o\n", 99);
+// 	   //    printf("   printf: %%#-02.7o->%#-02.7o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%#-02.7o->%#-02.7o<-\n", 99);
+// 	   //    printf("   printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%#+-02.7o->%#+-02.7o<-\n", 99);
+// 	   //    printf("   printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%#+-02.3o->%#+-02.3o<-\n", 99);
+// 	   //    printf("   printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
+// 	   // ft_printf("ft_printf: %%# +-02.3o->%# +-02.3o<-\n", 99);
+// 	   // 	printf("\n");
 
 
-// 	//       printf("   printf: %%x->%x\n", -44);				   
-// 	//    ft_printf("ft_printf: %%x->%x\n", -44);				   
-// 	//       printf("   printf: %%#x->%#x\n", -44);				   
-// 	//    ft_printf("ft_printf: %%#x->%#x\n", -44);				   
-// 	//       printf("   printf: %%#x->%#x\n", 0);				   
-// 	//    ft_printf("ft_printf: %%#x->%#x\n", 0);				   
-// 	//       printf("   printf: %% x->% x\n", 44);				   
-// 	//    ft_printf("ft_printf: %% x->% x\n", 44);				   
-// 	//       printf("   printf: %% x->% x\n", -44);	
-// 	//    ft_printf("ft_printf: %% x->% x\n", -44);	
-// 	//       printf("   printf: %%+x->%+x\n", 44);	
-// 	//    ft_printf("ft_printf: %%+x->%+x\n", 44);	
-// 	//       printf("   printf: %%+x->%+x\n", -44);	
-// 	//    ft_printf("ft_printf: %%+x->%+x\n", -44);	
-// 	//       printf("   printf: %%+ x->%+ x\n", 44);	
-// 	//    ft_printf("ft_printf: %%+ x->%+ x\n", 44);	
-// 	//       printf("   printf: %%+ x->%+ x\n", -44);			   
-// 	//    ft_printf("ft_printf: %%+ x->%+ x\n", -44);			   
-// 	//       printf("   printf: %%#.3x->%#.3x\n", 99);
-// 	//    ft_printf("ft_printf: %%#.3x->%#.3x\n", 99);
-// 	//       printf("   printf: %%#.3x->%.3x\n", 9);
-// 	//    ft_printf("ft_printf: %%#.3x->%.3x\n", 9);
-// 	//       printf("   printf: %%#3.3x->%#3.3x\n", 99);
-// 	//    ft_printf("ft_printf: %%#3.3x->%#3.3x\n", 99);
-// 	//       printf("   printf: %%0x->%0x\n", -44);	
-// 	//    ft_printf("ft_printf: %%0x->%0x\n", -44);	
-// 	//       printf("   printf: %%-0x->%-0x<-\n", -44);	
-// 	//    ft_printf("ft_printf: %%-0x->%-0x<-\n", -44);	
-// 	//       printf("   printf: %%05x->%05x\n", 15);
-// 	//    ft_printf("ft_printf: %%05x->%05x\n", 15);
-// 	//       printf("   printf: %%-05x->%-05x<-\n", 15);
-// 	//    ft_printf("ft_printf: %%-05x->%-05x<-\n", 15);
-// 	//       printf("   printf: %%02.7x->%02.7x\n", 15);				   
-// 	//    ft_printf("ft_printf: %%02.7x->%02.7x\n", 15);				   
-// 	//       printf("   printf: %%-02.7x->%-02.7x<-\n", 15);	
-// 	//    ft_printf("ft_printf: %%-02.7x->%-02.7x<-\n", 15);	
-// 	//       printf("   printf: %%#02.7x->%#02.7x\n", 15);				   
-// 	//    ft_printf("ft_printf: %%#02.7x->%#02.7x\n", 15);				   
-// 	//       printf("   printf: %%#-02.7x->%#-02.7x<-\n", 15);		
-// 	//    ft_printf("ft_printf: %%#-02.7x->%#-02.7x<-\n", 15);		
-//  //   	printf("\n");
+// 	   //    printf("   printf: %%x->%x\n", -44);				   
+// 	   // ft_printf("ft_printf: %%x->%x\n", -44);				   
+// 	   //    printf("   printf: %%#x->%#x\n", -44);				   
+// 	   // ft_printf("ft_printf: %%#x->%#x\n", -44);				   
+// 	   //    printf("   printf: %%#x->%#x\n", 0);				   
+// 	   // ft_printf("ft_printf: %%#x->%#x\n", 0);				   
+// 	   //    printf("   printf: %% x->% x\n", 44);				   
+// 	   // ft_printf("ft_printf: %% x->% x\n", 44);				   
+// 	   //    printf("   printf: %% x->% x\n", -44);	
+// 	   // ft_printf("ft_printf: %% x->% x\n", -44);	
+// 	   //    printf("   printf: %%+x->%+x\n", 44);	
+// 	   // ft_printf("ft_printf: %%+x->%+x\n", 44);	
+// 	   //    printf("   printf: %%+x->%+x\n", -44);	
+// 	   // ft_printf("ft_printf: %%+x->%+x\n", -44);	
+// 	   //    printf("   printf: %%+ x->%+ x\n", 44);	
+// 	   // ft_printf("ft_printf: %%+ x->%+ x\n", 44);	
+// 	   //    printf("   printf: %%+ x->%+ x\n", -44);			   
+// 	   // ft_printf("ft_printf: %%+ x->%+ x\n", -44);			   
+// 	   //    printf("   printf: %%#.3x->%#.3x\n", 99);
+// 	   // ft_printf("ft_printf: %%#.3x->%#.3x\n", 99);
+// 	   //    printf("   printf: %%#.3x->%.3x\n", 9);
+// 	   // ft_printf("ft_printf: %%#.3x->%.3x\n", 9);
+// 	   //    printf("   printf: %%#3.3x->%#3.3x\n", 99);
+// 	   // ft_printf("ft_printf: %%#3.3x->%#3.3x\n", 99);
+// 	   //    printf("   printf: %%0x->%0x\n", -44);	
+// 	   // ft_printf("ft_printf: %%0x->%0x\n", -44);	
+// 	   //    printf("   printf: %%-0x->%-0x<-\n", -44);	
+// 	   // ft_printf("ft_printf: %%-0x->%-0x<-\n", -44);	
+// 	   //    printf("   printf: %%05x->%05x\n", 15);
+// 	   // ft_printf("ft_printf: %%05x->%05x\n", 15);
+// 	   //    printf("   printf: %%-05x->%-05x<-\n", 15);
+// 	   // ft_printf("ft_printf: %%-05x->%-05x<-\n", 15);
+// 	   //    printf("   printf: %%02.7x->%02.7x\n", 15);				   
+// 	   // ft_printf("ft_printf: %%02.7x->%02.7x\n", 15);				   
+// 	   //    printf("   printf: %%-02.7x->%-02.7x<-\n", 15);	
+// 	   // ft_printf("ft_printf: %%-02.7x->%-02.7x<-\n", 15);	
+// 	   //    printf("   printf: %%#02.7x->%#02.7x\n", 15);				   
+// 	   // ft_printf("ft_printf: %%#02.7x->%#02.7x\n", 15);				   
+// 	   //    printf("   printf: %%#-02.7x->%#-02.7x<-\n", 15);		
+// 	   // ft_printf("ft_printf: %%#-02.7x->%#-02.7x<-\n", 15);		
+//    	// printf("\n");
 
 // 	// printf("pointer mfw\n");
 // 	//       printf("   printf: %%p->%p\n", s0); 	   

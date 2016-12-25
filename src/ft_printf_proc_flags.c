@@ -23,7 +23,7 @@ void	ft_printf_proc_flags(t_mod *conv)
 	// printf("j: %d\n", i++);
 	if (conv->flag)
 	{
-		// printf("1conv->flag: %s\n", conv->flag);
+		// printf("-1conv->flag: %s\n", conv->flag);
 		conv->flag = ft_printf_frmvdup(&(conv->flag), ft_printf_strlen(conv->flag));
 		if (ft_printf_strchri(conv->flag, '#', &strt) == 1)
 		{
@@ -38,21 +38,28 @@ void	ft_printf_proc_flags(t_mod *conv)
 			// if (ft_printf_stric(conv->conversion, "sS", &index))
 				// conv->cmfw = '0';										
 			if (conv->precision || ft_printf_stric(conv->conversion, "sSdDioOuUxXcC", &index) == 1)
-			{				
-				if (ft_printf_strchri(conv->flag, '-', &index) == 1 || conv->prec > 0)
+			{	
+				// printf("0conv->flag: %s\n", conv->flag);					
+				if (ft_printf_stric(conv->conversion, "cCsS", &index) == 1 && ft_printf_strchri(conv->flag, '-', &index) == 0)
+					conv->cmfw = '0';
+				if (ft_printf_strchri(conv->flag, '-', &index) == 1 || conv->prec > 1)
 				{
-					// printf("conv->flag: %s\n", conv->flag);		
+					// printf("1conv->flag: %s\n", conv->flag);		
 					ft_printf_fstrinsert(&(conv->flag), "", strt, strt + 1);								
 				}
 				// else 	// conflict between 0 flag, hashtag, and field width
 					// conv->cmfw = '0';		
-				else if (ft_printf_stric(conv->conversion, "sS", &index) == 1)
-					conv->cmfw = '0';
+				// printf("conv->flag:-->%s\n", conv->flag);
+				// printf("ft_printf_strchri(conv->flag, '-', &index) == 0: %d\n",ft_printf_strchri(conv->flag, '-', &index) == 0);
+				
+				// printf("conv->substring:-->%s<--\n", conv->substring);
+				// printf("conv->mfieldwidth:-->%s<--\n", conv->mfieldwidth);
 			}
-			// printf("sconv->flag: %s\n", conv->flag);
+			
 			
 		}	
 		// printf("j: %d\n", i++);
+		
 		if (ft_printf_strchri(conv->flag, '+', &index) == 1)			
 		{					
 			if (ft_printf_stric(conv->conversion, "dDi", &strt) == 0) 

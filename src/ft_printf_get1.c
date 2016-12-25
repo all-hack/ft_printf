@@ -92,6 +92,8 @@ void	ft_printf_get_s(t_mod *conv, va_list args)
 	{
 		// printf("2\n");
 		tmp = va_arg(args, unsigned char*);
+		// printf("tmp: %s\n", tmp);
+		// printf("tmp: %c, %d\n", *tmp, *tmp);
 		if (size >= 0)
 		{
 			// printf("5\n");
