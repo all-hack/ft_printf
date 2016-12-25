@@ -490,22 +490,29 @@ void	ft_printf_flag_space(t_mod *conv)
 	// printf("conv->substring: %s\n", conv->substring);	
 	if (conv->num >= 0)
 	{
-		ft_printf_stric(conv->substring, "0123456789", &i);	
+		// ft_printf_stric(conv->substring, "0123456789", &i);	
 		// printf("conv->substring: %s<-\n", conv->substring);
 		// printf("(conv->substring)[conv->mfw]: %d\n", (conv->substring)[conv->mfw - 1]);	
-			   
+		
+		// printf("0substring: ->%s\n", conv->substring);
+		// printf("mfw: ->%d\n", conv->mfw);
+		// printf("mfieldwidth: ->%s<--\n", conv->mfieldwidth);
+		
+
+
 		if (ft_printf_strchri(conv->flag, '0', &i))				
 			ft_printf_fstrinsert(&(conv->substring), " ", 0, 1);
-		else
-			ft_printf_fstrinsert(&(conv->substring), " ", 0, 0);	
+		else if (!(conv->mfieldwidth))
+			ft_printf_fstrinsert(&(conv->substring), " ", 0, 0);		
 		if ((conv->substring)[conv->mfw - 1] == ' ' && (conv->substring)[conv->mfw] == ' ')
 		{
-			
+			// printf("00substring: ->%s\n", conv->substring);
 			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw - 1, conv->mfw);
 			// printf("conv->substring: %s\n", conv->substring);
 		}
 		else if ((conv->substring)[conv->mfw] == ' ')
 		{		
+			// printf("000substring: ->%s\n", conv->substring);
 			ft_printf_fstrinsert(&(conv->substring), "", conv->mfw, conv->mfw + 1);
 		}
 	}
@@ -757,16 +764,16 @@ int	ft_printf(const char *format, ...)
 		tmp = ft_printf_strsub(format, curr, conv->srt_seq);		
 		printit = ft_printf_fstrmcat(printit, tmp);				
 		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);
-		curr = (conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
-		// printf("curr: %d\n", curr);
-		// printf("printit: %s\n", printit);
-		ft_printf_strdel(&tmp);
-		ft_printf_reset_struct(&conv);
-	}	
-	if (format[curr])
-		printit = ft_printf_fstrmcat(printit, format + curr);			
-	return (ft_printf_putstr(printit, conv));
-}
+// 		curr = (conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
+// 		// printf("curr: %d\n", curr);
+// 		// printf("printit: %s\n", printit);
+// 		ft_printf_strdel(&tmp);
+// 		ft_printf_reset_struct(&conv);
+// 	}	
+// 	if (format[curr])
+// 		printit = ft_printf_fstrmcat(printit, format + curr);			
+// 	return (ft_printf_putstr(printit, conv));
+// }
 
 
 
@@ -1009,8 +1016,19 @@ int	ft_printf(const char *format, ...)
 //     //    printf("   printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
 
 //     // precision	
-// 	ft_printf("ft_printf: -->%04.2i<--\n", 42);
-// 	   printf("   printf: -->%04.2i<--\n", 42);
+// 	// ft_printf("ft_printf: -->%04.2i<--\n", 42);
+// 	   // printf("   printf: -->%04.2i<--\n", 42);
+
+// 	//space
+//    	ft_printf("ft_printf: -->% 4i<--\n", 42);
+// 	   printf("   printf: -->% 4i<--\n", 42);
+
+// 	// ft_printf("ft_printf: -->% 4i<--\n", 4200);
+// 	   // printf("   printf: -->% 4i<--\n", 4200);
+
+// 	// ft_printf("ft_printf: -->% i<--\n", 42);
+// 	   // printf("   printf: -->% i<--\n", 42);
+
 
 // 	// ft_printf("ft_printf->%% 4i 42 == |% 4i|\n", 42);
 // 	//    printf("   printf->%% 4i 42 == |% 4i|\n", 42);
