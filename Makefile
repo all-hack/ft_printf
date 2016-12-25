@@ -15,7 +15,7 @@ NAME = libftprintf.a
 
 RUN  = a.out
 
-FILES = ft_printf_itoa ft_printf_putstr ft_printf_strdel ft_printf_stric \
+FILE = ft_printf_itoa ft_printf_putstr ft_printf_strdel ft_printf_stric \
 ft_printf_strlen ft_printf_strmcat ft_printf_strsub ft_printf_strncpy \
 ft_printf_strcat ft_printf_strncat ft_printf_strnew ft_printf_strchri \
 ft_printf_strcmp ft_printf_itoa_base ft_printf_strdup ft_printf_itoa_binary \
@@ -24,7 +24,13 @@ ft_printf_Nchr1sym ft_printf_fstrmcat ft_printf_symdet0 ft_printf_chng0 \
 ft_printf_chng1 ft_printf_chng2 ft_printf_get0 ft_printf_get1 ft_printf_get2 \
 ft_printf_atoi ft_printf_strupper ft_printf_proc_flags ft_printf_fstrmcat_conv \
 
-FILES += main
+
+
+
+FILE += main
+
+W_FILES = $(FILE) ft_printf_arrayC
+FILES += $(FILE) ft_printf_arraycc 
 
 S_PATH = src/
 H_PATH = include/
@@ -35,6 +41,12 @@ SRC = $(addsuffix .c, $(SRC_PRE))
 
 C_OBJ_PRE = $(addprefix $(B_PATH), $(FILES))
 C_OBJ = $(addsuffix .o, $(C_OBJ_PRE))
+
+WSRC_PRE = $(addprefix $(S_PATH), $(W_FILES))
+WSRC = $(addsuffix .c, $(WSRC_PRE))
+
+WC_OBJ_PRE = $(addprefix $(B_PATH), $(W_FILES))
+WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))
 
 C_FLAGS = -Wall -Werror -Wextra
 DEV_FLAGS = $(C_FLAGS) -fsanitize=address
@@ -49,11 +61,17 @@ $(NAME): build $(C_OBJ)
 run : fclean build $(C_OBJ)
 	gcc $(C_FLAGS) -o $(RUN) $(C_OBJ) && ./$(RUN)
 
+wrun : fclean build $(WC_OBJ)
+	gcc $(C_FLAGS) -o $(RUN) $(WC_OBJ) && ./$(RUN)
+
 dev : fclean build $(C_OBJ)
 	gcc $(DEV_FLAGS) -o $(RUN) $(C_OBJ) && ./$(RUN)
 
 $(B_PATH)%.o: $(S_PATH)%.c	
 	gcc -c $< -o $@
+
+w : build $(WC_OBJ)
+	ar rc $(NAME) $(WC_OBJ)
 
 
 build : 

@@ -20,13 +20,6 @@
 # include <limits.h>
 # define FT_PRINTF_NULLGUARD(INPUT) if ((INPUT) == NULL) return (NULL)
 
-extern const char *g_sequence_symbols;
-extern const char *g_flag_symbols;
-extern const char *g_mfieldwidth_symbols;
-extern const char *g_precision_symbols;
-extern const char *g_length_symbols[7];
-extern const char *g_conversion_symbols;
-
 typedef struct	s_conversion
 {
 	char		*flag;
@@ -46,6 +39,14 @@ typedef struct	s_conversion
 	intmax_t	num;
 	va_list		arg_list;
 }				t_mod;
+
+extern const char *g_sequence_symbols;
+extern const char *g_flag_symbols;
+extern const char *g_mfieldwidth_symbols;
+extern const char *g_precision_symbols;
+extern const char *g_length_symbols[7];
+extern const char *g_conversion_symbols;
+extern void	(*g_printf_get[90]) (t_mod *conv, va_list args);
 
 int			ft_printf(const char *s, ...);
 size_t		ft_printf_strlen(const char *s);

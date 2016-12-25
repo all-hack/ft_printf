@@ -165,98 +165,6 @@ void		(*g_printf_parse[6]) (char **seq, t_mod *conv) = {
 	0
 };
 
-void	(*g_printf_get[90]) (t_mod *conv, va_list args)= {
-    ft_printf_get_percent, /*   %   */
-    0, /*   &   */
-    0, /*   '   */
-    0, /*   (   */
-    0, /*   )   */
-    0, /*   *   */
-    0, /*   +   */
-    0, /*   ,   */
-	0, /*   -   */
-    0, /*   .   */
-    0, /*   /   */
-    0, /*   0   */
-    0, /*   1   */
-    0, /*   2   */
-    0, /*   3   */
-	0, /*   4   */
-    0, /*   5   */
-    0, /*   6   */
-    0, /*   7   */
-    0, /*   8   */
-    0, /*   9   */
-    0, /*   :   */
-    0, /*   ;   */
-    0, /*   <   */
-	0, /*   =   */
-    0, /*   >   */
-    0, /*   ?   */
-    0, /*   @   */    
-	0, /*	A	*/
-	0, /*	B	*/
-	ft_printf_get_C, /*	C	*/
-	ft_printf_get_d, /*	D	*/
-	0, /*	E	*/
-	0, /*	F	*/
-	0, /*	G	*/
-	0, /*	H	*/
-	0, /*	I	*/
-	0, /*	J	*/
-	0, /*	K	*/
-	0, /*	L	*/
-	0, /*	M	*/
-	0, /*	N	*/
-	ft_printf_get_o, /*	O	*/
-	0, /*	P	*/
-	0, /*	Q	*/
-	0, /*	R	*/
-	ft_printf_get_S, /*	S	*/
-	0, /*	T	*/
-	ft_printf_get_u, /*	U	*/
-	0, /*	V	*/
-	0, /*	W	*/
-	ft_printf_get_X, /*	X	*/
-	0, /*	Y	*/
-	0, /*	Z	*/
-	0, /*	[	*/
-	0, /*	\	*/
-	0, /*	]	*/
-	0, /*	^	*/
-	0, /*	_	*/
-	0, /*	`	*/
-	0, /*	a	*/
-	ft_printf_get_b, /*	b	*/
-	ft_printf_get_c, /*	c	*/
-	ft_printf_get_d, /*	d	*/
-	0, /*	e	*/
-	0, /*	f	*/
-	0, /*	g	*/
-	0, /*	h	*/
-	ft_printf_get_i, /*	i	*/
-	0, /*	j	*/
-	0, /*	k	*/
-	0, /*	l	*/
-	0, /*	m	*/
-	0, /*	n	*/
-	ft_printf_get_o, /*	o	*/
-	ft_printf_get_p, /*	p	*/
-	0, /*	q	*/
-	0, /*	r	*/
-	ft_printf_get_s, /*	s	*/
-	0, /*	t	*/
-	ft_printf_get_u, /*	u	*/
-	0, /*	v	*/
-	0, /*	w	*/
-	ft_printf_get_x, /*	x	*/
-	0, /*	y	*/
-	0, /*	z	*/
-	0, /*	{	*/
-	0, /*	|	*/
-	0, /*	}	*/
-	0  /*	~	*/	
-};
 
 
 
@@ -961,16 +869,144 @@ int	ft_printf(const char *format, ...)
   
 
 // 	// // test 0081 (char)
-// 	printf("( %d )\n", ft_printf("ft_printf: -->null %c and %c text<--", 0, 0));  	   
-//   	printf("( %d )\n",    printf("   printf: -->null %c and %c text<--", 0, 0));
+// 	// printf("( %d )\n", ft_printf("ft_printf: -->null %c and %c text<--", 0, 0));  	   
+//   	// printf("( %d )\n",    printf("   printf: -->null %c and %c text<--", 0, 0));
 
 // 	// // test 0082 (char)
 // 	// ft_printf("ft_printf: -->% c<--\n", 0);  	   
 //  //  	   printf("   printf: -->% c<--\n", 0);   
   
-  
-  
+  	
+//   	// c
+//    	// ft_printf("ft_printf: -->%c\n", 42);
+//    	//    printf("   printf: -->%c\n", 42);
+    
+//     // ft_printf("ft_printf: -->Kashim a %c histoires à raconter\n", 1001);
+//     //    printf("   printf: -->Kashim a %c histoires à raconter\n", 1001);
+    
+//     // ft_printf("ft_printf: -->Il fait au moins %c\n", -8000);
+//     //    printf("   printf: -->Il fait au moins %c\n", -8000);
+    
+//     // ft_printf("ft_printf: -->%c\n", -0);
+//     //    printf("   printf: -->%c\n", -0);
+    
+//     // ft_printf("ft_printf: -->%c\n", 0);
+//     //    printf("   printf: -->%c\n", 0);
+    
+//     // ft_printf("ft_printf: -->%c\n", INT_MAX);
+//     //    printf("   printf: -->%c\n", INT_MAX);
+    
+//     // ft_printf("ft_printf: -->%c\n", 'c');
+//     //    printf("   printf: -->%c\n", 'c');
+    
+//     // ft_printf("ft_printf: -->%c\n", '\n');
+//     //    printf("   printf: -->%c\n", '\n');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'l');
+//     //    printf("   printf: -->%c\n", 'l');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'y');
+//     //    printf("   printf: -->%c\n", 'y');
+    
+//     // ft_printf("ft_printf: -->%c\n", ' ');
+//     //    printf("   printf: -->%c\n", ' ');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'e');
+//     //    printf("   printf: -->%c\n", 'e');
+    
+//     // ft_printf("ft_printf: -->%c\n", 's');
+//     //    printf("   printf: -->%c\n", 's');
+    
+//     // ft_printf("ft_printf: -->%c\n", 't');
+//     //    printf("   printf: -->%c\n", 't');
+    
+//     // ft_printf("ft_printf: -->%c\n", ' ');
+//     //    printf("   printf: -->%c\n", ' ');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'f');
+//     //    printf("   printf: -->%c\n", 'f');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'a');
+//     //    printf("   printf: -->%c\n", 'a');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'n');
+//     //    printf("   printf: -->%c\n", 'n');
+    
+//     // ft_printf("ft_printf: -->%c\n", 't');
+//     //    printf("   printf: -->%c\n", 't');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'a');
+//     //    printf("   printf: -->%c\n", 'a');
+    
+//     // ft_printf("ft_printf: -->%c\n", 's');
+//     //    printf("   printf: -->%c\n", 's');
+    
+//     // ft_printf("ft_printf: -->%c\n", 't');
+//     //    printf("   printf: -->%c\n", 't');    
+    
+//     // ft_printf("ft_printf: -->%c\n", 'i');
+//     //    printf("   printf: -->%c\n", 'i');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'q');
+//     //    printf("   printf: -->%c\n", 'q');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'u');
+//     //    printf("   printf: -->%c\n", 'u');
+    
+//     // ft_printf("ft_printf: -->%c\n", 'e');
+//     //    printf("   printf: -->%c\n", 'e');
+    
+//     // ft_printf("ft_printf: -->%c\n", '!');
+//     //    printf("   printf: -->%c\n", '!');
+    
+//     // ft_printf("ft_printf: -->%c\n", '\r');
+//     //    printf("   printf: -->%c\n", '\r');
+    
+//     // ft_printf("ft_printf: -->%c\n", '\t');
+//     //    printf("   printf: -->%c\n", '\t');
 
+//     // ft_printf("ft_printf: -->%C\n", L'à');
+//     //    printf("   printf: -->%C\n", L'à');
+       
+//     // mix 2
+//     // ft_printf("Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c", 100, L'à', "Ly", 2, 10, 10000, '\n', "ôHohoho");
+
+//     // d   printf: -->
+//     // ft_printf("ft_printf: -->%D", 42);
+//     //    printf("   printf: -->%D", 42);
+       
+//     // ft_printf("ft_printf: -->Kashim a %D histoires à raconter", 1001);
+//     //    printf("   printf: -->Kashim a %D histoires à raconter", 1001);
+       
+//     // ft_printf("ft_printf: -->Il fait au moins %D\n", -8000);
+//     //    printf("   printf: -->Il fait au moins %D\n", -8000);
+    
+//     // ft_printf("ft_printf: -->%D", -0);
+//     //    printf("   printf: -->%D", -0);
+    
+//     // ft_printf("ft_printf: -->%D", 0);
+//     //    printf("   printf: -->%D", 0);
+    
+//     // ft_printf("ft_printf: -->%D", INT_MAX);
+//     //    printf("   printf: -->%D", INT_MAX);
+    
+//     // ft_printf("ft_printf: -->%D", INT_MIN);
+//     //    printf("   printf: -->%D", INT_MIN);
+    
+//     // ft_printf("ft_printf: -->%D", INT_MIN - 1);
+//     //    printf("   printf: -->%D", INT_MIN - 1);
+    
+//     // ft_printf("ft_printf: -->%D", INT_MAX + 1);
+//     //    printf("   printf: -->%D", INT_MAX + 1);
+    
+//     // ft_printf("ft_printf: -->%%D 0000042 == |%D|\n", 0000042);
+//     //    printf("   printf: -->%%D 0000042 == |%D|\n", 0000042);
+    
+//     // ft_printf("ft_printf: -->%%D \t == |%D|\n", '\t');
+//     //    printf("   printf: -->%%D \t == |%D|\n", '\t');
+    
+//     // ft_printf("ft_printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
+//     //    printf("   printf: -->%%D Lydie == |%D|\n", 'L'+'y'+'d'+'i'+'e');
 
 
 
