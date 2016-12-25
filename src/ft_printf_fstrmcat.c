@@ -27,7 +27,7 @@ char	*ft_printf_fstrmcat(char *s1, char const *s2)
 		s2_len = ft_printf_strlen(s2);
 	else
 		s2_len = 0;
-	nstr = ft_printf_strnew((s1_len + s2_len + 1));
+	nstr = ft_printf_strnew((s1_len + s2_len));
 	ft_printf_strncpy(nstr, s1, s1_len);
 	ft_printf_strcat(nstr, s2);
 	ft_printf_strdel(&s1);	

@@ -52,7 +52,7 @@ size_t		ft_printf_strlen(const char *s);
 char		*ft_printf_strdup(const char *s1);
 char		*ft_printf_itoa_base(uintmax_t num, int base, int neg);
 char		*ft_printf_itoa(int nb);
-int			ft_printf_putstr(char const *s);
+int			ft_printf_putstr(char const *s, t_mod *conv);
 void		ft_printf_strdel(char **as);
 int			ft_printf_stric(char const *s, char const *c, size_t *index);
 char		*ft_printf_strmcat(char const *s1, char const *s2);
@@ -112,7 +112,7 @@ void		ft_printf_proc_flags(t_mod *conv);
 char		*ft_printf_frmvdup(char	**str, size_t size);
 intmax_t	ft_printf_atoi(char const *str);
 void		ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end);
-
+char		*ft_printf_fstrmcat_conv(char *s1, char const *s2, t_mod *conv);
 
 #				include 			<stdio.h>
 #endif

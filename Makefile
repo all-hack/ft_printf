@@ -22,7 +22,7 @@ ft_printf_strcmp ft_printf_itoa_base ft_printf_strdup ft_printf_itoa_binary \
 ft_printf_strcpy ft_printf_fstrappend ft_printf_1chrNsym ft_printf_shiftstr \
 ft_printf_Nchr1sym ft_printf_fstrmcat ft_printf_symdet0 ft_printf_chng0 \
 ft_printf_chng1 ft_printf_chng2 ft_printf_get0 ft_printf_get1 ft_printf_get2 \
-ft_printf_atoi ft_printf_strupper ft_printf_proc_flags
+ft_printf_atoi ft_printf_strupper ft_printf_proc_flags ft_printf_fstrmcat_conv \
 
 FILES += main
 

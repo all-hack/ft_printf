@@ -83,30 +83,48 @@ void	ft_printf_get_s(t_mod *conv, va_list args)
 	unsigned char *tmp;
 	wchar_t *tmp1;
 	intmax_t	size;
-	intmax_t	i;
+	intmax_t	i;	
 
+	// printf("1\n");
 	size = conv->prec;
 	i = 0;	
 	if (!(conv->length))
 	{
+		// printf("2\n");
 		tmp = va_arg(args, unsigned char*);
 		if (size >= 0)
-			while (tmp[i] && i < size)				
-				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i++]);
+		{
+			// printf("5\n");
+			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+			while (tmp[i++] && i < size)				
+				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+		}
 		else 
-			while (tmp[i])				
-				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i++]);
+		{
+			// printf("6\n");
+			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+			while (tmp[i++])				
+				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+		}
 	}
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
 	{
+		// printf("3\n");
 		tmp1 = va_arg(args, wchar_t*);
 		if (size >= 0)
-			while (tmp1[i] && i < size)	
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i++], NULL));
+		{
+			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+			while (tmp1[i++] && i < size)	
+				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+		}
 		else 
-			while (tmp1[i])
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i++], NULL));	
+		{
+			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+			while (tmp1[i++])
+				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+		}
 	}		
+	// printf("4\n");
 }
 
 void	ft_printf_get_S(t_mod *conv, va_list args)
@@ -121,10 +139,16 @@ void	ft_printf_get_S(t_mod *conv, va_list args)
 	{
 		tmp1 = va_arg(args, wchar_t*);
 		if (size >= 0)
-			while (tmp1[i] && i < size)
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i++], NULL));
+		{
+			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+			while (tmp1[i++] && i < size)
+				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+		}
 		else
-			while (tmp1[i])
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i++], NULL));	
+		{
+			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+			while (tmp1[i++])
+				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+		}
 	}		
 }

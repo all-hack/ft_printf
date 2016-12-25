@@ -114,8 +114,7 @@ void	ft_printf_reset_struct(t_mod **this)
 				ft_printf_dfree_hack(&((*this)->mfieldwidth));
 			if ((*this)->precision)
 				ft_printf_dfree_hack(&((*this)->precision));
-			(*this)->mfw 					= -1;
-			(*this)->skips					= 0;
+			(*this)->mfw 					= -1;			
 			(*this)->prec					= -1;
 			(*this)->cmfw 					= ' ';
 			(*this)->cprec					= '\0';		
@@ -848,16 +847,17 @@ int	ft_printf(const char *format, ...)
 	{
 		ft_printf_format_parsing(format + curr, conv, conv->arg_list);
 		tmp = ft_printf_strsub(format, curr, conv->srt_seq);		
-		printit = ft_printf_fstrmcat(printit, tmp);		
-		printit = ft_printf_fstrmcat(printit, conv->substring);
+		printit = ft_printf_fstrmcat(printit, tmp);				
+		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);
 		curr = (conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
+		// printf("curr: %d\n", curr);
+		// printf("printit: %s\n", printit);
 		ft_printf_strdel(&tmp);
 		ft_printf_reset_struct(&conv);
 	}	
 	if (format[curr])
-		printit = ft_printf_fstrmcat(printit, format + curr);		
-	ft_printf_free_struct(&conv);	
-	return (ft_printf_putstr(printit));
+		printit = ft_printf_fstrmcat(printit, format + curr);			
+	return (ft_printf_putstr(printit, conv));
 }
 
 
@@ -918,30 +918,63 @@ int	ft_printf(const char *format, ...)
 //   	   // printf("   printf: -->%#.o %#.0o<--\n", 0, 0);    
 
 // 	// test 0059
+// 	// null string seg faulting
 // 	// ft_printf("ft_printf: -->%10s is a string<--\n", "");  	   
 //   	   // printf("   printf: -->%10s is a string<--\n", "");    		  
 
-// 	// // test 0060
+// 	// test 0060
+// 	// null string seg faulting
 // 	// ft_printf("ft_printf: -->%.2s is a string<--\n", "");  	   
-//  //  	   printf("   printf: -->%.2s is a string<--\n", "");    		  	  
+//   	   // printf("   printf: -->%.2s is a string<--\n", "");    		  	  
 
-// 	// // test 0061
+// 	// test 0061
+// 	// null string seg faulting
 // 	// ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
-//  //  	   printf("   printf: -->%5.2s is a string<--\n", "");    		  	  
+//   	   // printf("   printf: -->%5.2s is a string<--\n", "");    		  	  
 
-// 	// // test 0065
+// 	// test 0065
+// 	// null string seg faulting
 // 	// ft_printf("ft_printf: -->%-10s is a string<--\n", "");  	   
-//  //  	   printf("   printf: -->%-10s is a string<--\n", "");    		  	  
+//   	   // printf("   printf: -->%-10s is a string<--\n", "");    		  	  
 
-
-// 	// // test 0066
+// 	// test 0066
+// 	// null string seg faulting
 // 	// ft_printf("ft_printf: -->%-.2s is a string<--\n", "");  	   
-//  //  	   printf("   printf: -->%-.2s is a string<--\n", "");    		  	  
+//   	   // printf("   printf: -->%-.2s is a string<--\n", "");    		  	  
 
-
-// 	// // test 0067
+// 	// test 0067
+// 	// null string seg faulting	
 // 	// ft_printf("ft_printf: -->%-5.2s is a string<--\n", "");  	   
-//  //  	   printf("   printf: -->%-5.2s is a string<--\n", "");    		  	  
+//   	   // printf("   printf: -->%-5.2s is a string<--\n", "");    		  	  
+
+// 	// test 0079 (char)
+// 	// printf("( %d )\n", ft_printf("ft_printf: -->%c<--", 0));  	
+//   	// printf("( %d )\n", printf("   printf: -->%c<--", 0));    		  	    
+
+// 	// // test 0080 (char)
+// 	// ft_printf("ft_printf: -->%2c<--\n", 0);  	   
+//  //  	   printf("   printf: -->%2c<--\n", 0);    		  	    
+
+//  //    // test 0074 (NULL)
+// 	// ft_printf("ft_printf: -->%.2c<--\n", NULL);  	   
+//  //  	   printf("   printf: -->%.2c<--\n", NULL);    		  	  
+  
+
+// 	// // test 0081 (char)
+// 	printf("( %d )\n", ft_printf("ft_printf: -->null %c and %c text<--", 0, 0));  	   
+//   	printf("( %d )\n",    printf("   printf: -->null %c and %c text<--", 0, 0));
+
+// 	// // test 0082 (char)
+// 	// ft_printf("ft_printf: -->% c<--\n", 0);  	   
+//  //  	   printf("   printf: -->% c<--\n", 0);   
+  
+  
+  
+
+
+
+
+
 
 
 // 	// ft_printf("ft_printf->%% 4i 42 == |% 4i|\n", 42);

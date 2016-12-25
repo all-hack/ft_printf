@@ -12,14 +12,20 @@
 
 #include "../include/libftprintf.h"
 
-int	ft_printf_putstr(char const *s)
+int	ft_printf_putstr(char const *s, t_mod *conv)
 {
 	size_t	len;
 
+	// printf("skips: %d\n", conv->skips);
+	// printf("s->%s\n", s);
 	if (s)
 	{
-		len = ft_printf_strlen(s);	
+		// while ((conv->skips)-- > 0)		
+		len = 0;
+			len += ft_printf_strlen(s);	
+		// printf("len: %d\n", len);
 		write(1, s, len);
 	}
+	ft_printf_free_struct(&conv);	
 	return (len);
 }

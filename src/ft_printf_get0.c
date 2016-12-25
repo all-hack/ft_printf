@@ -32,12 +32,23 @@ void	ft_printf_get_c(t_mod *conv, va_list args)
 		conv->substring = ft_printf_fstrappend(conv->substring, va_arg(args, unsigned int));
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
 		conv->substring = ft_printf_chng_wchar_t(conv, va_arg(args, wchar_t), NULL);
+	if (conv->substring[0] == '\0')
+	{
+		conv->skips += 1;
+		conv->num = 0;
+	}	
+
 }
 
 void	ft_printf_get_C(t_mod *conv, va_list args)
 {	
 	if (!(conv->length))	
 		conv->substring = ft_printf_chng_wchar_t(conv, va_arg(args, wchar_t), NULL);
+	if (conv->substring[0] == '\0')
+	{
+		conv->skips += 1;
+		conv->num = 0;
+	}
 }
 
 void	ft_printf_get_d(t_mod *conv, va_list args)
