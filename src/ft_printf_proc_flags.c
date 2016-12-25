@@ -36,11 +36,10 @@ void	ft_printf_proc_flags(t_mod *conv)
 
 			// printf("%s\n", );
 			// if (ft_printf_stric(conv->conversion, "sS", &index))
-				// conv->cmfw = '0';							
-
+				// conv->cmfw = '0';										
 			if (conv->precision || ft_printf_stric(conv->conversion, "sSdDioOuUxXcC", &index) == 1)
 			{				
-				if (ft_printf_strchri(conv->flag, '-', &index) == 1 || conv->prec == 0)
+				if (ft_printf_strchri(conv->flag, '-', &index) == 1 || conv->prec > 0)
 				{
 					// printf("conv->flag: %s\n", conv->flag);		
 					ft_printf_fstrinsert(&(conv->flag), "", strt, strt + 1);								
