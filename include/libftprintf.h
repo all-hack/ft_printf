@@ -47,7 +47,10 @@ extern const char *g_precision_symbols;
 extern const char *g_length_symbols[7];
 extern const char *g_conversion_symbols;
 extern void	(*g_printf_get[90]) (t_mod *conv, va_list args);
-
+extern void	(*g_printf_parse[6]) (char **seq, t_mod *conv);
+extern void	(*g_printf_process[4]) (t_mod *conv);
+extern void	(*g_printf_flags[6]) (t_mod *conv);
+extern void	(*g_printf_apply[5]) (t_mod *conv);
 
 // symbol_detection
 void		ft_printf_symdet_flags(char **seq, t_mod *conv);
@@ -55,6 +58,46 @@ void		ft_printf_symdet_mfw(char **seq, t_mod *conv);
 void		ft_printf_symdet_prec(char **seq, t_mod *conv);
 void		ft_printf_symdet_length(char **seq, t_mod *conv);
 void		ft_printf_symdet_conv(char **seq, t_mod *conv);
+
+// infastructure_helper
+void		ft_printf_dfree_hack(char **str);
+void		ft_printf_free_struct(t_mod **this);
+t_mod		*ft_printf_init_struct();
+void		ft_printf_reset_struct(t_mod **this);
+
+
+// handling
+void		ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater, va_list *arg, char c);
+void		ft_printf_proc_precision(t_mod *conv);
+void		ft_printf_proc_mfieldwidth(t_mod *conv);
+
+// application
+void		ft_printf_app_conv(t_mod *conv);
+void		ft_printf_app_precision(t_mod *conv);
+void		ft_printf_app_mfieldwidth(t_mod *conv);
+
+
+
+// application/flags
+void		ft_printf_app_flags(t_mod *conv);
+void		ft_printf_flag_plus(t_mod *conv);
+void		ft_printf_flag_space(t_mod *conv);
+void		ft_printf_flag_minus(t_mod *conv);
+void		ft_printf_flag_0(t_mod *conv);
+void		ft_printf_flag_hash(t_mod *conv);
+
+
+// string_manipulation
+void		ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end);
+char		*ft_printf_frmvdup(char	**str, size_t size);
+char		*ft_printf_strinsert(char *printit, char *substr, size_t strt, size_t end);
+
+// infastructure
+void 	ft_printf_flow(char **seq, t_mod *conv, va_list args);
+void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args);
+int		ft_printf(const char *format, ...);
+
+
 
 
 int			ft_printf(const char *s, ...);

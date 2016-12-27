@@ -4,10 +4,20 @@ printf for 42
 the library has a particular file structure to ease finding shit
 
 * src
+	* int		ft_printf(const char *format, ...);
+		* receives the string to print, loops through checking for non-processed '%' characters
+		* this is where all the globals are kept except for the conversion getter function array
 	* string_manipulation
 		* search algorithms
 		* char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 			* increments `s1` until it has a value not equal to `s2`, returning `s1`
+		* void	ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end)
+			* inserts `substr` between `strt` and `end` of `*printit` dropping the characters between `strt` and `end` in `*printit`
+			* free's `*printit`
+		* char	*ft_printf_frmvdup(char	**str, size_t size)
+			* removes all duplicates from string `*str`
+		* char	*ft_printf_strinsert(char *printit, char *substr, size_t strt, size_t end)
+			* inserts `substr` between `strt` and `end` of `*printit` dropping the characters between `strt` and `end` in `*printit`
 
 	* data_transformation
 	
@@ -32,7 +42,77 @@ the library has a particular file structure to ease finding shit
 			* void	ft_printf_symdet_conv(char **seq, t_mod *conv)
 				* detects whether there is a conversion following the length
 				* uses the one character many symbol search algorithm
-				
-		* processing
-	
+
+		* handling
+			* void	ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater, va_list *arg, char c)
+				* sets the value of `charcater` to the grabbed number from the ellipsis
+			* void	ft_printf_proc_precision(t_mod *conv)
+				* handles the core logic of setting what is in the precision buffer in the structure
+			* void	ft_printf_proc_mfieldwidth(t_mod *conv)
+				* handles the core logic of setting what is in the the minimum field width buffer in the structure
+
+
 		* application
+			* flags
+				* void	ft_printf_app_flags(t_mod *conv)
+					* infastructure piece that calls the appropriate flag function from the flag function array		
+				* void	ft_printf_flag_plus(t_mod *conv)
+					* handles and applies the logic for the flag +
+						* a sign must always be placed before a number produced by a signed conversion
+						* overrides a ` ` if both are used
+				* void	ft_printf_flag_space(t_mod *conv)
+					* handles and applies the logic for the flag ' '
+						* `d`, `i`
+							* a blank should be left before a positive number produced by a signed conversion
+				* void	ft_printf_flag_minus(t_mod *conv)
+					* handles and applies the logic for the flag -
+						* negative field width flag			
+						* padded on right with blanks
+						* overrides a `0` if both are given
+				* void	ft_printf_flag_0(t_mod *conv)
+					* handles and applies the logic for the flag 0
+						* zero padding
+						* the converted value is padded on the left with zeros instead of blanks
+						* if the precision is given with a numeric conversion the `0` flag is ignored
+				* void	ft_printf_flag_hash(t_mod *conv)
+					* handles and applies the logic for the flag #
+						* convert value to an alternate form
+						* no effect for `c`, `d`, `i`, `p`, `s`
+						* `o`
+							* the precision of the number is increased to force the first character of the output string to a zero
+						* `x` & `X`
+							* non-zero result has the string `0x` prepended to it	
+
+
+
+
+			* void	ft_printf_app_conv(t_mod *conv)
+				* infastructure piece that calls the appropriate get function from the conversion function array using the ascii number of a conversion as a look up key
+			* void	ft_printf_app_precision(t_mod *conv)
+				* reads the instructions from the precision buffer and applies them to the `conv->substring`
+			* void	ft_printf_app_mfieldwidth(t_mod *conv)
+				* reads the instructions from the minimum fieldwidth buffer and applies them to the `conv->substring`
+
+
+
+
+
+	* infastructure_helper
+		* void		ft_printf_dfree_hack(char **str)
+			* free's a double `char *` and sets the pointer to an empty string
+		* void		ft_printf_free_struct(t_mod **this)
+			* free's the entire structure and calls `va-end` to finish the ellipsis interaction
+		* t_mod		*ft_printf_init_struct()
+			* initializes the structure
+		* void		ft_printf_reset_struct(t_mod **this)
+			* resets the elements of the structure to their initial state (except `skipts`)
+
+
+	* infastructure
+		* void ft_printf_flow(char **seq, t_mod *conv, va_list args)
+			* iterates through the symbol_detection, handler, and application function arrays
+		* void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args)
+			* detects conversion sequences and starts the conversion process
+
+
+

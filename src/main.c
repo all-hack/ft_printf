@@ -598,35 +598,3 @@ int	main()
 	  	
 	return (0);
 }
-
-// #include <locale.h>
-
-const char *g_sequence_symbols = "%";
-const char *g_flag_symbols = "#0-+ ";
-const char *g_mfieldwidth_symbols = "0123456789*";
-const char *g_precision_symbols = ".0123456789*";
-const char *g_length_symbols[7] = {"h", "l", "j", "z", "hh", "ll", 0};
-const char *g_conversion_symbols = "sSpdDioOuUxXcCb%";
-
-// allocating memory to flag
-// allocating memory to length
-// allocating memory to conversion
-// allocating memory to substring
-
-void		(*g_printf_parse[6]) (char **seq, t_mod *conv) = {
-	ft_printf_symdet_flags, 
-	ft_printf_symdet_mfw, 
-	ft_printf_symdet_prec, 
-	ft_printf_symdet_length, 
-	ft_printf_symdet_conv, 
-	0
-};
-
-void		(*g_printf_process[4]) (t_mod *conv) = {ft_printf_proc_precision, ft_printf_proc_mfieldwidth, ft_printf_proc_flags, 0};
-void	(*g_printf_flags[6]) (t_mod *conv) = {ft_printf_flag_hash, ft_printf_flag_0, ft_printf_flag_minus, ft_printf_flag_space, ft_printf_flag_plus, 0};
-void		(*g_printf_apply[5]) (t_mod *conv) = {ft_printf_app_conv, ft_printf_app_precision, ft_printf_app_mfieldwidth, ft_printf_app_flags, 0};
-
-
-
-
-
