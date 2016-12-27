@@ -168,7 +168,7 @@ void		ft_printf_get_b(t_mod *conv, va_list args);
 void		ft_printf_get_c(t_mod *conv, va_list args);
 void		ft_printf_get_cap_c(t_mod *conv, va_list args);
 void		ft_printf_get_d(t_mod *conv, va_list args);
-void		ft_printf_get_D(t_mod *conv, va_list args);
+void		ft_printf_get_cap_d(t_mod *conv, va_list args);
 void		ft_printf_get_i(t_mod *conv, va_list args);
 void		ft_printf_get_o(t_mod *conv, va_list args);
 void		ft_printf_get_O(t_mod *conv, va_list args);

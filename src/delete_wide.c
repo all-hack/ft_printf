@@ -45,7 +45,7 @@
 // 	0, /*	A	*/
 // 	0, /*	B	*/
 // 	ft_printf_get_cap_c, /*	C	*/
-// 	ft_printf_get_D, /*	D	*/
+// 	ft_printf_get_cap_d, /*	D	*/
 // 	0, /*	E	*/
 // 	0, /*	F	*/
 // 	0, /*	G	*/

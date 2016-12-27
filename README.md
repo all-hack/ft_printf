@@ -76,13 +76,25 @@ the library has a particular file structure to ease finding shit
 			* length options
 				* `l` -> `wchar_t`
 		* void	ft_printf_get_b(t_mod *conv, va_list args)
-			* handles the length options of the `b` for binary kind of conversion and sets `conv->substring`
+			* handles the length options of the `b` for binary notation kind of conversion and sets `conv->substring`
 			* length options
 				* h  -> `int`				
 				* j  -> `int`
 				* l  -> `int`
 				* hh -> `int`
-	
+		* void	ft_printf_get_cap_d(t_mod *conv, va_list args)
+			* handles the length options of the `D` for signed decimal notation of size `long` kind of conversion and sets `conv->substring`
+			
+
+
+
+			* `hh` --> `signed char`
+			* `h`  --> `short`
+			* `l`  --> `long`
+			* `ll` --> `long long`
+			* `j`  --> `intmax_t`
+			* `z`  --> argument is of a signed type equivalent to `size_t`
+
 	* modifiers_implementation
 		* symbol_detection
 			* void	ft_printf_symdet_flags(char **seq, t_mod *conv)

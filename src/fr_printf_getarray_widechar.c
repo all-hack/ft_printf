@@ -44,7 +44,7 @@ void	(*g_printf_get[90]) (t_mod *conv, va_list args) = {
 	0,
 	0,
 	ft_printf_get_cap_c,
-	ft_printf_get_D,
+	ft_printf_get_cap_d,
 	0,
 	0,
 	0,

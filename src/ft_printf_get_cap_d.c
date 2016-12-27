@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_D(t_mod *conv, va_list args)
-{		
-		ft_printf_chng_long(conv, va_arg(args, long));	
+void	ft_printf_get_cap_d(t_mod *conv, va_list args)
+{
+	ft_printf_chng_long(conv, va_arg(args, long));
 }
