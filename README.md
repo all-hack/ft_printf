@@ -12,7 +12,7 @@ the library has a particular file structure to ease finding shit
 			* int	ft_printf_1chr_nsym(char const *s, char const *c, char **s_str)
 				* searches `s` for many one character symbols passed to function in `c` and appends the found symbols into `s_str`
 				* returns 1 if any symbol is found, 0 if none are found, -1 for error
-			
+
 		* char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 			* increments `s1` until it has a value not equal to `s2`, returning `s1`
 		* void	ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end)
@@ -26,6 +26,8 @@ the library has a particular file structure to ease finding shit
 	* data_transformation
 	
 		* data_type_converters
+		* intmax_t	ft_printf_atoi(char const *str)
+			* converts string numbers into a intmax_t
 	
 	* conversion_getters
 	

@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static	int		is_space(char c)
+static	int			is_space(char c)
 {
 	if (c != 32 && c != 9 && c != 10 && c != 11 && c != 12 && c != 13)
 	{
@@ -22,7 +22,7 @@ static	int		is_space(char c)
 		return (0);
 }
 
-static	char	*remove_leading_space(char const *str, char *dst)
+static	char		*remove_leading_space(char const *str, char *dst)
 {
 	char		c;
 	intmax_t	i;
@@ -75,7 +75,7 @@ static	intmax_t	string_to_int(char *str, intmax_t size)
 
 static	intmax_t	form_string(char const *str, intmax_t size)
 {
-	char	tmp[size + 1];
+	char		tmp[size + 1];
 	intmax_t	i;
 
 	i = 0;
@@ -89,12 +89,12 @@ static	intmax_t	form_string(char const *str, intmax_t size)
 	return (i);
 }
 
-intmax_t		ft_printf_atoi(char const *str)
+intmax_t			ft_printf_atoi(char const *str)
 {
 	intmax_t	i;
-	int		sign;
-	char	*dst;
-	char	c;
+	int			sign;
+	char		*dst;
+	char		c;
 
 	dst = &c;
 	sign = 1;
