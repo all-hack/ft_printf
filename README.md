@@ -26,6 +26,37 @@ the library has a particular file structure to ease finding shit
 	* data_transformation
 	
 		* data_type_converters
+			* void	ft_printf_chng_char(t_mod *conv, signed char num)
+				* converts a `signed char` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_uchar(t_mod *conv, unsigned char num)
+				* converts a `unsigned char` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_short(t_mod *conv, short num)
+				* converts a `short` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_ushort(t_mod *conv, unsigned short num)
+				* converts a `unsigned short` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_int(t_mod *conv, int num)
+				* converts a `int` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_uint(t_mod *conv, unsigned int num)
+				* converts a `unsigned int` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_long(t_mod *conv, long num)
+				* converts a `long` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_ulong(t_mod *conv, unsigned long num)
+				* converts a `unsigned long` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_size_t(t_mod *conv, size_t num)
+				* converts a `size_t` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_longlong(t_mod *conv, long long num)
+				* converts a `long long` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_ulonglong(t_mod *conv, unsigned long long num)
+				* converts a `unsigned long long` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_intmax_t(t_mod *conv, intmax_t num)
+				* converts a `intmax_t` into a `char *` and points `conv->substring` to it
+			* void	ft_printf_chng_uintmax_t(t_mod *conv, uintmax_t num)
+				* converts a `uintmax_t` into a `char *` and points `conv->substring` to it
+			* char	*ft_printf_chng_wchar_t(t_mod *conv, wchar_t chr, char *str)
+				* converts a `wchar_t` into a utf-8 `char *` and points `conv->substring` to it
+				* uses bit manipulation
+
+
 		* intmax_t	ft_printf_atoi(char const *str)
 			* converts string numbers into a intmax_t
 	

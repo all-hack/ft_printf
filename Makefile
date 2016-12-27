@@ -15,22 +15,43 @@ NAME = libftprintf.a
 
 RUN  = a.out
 
-FILE = ft_printf_itoa ft_printf_putstr ft_printf_strdel ft_printf_stric \
-ft_printf_strlen ft_printf_strmcat ft_printf_strsub ft_printf_strncpy \
-ft_printf_strcat ft_printf_strncat ft_printf_strnew ft_printf_strchri \
-ft_printf_strcmp ft_printf_itoa_base ft_printf_strdup ft_printf_itoa_binary \
-ft_printf_strcpy ft_printf_fstrappend ft_printf_1chr_nsym ft_printf_shiftstr \
-ft_printf_Nchr1sym ft_printf_fstrmcat ft_printf_chng0 \
-ft_printf_chng1 ft_printf_chng2 ft_printf_get0 ft_printf_get1 ft_printf_get2 \
-ft_printf_atoi ft_printf_strupper ft_printf_proc_flags ft_printf_fstrmcat_conv \
-ft_printf_symdet_prec ft_printf_symdet_flags ft_printf_symdet_mfw \
-ft_printf_symdet_length ft_printf_symdet_conv ft_printf_dfree_hack \
-ft_printf_free_struct ft_printf_init_struct ft_printf_reset_struct \
-ft_printf_proc_setchar ft_printf_proc_precision ft_printf_proc_mfieldwidth \
-ft_printf_fstrinsert ft_printf_frmvdup ft_printf_strinsert ft_printf_app_conv \
-ft_printf_app_precision ft_printf_app_mfieldwidth ft_printf_flag_space \
-ft_printf_flag_plus ft_printf_flag_minus ft_printf_flag_0 ft_printf_flow \
-ft_printf_app_flags ft_printf_flag_hash ft_printf_format_parsing ft_printf
+FILE = ft_printf_get0 ft_printf_get1 ft_printf_get2
+
+FILE += ft_printf ft_printf_flow ft_printf_format_parsing
+
+FILE += ft_printf_symdet_prec ft_printf_symdet_flags ft_printf_symdet_mfw \
+ft_printf_symdet_length ft_printf_symdet_conv
+
+FILE += ft_printf_dfree_hack ft_printf_free_struct ft_printf_init_struct \
+ft_printf_reset_struct
+
+FILE += ft_printf_proc_flags ft_printf_proc_setchar ft_printf_proc_precision \
+ft_printf_proc_mfieldwidth
+
+FILE += ft_printf_app_conv ft_printf_app_precision ft_printf_app_mfieldwidth 
+
+FILE += ft_printf_flag_space ft_printf_flag_plus ft_printf_flag_minus \
+ft_printf_flag_0 ft_printf_app_flags ft_printf_flag_hash 
+
+FILE += ft_printf_chng_char ft_printf_chng_uchar ft_printf_chng_short \
+ft_printf_chng_ushort ft_printf_chng_uint ft_printf_chng_int \
+ft_printf_chng_long ft_printf_chng_ulong ft_printf_chng_size_t \
+ft_printf_chng_longlong ft_printf_chng_ulonglong ft_printf_chng_intmax_t \
+ft_printf_chng_uintmax_t 
+
+FILE += ft_printf_atoi ft_printf_itoa_base ft_printf_itoa_binary \
+ft_printf_itoa
+
+FILE += ft_printf_1chr_nsym ft_printf_Nchr1sym ft_printf_stric \
+ft_printf_strchri
+
+FILE += ft_printf_fstrinsert ft_printf_frmvdup ft_printf_strinsert \
+ft_printf_strupper ft_printf_fstrmcat_conv ft_printf_strcpy \
+ft_printf_fstrappend ft_printf_shiftstr ft_printf_fstrmcat \
+ft_printf_putstr ft_printf_strdel  ft_printf_strcmp ft_printf_strlen \
+ft_printf_strmcat ft_printf_strsub ft_printf_strncpy ft_printf_strcat \
+ft_printf_strncat ft_printf_strnew ft_printf_strdup \
+
 
 
 FILE += main

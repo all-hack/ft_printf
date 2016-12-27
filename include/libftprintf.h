@@ -92,11 +92,25 @@ char		*ft_printf_frmvdup(char	**str, size_t size);
 char		*ft_printf_strinsert(char *printit, char *substr, size_t strt, size_t end);
 
 // infastructure
-int		ft_printf(const char *format, ...);
-void 	ft_printf_flow(char **seq, t_mod *conv, va_list args);
-void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args);
+int			ft_printf(const char *format, ...);
+void 		ft_printf_flow(char **seq, t_mod *conv, va_list args);
+void		ft_printf_format_parsing(char const *format, t_mod *conv, va_list args);
 
-
+// data_transformation/data_type_converters
+void		ft_printf_chng_char(t_mod *conv, signed char num);
+void		ft_printf_chng_uchar(t_mod *conv, unsigned char num);
+void		ft_printf_chng_short(t_mod *conv, short num);
+void		ft_printf_chng_ushort(t_mod *conv, unsigned short num);
+void		ft_printf_chng_int(t_mod *conv, int num);
+void		ft_printf_chng_uint(t_mod *conv, unsigned int num);
+void		ft_printf_chng_long(t_mod *conv, long num);
+void		ft_printf_chng_ulong(t_mod *conv, unsigned long num);
+void		ft_printf_chng_size_t(t_mod *conv, size_t num);
+void		ft_printf_chng_longlong(t_mod *conv, long long num);
+void		ft_printf_chng_ulonglong(t_mod *conv, unsigned long long num);
+void		ft_printf_chng_intmax_t(t_mod *conv, intmax_t num);
+void		ft_printf_chng_uintmax_t(t_mod *conv, uintmax_t num);
+char		*ft_printf_chng_wchar_t(t_mod *conv, wchar_t chr, char *str);
 
 
 
