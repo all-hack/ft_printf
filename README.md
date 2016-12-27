@@ -145,7 +145,14 @@ the library has a particular file structure to ease finding shit
 		* void	ft_printf_get_x(t_mod *conv, va_list args)
 			* handles the length options of the `x` for unsigned hexadecimal notation of size `unsigned int` kind of conversion and sets `conv->substring`
 
-
+		* void	ft_printf_get_cap_x(t_mod *conv, va_list args)
+			* handles the length options of the `X` for unsigned hexadecimal notation of size `unsigned long` kind of conversion and sets `conv->substring`
+				* `hh` --> `unsigned char`
+				* `h`  --> `unsigned short`
+				* `l`  --> `unsigned long`
+				* `ll` --> `unsigned long long`
+				* `j`  --> `uintmax_t`
+				* `z`  --> `size_t`	
 
 
 
