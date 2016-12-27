@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 static char *reverse_string(char *str)
 {

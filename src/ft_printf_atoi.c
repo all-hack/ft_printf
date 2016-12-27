@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 static	int		is_space(char c)
 {

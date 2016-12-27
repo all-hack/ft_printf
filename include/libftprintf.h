@@ -48,6 +48,15 @@ extern const char *g_length_symbols[7];
 extern const char *g_conversion_symbols;
 extern void	(*g_printf_get[90]) (t_mod *conv, va_list args);
 
+
+// symbol_detection
+void		ft_printf_symdet_flags(char **seq, t_mod *conv);
+void		ft_printf_symdet_mfw(char **seq, t_mod *conv);
+void		ft_printf_symdet_prec(char **seq, t_mod *conv);
+void		ft_printf_symdet_length(char **seq, t_mod *conv);
+void		ft_printf_symdet_conv(char **seq, t_mod *conv);
+
+
 int			ft_printf(const char *s, ...);
 size_t		ft_printf_strlen(const char *s);
 char		*ft_printf_strdup(const char *s1);
@@ -72,11 +81,11 @@ char const	*ft_printf_shiftstr(char const *s1, char const *s2);
 int			ft_printf_Nchr1sym(char const *s, char const **c, char **s_str);
 char		*ft_printf_fstrmcat(char *s1, char const *s2);
 char		*ft_printf_strupper(char *str);
-void		ft_printf_symdet_flags(char **seq, t_mod *conv);
-void		ft_printf_symdet_mfw(char **seq, t_mod *conv);
-void		ft_printf_symdet_prec(char **seq, t_mod *conv);
-void		ft_printf_symdet_length(char **seq, t_mod *conv);
-void		ft_printf_symdet_conv(char **seq, t_mod *conv);
+
+
+
+
+
 void		ft_printf_chng_long(t_mod *conv, long num);
 void		ft_printf_chng_longlong(t_mod *conv, long long num);
 void		ft_printf_chng_char(t_mod *conv, signed char num);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 
 void	ft_printf_proc_flags(t_mod *conv)

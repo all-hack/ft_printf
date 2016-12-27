@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 char	*ft_printf_fstrmcat_conv(char *s1, char const *s2, t_mod *conv)
 {

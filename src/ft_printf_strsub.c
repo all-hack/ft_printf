@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 char	*ft_printf_strsub(char const *s, size_t start, size_t len)
 {

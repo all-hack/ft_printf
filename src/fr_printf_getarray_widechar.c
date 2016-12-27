@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-
+#include "libftprintf.h"
 
 
 void	(*g_printf_get[90]) (t_mod *conv, va_list args) = {

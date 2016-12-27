@@ -10,41 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-
-void	ft_printf_symdet_flags(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
-	size_t	i;
-
-	i = 0;
-	delim_index = 0;
-	if (ft_printf_1chrNsym(*seq, g_flag_symbols, &(conv->flag)) == 1)
-	{
-		while (i < ft_printf_strlen(conv->flag))
-		{
-			(*seq)++;
-			i++;
-		}	
-	}
-}
-
-void	ft_printf_symdet_mfw(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
-	size_t	i;
-
-	i = 0;
-	delim_index = 0;	
-	if (ft_printf_1chrNsym(*seq, g_mfieldwidth_symbols, &(conv->mfieldwidth)) == 1)
-	{
-		while (i < ft_printf_strlen(conv->mfieldwidth))
-		{
-			(*seq)++;
-			i++;
-		}	
-	}
-}
+#include "libftprintf.h"
 
 void	ft_printf_symdet_prec(char **seq, t_mod *conv)
 {	
@@ -66,40 +32,5 @@ void	ft_printf_symdet_prec(char **seq, t_mod *conv)
 			i++;
 		}		
 		// printf("conv->precision: %s\n", conv->precision);
-	}
-}
-
-void	ft_printf_symdet_length(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
-	size_t	i;
-
-	i = 0;
-	delim_index = 0;
-	if (ft_printf_Nchr1sym(*seq, g_length_symbols, &(conv->length)) == 1)
-	{		
-		while (i < ft_printf_strlen(conv->length))
-		{
-			(*seq)++;
-			i++;
-		}	
-	}
-
-}
-
-void	ft_printf_symdet_conv(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
-	size_t	i;
-
-	i = 0;
-	delim_index = 0;	
-	if (ft_printf_1chrNsym(*seq, g_conversion_symbols, &(conv->conversion)) == 1)
-	{		
-		while (i < ft_printf_strlen(conv->conversion))
-		{
-			(*seq)++;
-			i++;
-		}	
 	}
 }

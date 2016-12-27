@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 void	ft_printf_chng_ulonglong(t_mod *conv, unsigned long long num)
 {	

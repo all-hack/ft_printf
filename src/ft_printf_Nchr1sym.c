@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "libftprintf.h"
 
 int	ft_printf_Nchr1sym(char const *s, char const **c, char **s_str)
 {

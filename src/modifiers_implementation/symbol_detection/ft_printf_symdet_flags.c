@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_printf_strchri.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/30 14:47:57 by obelange          #+#    #+#             */
-/*   Updated: 2016/09/30 14:47:57 by obelange         ###   ########.fr       */
+/*   Created: 2016/11/15 01:00:13 by obelange          #+#    #+#             */
+/*   Updated: 2016/11/15 01:00:15 by obelange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_printf_strcpy(char *dst, char const *src)
-{
-	size_t i;
+void	ft_printf_symdet_flags(char **seq, t_mod *conv)
+{	
+	size_t	delim_index;	
+	size_t	i;
 
-	i = -1;
-	while (src[++i])
-		dst[i] = src[i];
-	dst[i] = '\0';
-	return (dst);
+	i = 0;
+	delim_index = 0;
+	if (ft_printf_1chrNsym(*seq, g_flag_symbols, &(conv->flag)) == 1)
+	{
+		while (i < ft_printf_strlen(conv->flag))
+		{
+			(*seq)++;
+			i++;
+		}	
+	}
 }

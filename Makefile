@@ -20,7 +20,7 @@ ft_printf_strlen ft_printf_strmcat ft_printf_strsub ft_printf_strncpy \
 ft_printf_strcat ft_printf_strncat ft_printf_strnew ft_printf_strchri \
 ft_printf_strcmp ft_printf_itoa_base ft_printf_strdup ft_printf_itoa_binary \
 ft_printf_strcpy ft_printf_fstrappend ft_printf_1chrNsym ft_printf_shiftstr \
-ft_printf_Nchr1sym ft_printf_fstrmcat ft_printf_symdet0 ft_printf_chng0 \
+ft_printf_Nchr1sym ft_printf_fstrmcat ft_printf_chng0 \
 ft_printf_chng1 ft_printf_chng2 ft_printf_get0 ft_printf_get1 ft_printf_get2 \
 ft_printf_atoi ft_printf_strupper ft_printf_proc_flags ft_printf_fstrmcat_conv \
 
@@ -29,24 +29,37 @@ ft_printf_atoi ft_printf_strupper ft_printf_proc_flags ft_printf_fstrmcat_conv \
 
 FILE += main
 
-W_FILES = $(FILE) ft_printf_arrayC
-FILES += $(FILE) ft_printf_arraycc 
+SYMBOL_DETECTION = ft_printf_symdet_prec ft_printf_symdet_flags \
+ft_printf_symdet_mfw ft_printf_symdet_length ft_printf_symdet_conv
+
+
+
+W_FILES = $(FILE) fr_printf_getarray_widechar
+FILES += $(FILE) fr_printf_getarray 
 
 S_PATH = src/
 H_PATH = include/
 B_PATH = build/
 
+MI_SD_PATH = src/modifiers_implementation/symbol_detection/
+
+SYMDET_SRC = $(addprefix $(MI_SD_PATH), $(addsuffix .c, $(SYMBOL_DETECTION)))
+SYMDET_OBJ = $(addprefix $(B_PATH), $(addsuffix .o, $(SYMBOL_DETECTION)))
+
 SRC_PRE = $(addprefix $(S_PATH), $(FILES))
-SRC = $(addsuffix .c, $(SRC_PRE))
+SRC = $(addsuffix .c, $(SRC_PRE)) $(SYMDET_SRC)
+
+
 
 C_OBJ_PRE = $(addprefix $(B_PATH), $(FILES))
-C_OBJ = $(addsuffix .o, $(C_OBJ_PRE))
+C_OBJ = $(addsuffix .o, $(C_OBJ_PRE)) $(SYMDET_OBJ)
+
 
 WSRC_PRE = $(addprefix $(S_PATH), $(W_FILES))
-WSRC = $(addsuffix .c, $(WSRC_PRE))
+WSRC = $(addsuffix .c, $(WSRC_PRE)) $(SYMDET_SRC)
 
 WC_OBJ_PRE = $(addprefix $(B_PATH), $(W_FILES))
-WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))
+WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))  $(SYMDET_OBJ)
 
 C_FLAGS = -Wall -Werror -Wextra
 DEV_FLAGS = $(C_FLAGS) -fsanitize=address
@@ -59,16 +72,20 @@ $(NAME): build $(C_OBJ)
 	ar rc $(NAME) $(C_OBJ)
 
 run : fclean build $(C_OBJ)
-	gcc $(C_FLAGS) -o $(RUN) $(C_OBJ) && ./$(RUN)
+	gcc $(C_FLAGS) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
 
 wrun : fclean build $(WC_OBJ)
-	gcc $(C_FLAGS) -o $(RUN) $(WC_OBJ) && ./$(RUN)
+	gcc $(C_FLAGS) -o $(RUN) $(WC_OBJ) -I ./include && ./$(RUN)
 
 dev : fclean build $(C_OBJ)
-	gcc $(DEV_FLAGS) -o $(RUN) $(C_OBJ) && ./$(RUN)
+	gcc $(DEV_FLAGS) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
 
-$(B_PATH)%.o: $(S_PATH)%.c	
-	gcc -c $< -o $@
+# $(B_PATH)%.o: $(S_PATH)%.c		
+	# gcc -c $< -o $@ -I ./include
+	
+$(C_OBJ): 
+	gcc -c $(SRC) -I ./include
+
 
 w : build $(WC_OBJ)
 	ar rc $(NAME) $(WC_OBJ)
