@@ -142,7 +142,7 @@ char		*ft_printf_strupper(char *str);
 
 
 
-
+// data transformations
 void		ft_printf_chng_long(t_mod *conv, long num);
 void		ft_printf_chng_longlong(t_mod *conv, long long num);
 void		ft_printf_chng_char(t_mod *conv, signed char num);
@@ -162,6 +162,7 @@ void		ft_printf_chng_int(t_mod *conv, int num);
 void		ft_printf_chng_uint(t_mod *conv, unsigned int num);
 void		ft_printf_chng_ulong(t_mod *conv, unsigned long num);
 void		ft_printf_chng_size_t(t_mod *conv, size_t num);
+
 void		ft_printf_get_b(t_mod *conv, va_list args);
 void		ft_printf_get_c(t_mod *conv, va_list args);
 void		ft_printf_get_C(t_mod *conv, va_list args);
@@ -174,15 +175,17 @@ void		ft_printf_get_X(t_mod *conv, va_list args);
 void		ft_printf_get_p(t_mod *conv, va_list args);
 void		ft_printf_get_s(t_mod *conv, va_list args);
 void		ft_printf_get_S(t_mod *conv, va_list args);
+void		ft_printf_get_D(t_mod *conv, va_list args);
+void		ft_printf_get_U(t_mod *conv, va_list args);
+void		ft_printf_get_O(t_mod *conv, va_list args);
 void		ft_printf_get_percent(t_mod *conv, va_list args);
+
 void		ft_printf_proc_flags(t_mod *conv);
 char		*ft_printf_frmvdup(char	**str, size_t size);
 intmax_t	ft_printf_atoi(char const *str);
 void		ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end);
 char		*ft_printf_fstrmcat_conv(char *s1, char const *s2, t_mod *conv);
-void		ft_printf_get_D(t_mod *conv, va_list args);
-void		ft_printf_get_U(t_mod *conv, va_list args);
-void		ft_printf_get_O(t_mod *conv, va_list args);
+
 
 
 #				include 			<stdio.h>

@@ -56,7 +56,6 @@ the library has a particular file structure to ease finding shit
 				* converts a `wchar_t` into a utf-8 `char *` and points `conv->substring` to it
 				* uses bit manipulation
 
-
 		* intmax_t	ft_printf_atoi(char const *str)
 			* converts string numbers into a intmax_t
 	
