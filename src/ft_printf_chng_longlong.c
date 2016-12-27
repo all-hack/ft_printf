@@ -13,9 +13,9 @@
 #include "libftprintf.h"
 
 void	ft_printf_chng_longlong(t_mod *conv, long long num)
-{	
+{
 	if (num < 0)
-		conv->substring = ft_printf_itoa_base(-num, 10, 1);	
+		conv->substring = ft_printf_itoa_base(-num, 10, 1);
 	else
 		conv->substring = ft_printf_itoa_base(num, 10, 0);
 }
