@@ -19,7 +19,7 @@ void	ft_printf_symdet_length(char **seq, t_mod *conv)
 
 	i = 0;
 	delim_index = 0;
-	if (ft_printf_Nchr1sym(*seq, g_length_symbols, &(conv->length)) == 1)
+	if (ft_printf_nchr_1sym(*seq, g_length_symbols, &(conv->length)) == 1)
 	{		
 		while (i < ft_printf_strlen(conv->length))
 		{

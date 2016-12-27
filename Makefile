@@ -46,7 +46,7 @@ ft_printf_get_cap_o
 FILE += ft_printf_atoi ft_printf_itoa_base ft_printf_itoa_binary \
 ft_printf_itoa
 
-FILE += ft_printf_1chr_nsym ft_printf_Nchr1sym ft_printf_stric \
+FILE += ft_printf_1chr_nsym ft_printf_nchr_1sym ft_printf_stric \
 ft_printf_strchri
 
 FILE += ft_printf_fstrinsert ft_printf_frmvdup ft_printf_strinsert \

@@ -135,7 +135,7 @@ char		*ft_printf_strcpy(char *dst, char const *src);
 int			ft_printf_1chr_nsym(char const *s, char const *c, char **s_str);
 char		*ft_printf_fstrappend(char *s1, unsigned char c);
 char const	*ft_printf_shiftstr(char const *s1, char const *s2);
-int			ft_printf_Nchr1sym(char const *s, char const **c, char **s_str);
+int			ft_printf_nchr_1sym(char const *s, char const **c, char **s_str);
 char		*ft_printf_fstrmcat(char *s1, char const *s2);
 char		*ft_printf_strupper(char *str);
 

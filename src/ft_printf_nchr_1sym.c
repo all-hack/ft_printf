@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_Nchr1sym.c                                :+:      :+:    :+:   */
+/*   ft_printf_nchr_1sym.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,43 +12,31 @@
 
 #include "libftprintf.h"
 
-int	ft_printf_Nchr1sym(char const *s, char const **c, char **s_str)
+int	ft_printf_nchr_1sym(char const *s, char const **c, char **s_str)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;	
-	char const	*d;
-	int		flag;
+	size_t		i;
+	char		*d;
 
-	if (s && c)
+	if (s && c && *c)
 	{
-		if (*c)
-		{			
-			while (*s)
+		while (*s)
+		{
+			i = 0;
+			while (c[i])
 			{
-				i = 0;
-				
-				while (c[i])
+				d = ft_printf_shiftstr(c[i++], *s_str);
+				if (ft_printf_1chr_nsym(s, d, s_str) == 1)
 				{
-					d = c[i];									
-					d = ft_printf_shiftstr(d, *s_str);				
-					if (ft_printf_1chr_nsym(s, d, s_str) == 1)
-					{
-						s++;
-						break;										
-					}
-					// printf("c: %s\n", c[i]);
-					// printf("d: %s\n", d);					
-					// printf("conv->length: %s\n", *s_str);
-					i++;
-				}				
-				s++;
-			}		
-			if (*s_str)
-				return (1);
-			else 
-				return (0);
+					s++;
+					break ;
+				}
+			}
+			s++;
 		}
+		if (*s_str)
+			return (1);
+		else
+			return (0);
 	}
 	return (-1);
 }

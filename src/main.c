@@ -32,6 +32,9 @@ int	main()
 	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
    	   // printf("   printf: -->%S<--\n", L"00 € 00");
 
+	// binary
+	// ft_printf("ft_printf: -->%b<--\n", 4000);	   	   
+
 	// kills malloc	
 	//    printf("-->%#08x<--", 42);
 	// ft_printf("-->%#08x<--", 42);

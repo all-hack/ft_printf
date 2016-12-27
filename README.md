@@ -12,7 +12,9 @@ the library has a particular file structure to ease finding shit
 			* int	ft_printf_1chr_nsym(char const *s, char const *c, char **s_str)
 				* searches `s` for many one character symbols passed to function in `c` and appends the found symbols into `s_str`
 				* returns 1 if any symbol is found, 0 if none are found, -1 for error
-
+			* int	ft_printf_nchr_1sym(char const *s, char const **c, char **s_str)
+				* searches `s` for any one multi-character symbols passed to function in `c` and appends the found symbols into `s_str`
+				* returns 1 if any symbol is found, 0 if none are found, -1 for error
 		* char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 			* increments `s1` until it has a value not equal to `s2`, returning `s1`
 		* void	ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end)
@@ -68,7 +70,11 @@ the library has a particular file structure to ease finding shit
 			* converts string numbers into a intmax_t
 		* char	*ft_printf_itoa_base(uintmax_t num, int base, int neg)
 			* converts an integer into a `char *` for any arbritary base
-
+		* char	*ft_printf_itoa(int nb)
+			* converts an integer into a `char *` base 10
+			* not sure if it works right
+		* char	*ft_printf_itoa_binary(uintmax_t num, int size)
+			* converts an integer into a `char *` base 2 with a pretty print display for binary
 
 	* conversion_getters
 		* void	ft_printf_get_cap_c(t_mod *conv, va_list args)
