@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_fstrmcat.c                                :+:      :+:    :+:   */
+/*   ft_printf_fstrmcat.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -30,6 +30,6 @@ char	*ft_printf_fstrmcat(char *s1, char const *s2)
 	nstr = ft_printf_strnew((s1_len + s2_len));
 	ft_printf_strncpy(nstr, s1, s1_len);
 	ft_printf_strcat(nstr, s2);
-	ft_printf_strdel(&s1);	
+	ft_printf_strdel(&s1);
 	return (nstr);
 }
