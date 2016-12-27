@@ -12,30 +12,30 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_S(t_mod *conv, va_list args)
-{	
-	wchar_t *tmp1;
-	intmax_t	size;
+void	ft_printf_get_cap_s(t_mod *conv, va_list args)
+{
+	wchar_t		*tmp1;
 	intmax_t	i;
 
-	size = conv->prec;
 	i = 0;
-	if (!(conv->length))	
+	if (!(conv->length))
 	{
 		tmp1 = va_arg(args, wchar_t*);
-		if (size >= 0)
+		if (conv->prec >= 0)
 		{
-			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
-			while (tmp1[i++] && i < size)
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+			conv->substring = ft_printf_fstrmcat(conv->substring,
+								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+			while (tmp1[i++] && i < conv->prec)
+				conv->substring = ft_printf_fstrmcat(conv->substring,
+								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
 		}
 		else
 		{
-			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+			conv->substring = ft_printf_fstrmcat(conv->substring,
+								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
 			while (tmp1[i++])
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
+				conv->substring = ft_printf_fstrmcat(conv->substring,
+								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
 		}
-		// if (*(conv->substring) == '\0')
-		// 	ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
-	}		
+	}
 }

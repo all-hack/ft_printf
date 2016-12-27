@@ -60,7 +60,7 @@
 // 	0, /*	P	*/
 // 	0, /*	Q	*/
 // 	0, /*	R	*/
-// 	ft_printf_get_S, /*	S	*/
+// 	ft_printf_get_cap_s, /*	S	*/
 // 	0, /*	T	*/
 // 	ft_printf_get_u, /*	U	*/
 // 	0, /*	V	*/
