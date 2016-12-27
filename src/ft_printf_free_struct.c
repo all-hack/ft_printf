@@ -12,7 +12,18 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_free_struct(t_mod **this)
+static	void	norm_cheat00(t_mod *this)
+{
+	this->mfw = -1;
+	this->cmfw = ' ';
+	this->prec = -1;
+	this->cprec = '\0';
+	this->skips = 0;
+	this->srt_seq = 0;
+	this->end_seq = 0;
+}
+
+void			ft_printf_free_struct(t_mod **this)
 {
 	if (this)
 	{
@@ -32,16 +43,9 @@ void	ft_printf_free_struct(t_mod **this)
 				free((*this)->mfieldwidth);
 			if ((*this)->precision)
 				free((*this)->precision);
-			(*this)->mfw 					= -1;
-			(*this)->cmfw 					= ' ';
-			(*this)->prec					= -1;		
-			(*this)->cprec					= '\0';		
-			(*this)->skips					= 0;		
-			(*this)->srt_seq		 		= 0;
-			(*this)->end_seq 				= 0;
+			norm_cheat00(*this);
 			va_end((*this)->arg_list);
 			free((*this));
-
 		}
 	}
 }
