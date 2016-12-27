@@ -93,6 +93,28 @@ the library has a particular file structure to ease finding shit
 				* `j`  --> `intmax_t`
 				* `z`  --> argument is of a signed type equivalent to `size_t`
 
+		* void	ft_printf_get_i(t_mod *conv, va_list args)
+			* handles the length options of the `D` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
+				* `hh` --> `signed char`
+				* `h`  --> `short`
+				* `l`  --> `long`
+				* `ll` --> `long long`
+				* `j`  --> `intmax_t`
+				* `z`  --> argument is of a signed type equivalent to `size_t`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	* modifiers_implementation
 		* symbol_detection
 			* void	ft_printf_symdet_flags(char **seq, t_mod *conv)
