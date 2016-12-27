@@ -32,7 +32,7 @@ int	ft_printf_Nchr1sym(char const *s, char const **c, char **s_str)
 				{
 					d = c[i];									
 					d = ft_printf_shiftstr(d, *s_str);				
-					if (ft_printf_1chrNsym(s, d, s_str) == 1)
+					if (ft_printf_1chr_nsym(s, d, s_str) == 1)
 					{
 						s++;
 						break;										

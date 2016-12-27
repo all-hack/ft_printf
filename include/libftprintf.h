@@ -118,7 +118,7 @@ char		*ft_printf_strncat(char *s1, unsigned char const *s2, size_t n);
 int			ft_printf_strcmp(const char *s1, const char *s2);
 char		*ft_printf_itoa_binary(uintmax_t num, int size);
 char		*ft_printf_strcpy(char *dst, char const *src);
-int			ft_printf_1chrNsym(char const *s, char const *c, char **s_str);
+int			ft_printf_1chr_nsym(char const *s, char const *c, char **s_str);
 char		*ft_printf_fstrappend(char *s1, unsigned char c);
 char const	*ft_printf_shiftstr(char const *s1, char const *s2);
 int			ft_printf_Nchr1sym(char const *s, char const **c, char **s_str);

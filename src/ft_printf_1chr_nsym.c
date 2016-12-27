@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_1chrNsym.c                                :+:      :+:    :+:   */
+/*   ft_printf_1chr_nsym.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int	ft_printf_1chrNsym(char const *s, char const *c, char **s_str)
+int	ft_printf_1chr_nsym(char const *s, char const *c, char **s_str)
 {
 	size_t	i;
 	size_t	j;
@@ -26,15 +26,14 @@ int	ft_printf_1chrNsym(char const *s, char const *c, char **s_str)
 			i = 0;
 			flag = 0;
 			while (s[i])
-			{	
-				if ((ft_printf_strchri(c, s[i], &j)) == 1)
+			{
+				if ((ft_printf_strchri(c, s[i++], &j)) == 1)
 				{
-					*s_str = ft_printf_fstrappend(*s_str, c[j]);			
+					*s_str = ft_printf_fstrappend(*s_str, c[j]);
 					flag = 1;
 				}
 				else
-					return (flag);			
-				i++;
+					return (flag);
 			}
 			return (flag);
 		}

@@ -21,7 +21,7 @@ void	ft_printf_symdet_prec(char **seq, t_mod *conv)
 	i = 0;
 	delim_index = 0;
 	tmp = NULL;
-	if (ft_printf_1chrNsym(*seq, g_precision_symbols, &tmp) == 1)
+	if (ft_printf_1chr_nsym(*seq, g_precision_symbols, &tmp) == 1)
 	{				
 		conv->precision = ft_printf_strdup(tmp + 1);
 		

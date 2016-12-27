@@ -19,7 +19,7 @@ void	ft_printf_symdet_mfw(char **seq, t_mod *conv)
 
 	i = 0;
 	delim_index = 0;	
-	if (ft_printf_1chrNsym(*seq, g_mfieldwidth_symbols, &(conv->mfieldwidth)) == 1)
+	if (ft_printf_1chr_nsym(*seq, g_mfieldwidth_symbols, &(conv->mfieldwidth)) == 1)
 	{
 		while (i < ft_printf_strlen(conv->mfieldwidth))
 		{
