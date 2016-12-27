@@ -163,21 +163,22 @@ void		ft_printf_chng_uint(t_mod *conv, unsigned int num);
 void		ft_printf_chng_ulong(t_mod *conv, unsigned long num);
 void		ft_printf_chng_size_t(t_mod *conv, size_t num);
 
+// conversion getters
 void		ft_printf_get_b(t_mod *conv, va_list args);
-void		ft_printf_get_c(t_mod *conv, va_list args);
-void		ft_printf_get_C(t_mod *conv, va_list args);
+void		ft_printf_get_cap_c(t_mod *conv, va_list args);
+void		ft_printf_get_cap_c(t_mod *conv, va_list args);
 void		ft_printf_get_d(t_mod *conv, va_list args);
+void		ft_printf_get_D(t_mod *conv, va_list args);
 void		ft_printf_get_i(t_mod *conv, va_list args);
-void		ft_printf_get_u(t_mod *conv, va_list args);
 void		ft_printf_get_o(t_mod *conv, va_list args);
-void		ft_printf_get_x(t_mod *conv, va_list args);
-void		ft_printf_get_X(t_mod *conv, va_list args);
+void		ft_printf_get_O(t_mod *conv, va_list args);
 void		ft_printf_get_p(t_mod *conv, va_list args);
 void		ft_printf_get_s(t_mod *conv, va_list args);
 void		ft_printf_get_S(t_mod *conv, va_list args);
-void		ft_printf_get_D(t_mod *conv, va_list args);
+void		ft_printf_get_u(t_mod *conv, va_list args);
 void		ft_printf_get_U(t_mod *conv, va_list args);
-void		ft_printf_get_O(t_mod *conv, va_list args);
+void		ft_printf_get_x(t_mod *conv, va_list args);
+void		ft_printf_get_X(t_mod *conv, va_list args);
 void		ft_printf_get_percent(t_mod *conv, va_list args);
 
 void		ft_printf_proc_flags(t_mod *conv);

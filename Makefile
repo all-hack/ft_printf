@@ -39,6 +39,11 @@ ft_printf_chng_long ft_printf_chng_ulong ft_printf_chng_size_t \
 ft_printf_chng_longlong ft_printf_chng_ulonglong ft_printf_chng_intmax_t \
 ft_printf_chng_uintmax_t ft_printf_chng_wchar_t
 
+FILE += ft_printf_get_b ft_printf_get_cap_c ft_printf_get_cap_c ft_printf_get_d \
+ft_printf_get_i ft_printf_get_u ft_printf_get_o ft_printf_get_x \
+ft_printf_get_p ft_printf_get_s ft_printf_get_percent ft_printf_get_X \
+ft_printf_get_D ft_printf_get_U ft_printf_get_O
+
 FILE += ft_printf_atoi ft_printf_itoa_base ft_printf_itoa_binary \
 ft_printf_itoa
 

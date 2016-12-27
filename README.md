@@ -69,6 +69,8 @@ the library has a particular file structure to ease finding shit
 			* converts string numbers into a intmax_t
 	
 	* conversion_getters
+		* void	ft_printf_get_cap_c(t_mod *conv, va_list args)
+			* handles the length options of the `C` kind of conversion and sets `conv->substring`
 	
 	* modifiers_implementation
 		* symbol_detection
