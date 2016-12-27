@@ -85,7 +85,7 @@ the library has a particular file structure to ease finding shit
 		* void	ft_printf_get_cap_d(t_mod *conv, va_list args)
 			* handles the length options of the `D` for signed decimal notation of size `long` kind of conversion and sets `conv->substring`			
 		* void	ft_printf_get_d(t_mod *conv, va_list args)
-			* handles the length options of the `D` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
+			* handles the length options of the `d` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
 				* `hh` --> `signed char`
 				* `h`  --> `short`
 				* `l`  --> `long`
@@ -94,7 +94,7 @@ the library has a particular file structure to ease finding shit
 				* `z`  --> argument is of a signed type equivalent to `size_t`
 
 		* void	ft_printf_get_i(t_mod *conv, va_list args)
-			* handles the length options of the `D` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
+			* handles the length options of the `i` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
 				* `hh` --> `signed char`
 				* `h`  --> `short`
 				* `l`  --> `long`
@@ -102,8 +102,14 @@ the library has a particular file structure to ease finding shit
 				* `j`  --> `intmax_t`
 				* `z`  --> argument is of a signed type equivalent to `size_t`
 
-
-
+		* void	ft_printf_get_cap_o(t_mod *conv, va_list args)
+			* handles the length options of the `O` for unsigned octal notation of size `unsigned long` kind of conversion and sets `conv->substring`
+				* `hh` --> `unsigned char`
+				* `h`  --> `unsigned short`
+				* `l`  --> `unsigned long`
+				* `ll` --> `unsigned long long`
+				* `j`  --> `uintmax_t`
+				* `z`  --> `size_t`
 
 
 

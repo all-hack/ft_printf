@@ -12,8 +12,7 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_O(t_mod *conv, va_list args)
-{				
-		conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long), 8, 0);
+void	ft_printf_get_cap_o(t_mod *conv, va_list args)
+{
+	conv->substring = ft_printf_itoa_base(va_arg(args, unsigned long), 8, 0);
 }
-

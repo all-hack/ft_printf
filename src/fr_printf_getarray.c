@@ -55,7 +55,7 @@ void	(*g_printf_get[90]) (t_mod *conv, va_list args) = {
 	0,
 	0,
 	0,
-	ft_printf_get_O,
+	ft_printf_get_cap_o,
 	0,
 	0,
 	0,
