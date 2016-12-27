@@ -118,9 +118,15 @@ the library has a particular file structure to ease finding shit
 			* handles the length options of the `p` for pointer value in hex `unsigned long long` kind of conversion and sets `conv->substring`
 
 		* void	ft_printf_get_percent(t_mod *conv, va_list args)
-				* sets `conv->substring` to '%'
+			* sets `conv->substring` to '%'
 
-		
+		* void	ft_printf_get_s(t_mod *conv, va_list args)
+			* handles the length options of the `s` for strings of `char *` kind of conversion and sets `conv->substring`
+				* `l` --> `wchar_t*`
+
+
+		* void	ft_printf_get_cap_s(t_mod *conv, va_list args)
+			* handles the length options of the `S` for strings of `wchar_t *` kind of conversion and sets `conv->substring`
 
 
 

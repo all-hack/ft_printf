@@ -12,55 +12,51 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_s(t_mod *conv, va_list args)
-{	
-	unsigned char *tmp;
-	wchar_t *tmp1;
-	intmax_t	size;
-	intmax_t	i;	
+static	void	norm_cheat00(t_mod *conv, va_list args,
+											intmax_t i, wchar_t *tmp1)
+{
+	tmp1 = va_arg(args, wchar_t*);
+	if (conv->prec >= 0)
+	{
+		conv->substring = ft_printf_fstrmcat(conv->substring,
+							ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+		while (tmp1[i++] && i < conv->prec)
+			conv->substring = ft_printf_fstrmcat(conv->substring,
+							ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+	}
+	else
+	{
+		conv->substring = ft_printf_fstrmcat(conv->substring,
+							ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+		while (tmp1[i++])
+			conv->substring = ft_printf_fstrmcat(conv->substring,
+							ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
+	}
+}
 
-	// printf("1\n");
-	size = conv->prec;
-	i = 0;	
+void			ft_printf_get_s(t_mod *conv, va_list args)
+{
+	unsigned char	*tmp;
+	wchar_t			*tmp1;
+	intmax_t		i;
+
+	i = 0;
 	if (!(conv->length))
 	{
-		// printf("2\n");
 		tmp = va_arg(args, unsigned char*);
-		// printf("tmp: %s\n", tmp);
-		// printf("tmp: %c, %d\n", *tmp, *tmp);
-		if (size >= 0)
+		if (conv->prec >= 0)
 		{
-			// printf("5\n");
 			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
-			while (tmp[i++] && i < size)				
-				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);			
-		}
-		else 
-		{
-			// printf("6\n");
-			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
-			while (tmp[i++])				
+			while (tmp[i++] && i < conv->prec)
 				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
-		}		
+		}
+		else
+		{
+			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+			while (tmp[i++])
+				conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
+		}
 	}
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
-	{
-		// printf("3\n");
-		tmp1 = va_arg(args, wchar_t*);
-		if (size >= 0)
-		{
-			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
-			while (tmp1[i++] && i < size)	
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
-		}
-		else 
-		{
-			conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
-			while (tmp1[i++])
-				conv->substring = ft_printf_fstrmcat(conv->substring, ft_printf_chng_wchar_t(conv, tmp1[i], NULL));	
-		}
-	}	
-	// if (*(conv->substring) == '\0')
-			// ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);	
-	// printf("4\n");
+		norm_cheat00(conv, conv->prec, i, tmp1);
 }
