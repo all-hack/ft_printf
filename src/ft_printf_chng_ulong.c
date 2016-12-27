@@ -13,6 +13,6 @@
 #include "libftprintf.h"
 
 void	ft_printf_chng_ulong(t_mod *conv, unsigned long num)
-{	
+{
 	conv->substring = ft_printf_itoa_base(num, 10, 0);
 }
