@@ -117,6 +117,24 @@ the library has a particular file structure to ease finding shit
 		* void	ft_printf_get_p(t_mod *conv, va_list args)
 			* handles the length options of the `p` for pointer value in hex `unsigned long long` kind of conversion and sets `conv->substring`
 
+		* void	ft_printf_get_percent(t_mod *conv, va_list args)
+				* sets `conv->substring` to '%'
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

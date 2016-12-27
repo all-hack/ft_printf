@@ -13,6 +13,6 @@
 #include "libftprintf.h"
 
 void	ft_printf_get_percent(t_mod *conv, va_list args)
-{	
-	conv->substring = ft_printf_strdup("%");		
+{
+	conv->substring = ft_printf_strdup("%");
 }
