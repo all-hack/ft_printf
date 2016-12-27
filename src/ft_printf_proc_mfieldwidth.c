@@ -19,6 +19,7 @@ void	ft_printf_proc_mfieldwidth(t_mod *conv)
 
 	if (conv->mfieldwidth)
 	{
-		ft_printf_proc_setchar(&(conv->mfieldwidth), &(conv->mfw), &(fake), &(conv->arg_list), '^');					
+		ft_printf_proc_setchar(&(conv->mfieldwidth), &(conv->mfw),
+											&(fake), &(conv->arg_list), '^');
 	}
 }

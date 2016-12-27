@@ -47,7 +47,7 @@ void	(*g_printf_apply[5]) (t_mod *conv) =
 {
 	ft_printf_app_conv,
 	ft_printf_app_precision,
-	ft_printf_app_mfieldwidth,
+	ft_printf_app_mfieldwidth,	
 	ft_printf_app_flags,
 	0
 };

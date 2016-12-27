@@ -173,7 +173,8 @@ the library has a particular file structure to ease finding shit
 				* handles the core logic of setting what is in the precision buffer in the structure
 			* void	ft_printf_proc_mfieldwidth(t_mod *conv)
 				* handles the core logic of setting what is in the the minimum field width buffer in the structure
-
+			* void	ft_printf_proc_flags(t_mod *conv)
+				* handles the core logic of setting what is in the flag buffer in the structure, including removing duplicates
 
 		* application
 			* flags				
