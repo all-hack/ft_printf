@@ -37,7 +37,7 @@ FILE += ft_printf_chng_char ft_printf_chng_uchar ft_printf_chng_short \
 ft_printf_chng_ushort ft_printf_chng_uint ft_printf_chng_int \
 ft_printf_chng_long ft_printf_chng_ulong ft_printf_chng_size_t \
 ft_printf_chng_longlong ft_printf_chng_ulonglong ft_printf_chng_intmax_t \
-ft_printf_chng_uintmax_t 
+ft_printf_chng_uintmax_t ft_printf_chng_wchar_t
 
 FILE += ft_printf_atoi ft_printf_itoa_base ft_printf_itoa_binary \
 ft_printf_itoa
