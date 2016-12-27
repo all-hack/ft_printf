@@ -111,9 +111,11 @@ the library has a particular file structure to ease finding shit
 				* `j`  --> `uintmax_t`
 				* `z`  --> `size_t`
 
+		* void	ft_printf_get_o(t_mod *conv, va_list args)
+			* handles the length options of the `o` for unsigned octal notation of size `unsigned int` kind of conversion and sets `conv->substring`				
 
-
-
+		* void	ft_printf_get_p(t_mod *conv, va_list args)
+			* handles the length options of the `p` for pointer value in hex `unsigned long long` kind of conversion and sets `conv->substring`
 
 
 
