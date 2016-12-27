@@ -176,7 +176,7 @@ void		ft_printf_get_p(t_mod *conv, va_list args);
 void		ft_printf_get_s(t_mod *conv, va_list args);
 void		ft_printf_get_cap_s(t_mod *conv, va_list args);
 void		ft_printf_get_u(t_mod *conv, va_list args);
-void		ft_printf_get_U(t_mod *conv, va_list args);
+void		ft_printf_get_cap_u(t_mod *conv, va_list args);
 void		ft_printf_get_x(t_mod *conv, va_list args);
 void		ft_printf_get_X(t_mod *conv, va_list args);
 void		ft_printf_get_percent(t_mod *conv, va_list args);

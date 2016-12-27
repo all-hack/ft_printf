@@ -65,7 +65,7 @@
 // 	0, /*	R	*/
 // 	ft_printf_get_cap_s, /*	S	*/
 // 	0, /*	T	*/
-// 	ft_printf_get_U, /*	U	*/
+// 	ft_printf_get_cap_u, /*	U	*/
 // 	0, /*	V	*/
 // 	0, /*	W	*/
 // 	ft_printf_get_X, /*	X	*/

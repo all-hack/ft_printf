@@ -124,14 +124,26 @@ the library has a particular file structure to ease finding shit
 			* handles the length options of the `s` for strings of `char *` kind of conversion and sets `conv->substring`
 				* `l` --> `wchar_t*`
 
-
 		* void	ft_printf_get_cap_s(t_mod *conv, va_list args)
 			* handles the length options of the `S` for strings of `wchar_t *` kind of conversion and sets `conv->substring`
 
 
+		* void	ft_printf_get_u(t_mod *conv, va_list args)
+			* handles the length options of the `u` for unsigned decimal notation of size `unsigned int` kind of conversion and sets `conv->substring`
+				* `hh` --> `unsigned char`
+				* `h`  --> `unsigned short`
+				* `l`  --> `unsigned long`
+				* `ll` --> `unsigned long long`
+				* `j`  --> `uintmax_t`
+				* `z`  --> `size_t`
 
 
 
+		* void	ft_printf_get_cap_u(t_mod *conv, va_list args)
+			* handles the length options of the `U` for unsigned decimal notation of size `unsigned long` kind of conversion and sets `conv->substring`
+			
+		* void	ft_printf_get_x(t_mod *conv, va_list args)
+			* handles the length options of the `x` for unsigned hexadecimal notation of size `unsigned int` kind of conversion and sets `conv->substring`
 
 
 

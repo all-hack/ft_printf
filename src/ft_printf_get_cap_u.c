@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_U(t_mod *conv, va_list args)
-{		
-		ft_printf_chng_ulong(conv, va_arg(args, unsigned long));	
+void	ft_printf_get_cap_u(t_mod *conv, va_list args)
+{
+	ft_printf_chng_ulong(conv, va_arg(args, unsigned long));
 }
