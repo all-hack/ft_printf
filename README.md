@@ -53,9 +53,7 @@ the library has a particular file structure to ease finding shit
 
 
 		* application
-			* flags
-				* void	ft_printf_app_flags(t_mod *conv)
-					* infastructure piece that calls the appropriate flag function from the flag function array		
+			* flags				
 				* void	ft_printf_flag_plus(t_mod *conv)
 					* handles and applies the logic for the flag +
 						* a sign must always be placed before a number produced by a signed conversion
@@ -85,7 +83,8 @@ the library has a particular file structure to ease finding shit
 
 
 
-
+			* void	ft_printf_app_flags(t_mod *conv)
+					* infastructure piece that calls the appropriate flag function from the flag function array		
 			* void	ft_printf_app_conv(t_mod *conv)
 				* infastructure piece that calls the appropriate get function from the conversion function array using the ascii number of a conversion as a look up key
 			* void	ft_printf_app_precision(t_mod *conv)

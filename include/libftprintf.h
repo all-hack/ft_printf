@@ -75,11 +75,10 @@ void		ft_printf_proc_mfieldwidth(t_mod *conv);
 void		ft_printf_app_conv(t_mod *conv);
 void		ft_printf_app_precision(t_mod *conv);
 void		ft_printf_app_mfieldwidth(t_mod *conv);
-
+void		ft_printf_app_flags(t_mod *conv);
 
 
 // application/flags
-void		ft_printf_app_flags(t_mod *conv);
 void		ft_printf_flag_plus(t_mod *conv);
 void		ft_printf_flag_space(t_mod *conv);
 void		ft_printf_flag_minus(t_mod *conv);
@@ -93,9 +92,10 @@ char		*ft_printf_frmvdup(char	**str, size_t size);
 char		*ft_printf_strinsert(char *printit, char *substr, size_t strt, size_t end);
 
 // infastructure
+int		ft_printf(const char *format, ...);
 void 	ft_printf_flow(char **seq, t_mod *conv, va_list args);
 void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args);
-int		ft_printf(const char *format, ...);
+
 
 
 
