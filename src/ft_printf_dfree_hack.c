@@ -19,8 +19,7 @@ void	ft_printf_dfree_hack(char **str)
 		if (*str)
 		{
 			free(*str);
-			*str = ft_printf_strnew(0);			
+			*str = ft_printf_strnew(0);
 		}
 	}
-	
 }
