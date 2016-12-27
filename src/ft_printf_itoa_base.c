@@ -12,27 +12,27 @@
 
 #include "libftprintf.h"
 
-static char *reverse_string(char *str)
+static char		*reverse_string(char *str)
 {
 	size_t	k;
 	size_t	i;
 	char	c;
 
 	i = 0;
-	k = ft_printf_strlen(str) - 1;	
+	k = ft_printf_strlen(str) - 1;
 	while (i < k)
 	{
-		c = str[i];		
+		c = str[i];
 		str[i++] = str[k];
-		str[k--] = c;				
+		str[k--] = c;
 	}
 	return (str);
 }
 
-static size_t count_digits(uintmax_t num, int base, int extra)
+static size_t	count_digits(uintmax_t num, int base, int extra)
 {
 	size_t x;
-	
+
 	x = extra;
 	while (num > 0)
 	{
@@ -44,12 +44,12 @@ static size_t count_digits(uintmax_t num, int base, int extra)
 	return (x);
 }
 
-char	*ft_printf_itoa_base(uintmax_t num, int base, int neg)
+char			*ft_printf_itoa_base(uintmax_t num, int base, int neg)
 {
-	char *key;
-	char *str;
-	size_t i;
-	
+	char	*key;
+	char	*str;
+	size_t	i;
+
 	key = "0123456789abcdef";
 	if (neg == 1)
 		str = ft_printf_strnew(count_digits(num, base, 1));
@@ -57,7 +57,7 @@ char	*ft_printf_itoa_base(uintmax_t num, int base, int neg)
 		str = ft_printf_strnew(count_digits(num, base, 0));
 	if (num == 0)
 		str[0] = '0';
-	i = 0;	
+	i = 0;
 	while (num > 0)
 	{
 		str[i++] = key[num % base];

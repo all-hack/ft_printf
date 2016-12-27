@@ -58,5 +58,5 @@ void			ft_printf_get_s(t_mod *conv, va_list args)
 		}
 	}
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
-		norm_cheat00(conv, conv->prec, i, tmp1);
+		norm_cheat00(conv, args, i, tmp1);
 }

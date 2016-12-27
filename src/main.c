@@ -28,6 +28,10 @@ int	main()
 	short k = 270;
 	intmax_t f = -4;
 
+	// wide char test
+	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
+   	   // printf("   printf: -->%S<--\n", L"00 € 00");
+
 	// kills malloc	
 	//    printf("-->%#08x<--", 42);
 	// ft_printf("-->%#08x<--", 42);

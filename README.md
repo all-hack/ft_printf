@@ -64,10 +64,12 @@ the library has a particular file structure to ease finding shit
 			* char	*ft_printf_chng_wchar_t(t_mod *conv, wchar_t chr, char *str)
 				* converts a `wchar_t` into a utf-8 `char *` and points `conv->substring` to it
 				* uses bit manipulation
-
 		* intmax_t	ft_printf_atoi(char const *str)
 			* converts string numbers into a intmax_t
-	
+		* char	*ft_printf_itoa_base(uintmax_t num, int base, int neg)
+			* converts an integer into a `char *` for any arbritary base
+
+
 	* conversion_getters
 		* void	ft_printf_get_cap_c(t_mod *conv, va_list args)
 			* handles the length options of the `C` for `wchar_t` kind of conversion and sets `conv->substring`
@@ -92,7 +94,6 @@ the library has a particular file structure to ease finding shit
 				* `ll` --> `long long`
 				* `j`  --> `intmax_t`
 				* `z`  --> argument is of a signed type equivalent to `size_t`
-
 		* void	ft_printf_get_i(t_mod *conv, va_list args)
 			* handles the length options of the `i` for signed decimal notation of size `int` kind of conversion and sets `conv->substring`
 				* `hh` --> `signed char`
@@ -101,7 +102,6 @@ the library has a particular file structure to ease finding shit
 				* `ll` --> `long long`
 				* `j`  --> `intmax_t`
 				* `z`  --> argument is of a signed type equivalent to `size_t`
-
 		* void	ft_printf_get_cap_o(t_mod *conv, va_list args)
 			* handles the length options of the `O` for unsigned octal notation of size `unsigned long` kind of conversion and sets `conv->substring`
 				* `hh` --> `unsigned char`
@@ -110,24 +110,17 @@ the library has a particular file structure to ease finding shit
 				* `ll` --> `unsigned long long`
 				* `j`  --> `uintmax_t`
 				* `z`  --> `size_t`
-
 		* void	ft_printf_get_o(t_mod *conv, va_list args)
 			* handles the length options of the `o` for unsigned octal notation of size `unsigned int` kind of conversion and sets `conv->substring`				
-
 		* void	ft_printf_get_p(t_mod *conv, va_list args)
 			* handles the length options of the `p` for pointer value in hex `unsigned long long` kind of conversion and sets `conv->substring`
-
 		* void	ft_printf_get_percent(t_mod *conv, va_list args)
 			* sets `conv->substring` to '%'
-
 		* void	ft_printf_get_s(t_mod *conv, va_list args)
 			* handles the length options of the `s` for strings of `char *` kind of conversion and sets `conv->substring`
 				* `l` --> `wchar_t*`
-
 		* void	ft_printf_get_cap_s(t_mod *conv, va_list args)
 			* handles the length options of the `S` for strings of `wchar_t *` kind of conversion and sets `conv->substring`
-
-
 		* void	ft_printf_get_u(t_mod *conv, va_list args)
 			* handles the length options of the `u` for unsigned decimal notation of size `unsigned int` kind of conversion and sets `conv->substring`
 				* `hh` --> `unsigned char`
@@ -136,15 +129,10 @@ the library has a particular file structure to ease finding shit
 				* `ll` --> `unsigned long long`
 				* `j`  --> `uintmax_t`
 				* `z`  --> `size_t`
-
-
-
 		* void	ft_printf_get_cap_u(t_mod *conv, va_list args)
 			* handles the length options of the `U` for unsigned decimal notation of size `unsigned long` kind of conversion and sets `conv->substring`
-			
 		* void	ft_printf_get_x(t_mod *conv, va_list args)
 			* handles the length options of the `x` for unsigned hexadecimal notation of size `unsigned int` kind of conversion and sets `conv->substring`
-
 		* void	ft_printf_get_cap_x(t_mod *conv, va_list args)
 			* handles the length options of the `X` for unsigned hexadecimal notation of size `unsigned long` kind of conversion and sets `conv->substring`
 				* `hh` --> `unsigned char`
@@ -153,18 +141,6 @@ the library has a particular file structure to ease finding shit
 				* `ll` --> `unsigned long long`
 				* `j`  --> `uintmax_t`
 				* `z`  --> `size_t`	
-
-
-
-
-
-
-
-
-
-
-
-
 
 	* modifiers_implementation
 		* symbol_detection

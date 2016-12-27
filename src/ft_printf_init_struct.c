@@ -12,24 +12,24 @@
 
 #include "libftprintf.h"
 
-t_mod	*ft_printf_init_struct()
+t_mod	*ft_printf_init_struct(void)
 {
-
 	t_mod	*here;
+
 	FT_PRINTF_NULLGUARD(here = (t_mod*)malloc(sizeof(t_mod)));
-	here->cmfw 					= ' ';
-	here->cprec					= '\0';		
-	here->mfw 					= -1;
-	here->prec					= -1;		
-	here->skips					= 0;		
-	here->srt_seq 				= 0;
-	here->end_seq 				= 0;
-	here->flag					= NULL;
-	here->prepend				= NULL;
-	here->length				= NULL;
-	here->conversion			= NULL;
-	here->substring				= NULL;
-	here->mfieldwidth			= NULL;
-	here->precision				= NULL;	
+	here->cmfw = ' ';
+	here->cprec = '\0';
+	here->mfw = -1;
+	here->prec = -1;
+	here->skips = 0;
+	here->srt_seq = 0;
+	here->end_seq = 0;
+	here->flag = NULL;
+	here->prepend = NULL;
+	here->length = NULL;
+	here->conversion = NULL;
+	here->substring = NULL;
+	here->mfieldwidth = NULL;
+	here->precision = NULL;
 	return (here);
 }
