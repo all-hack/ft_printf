@@ -44,7 +44,7 @@
 //     0, /*   @   */    
 // 	0, /*	A	*/
 // 	0, /*	B	*/
-// 	ft_printf_get_C, /*	C	*/
+// 	ft_printf_get_cap_c, /*	C	*/
 // 	ft_printf_get_D, /*	D	*/
 // 	0, /*	E	*/
 // 	0, /*	F	*/

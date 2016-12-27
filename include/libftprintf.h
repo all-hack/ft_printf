@@ -165,7 +165,7 @@ void		ft_printf_chng_size_t(t_mod *conv, size_t num);
 
 // conversion getters
 void		ft_printf_get_b(t_mod *conv, va_list args);
-void		ft_printf_get_cap_c(t_mod *conv, va_list args);
+void		ft_printf_get_c(t_mod *conv, va_list args);
 void		ft_printf_get_cap_c(t_mod *conv, va_list args);
 void		ft_printf_get_d(t_mod *conv, va_list args);
 void		ft_printf_get_D(t_mod *conv, va_list args);

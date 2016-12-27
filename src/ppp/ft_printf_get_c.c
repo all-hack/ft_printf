@@ -13,18 +13,17 @@
 #include "libftprintf.h"
 
 void	ft_printf_get_c(t_mod *conv, va_list args)
-{	
+{
 	if (!(conv->length))
-		conv->substring = ft_printf_fstrappend(conv->substring, va_arg(args, unsigned int));
+		conv->substring = ft_printf_fstrappend(conv->substring,
+								va_arg(args, unsigned int));
 	else if (ft_printf_strcmp(conv->length, "l") == 0)
-		conv->substring = ft_printf_chng_wchar_t(conv, va_arg(args, wchar_t), NULL);
+		conv->substring = ft_printf_chng_wchar_t(conv,
+								va_arg(args, wchar_t), NULL);
 	if (conv->substring[0] == '\0')
 	{
 		ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
 		conv->skips += 1;
 		conv->num = 0;
-	}	
-	
-			
-
+	}
 }
