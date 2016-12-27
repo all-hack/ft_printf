@@ -70,7 +70,18 @@ the library has a particular file structure to ease finding shit
 	
 	* conversion_getters
 		* void	ft_printf_get_cap_c(t_mod *conv, va_list args)
-			* handles the length options of the `C` kind of conversion and sets `conv->substring`
+			* handles the length options of the `C` for `wchar_t` kind of conversion and sets `conv->substring`
+		* void	ft_printf_get_c(t_mod *conv, va_list args)
+			* handles the length options of the `c` for `char` kind of conversion and sets `conv->substring`
+			* length options
+				* `l` -> `wchar_t`
+		* void	ft_printf_get_b(t_mod *conv, va_list args)
+			* handles the length options of the `b` for binary kind of conversion and sets `conv->substring`
+			* length options
+				* h  -> `int`				
+				* j  -> `int`
+				* l  -> `int`
+				* hh -> `int`
 	
 	* modifiers_implementation
 		* symbol_detection
