@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_fstrappend.c                                :+:      :+:    :+:   */
+/*   ft_printf_fstrappend.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,14 +18,14 @@ char	*ft_printf_fstrappend(char *s1, unsigned char c)
 	size_t	c_len;
 	char	*nstr;
 	size_t	i;
-	
+
 	if (s1)
 		s1_len = ft_printf_strlen(s1);
 	else
 		s1_len = 0;
 	if (c)
 		c_len = 1;
-	else	
+	else
 		c_len = 0;
 	nstr = ft_printf_strnew((s1_len + c_len + 1));
 	ft_printf_strncpy(nstr, s1, s1_len);
