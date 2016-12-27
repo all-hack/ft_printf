@@ -17,11 +17,9 @@ void	ft_printf_app_conv(t_mod *conv)
 	int i;
 
 	if (conv->conversion)
-	{		
-		i = (conv->conversion)[0] - 37;		
-		g_printf_get[i] (conv, conv->arg_list);
+	{
+		i = (conv->conversion)[0] - 37;
+		g_printf_get[i](conv, conv->arg_list);
 	}
 	conv->num = ft_printf_atoi(conv->substring);
-	// printf("1conv->substring: %s\n", conv->substring);
-	// printf("conv->num: %lld\n", conv->num);
 }
