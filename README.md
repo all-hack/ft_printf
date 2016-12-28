@@ -24,7 +24,6 @@ the library has a particular file structure to ease finding shit
 			* removes all duplicates from string `*str`
 		* char	*ft_printf_strinsert(char *printit, char *substr, size_t strt, size_t end)
 			* inserts `substr` between `strt` and `end` of `*printit` dropping the characters between `strt` and `end` in `*printit`
-
 		* char	*ft_printf_fstrmcat(char *s1, char const *s2)
 			* concatenates `s1` and `s2` into a new malloced string which is returned
 			* free's `s1`
@@ -33,9 +32,10 @@ the library has a particular file structure to ease finding shit
 			* uses `ft_printf_strncpy` to copy instead of `ft_printf_strcat` and takes the struct as a parameter
 			* intended to cope with null characters on `c`
 			* free's `s1`
+		* int	ft_printf_putstr(char const *s, t_mod *conv)
+			* prints a string to stdout
 
 	* data_transformation
-	
 		* data_type_converters
 			* void	ft_printf_chng_char(t_mod *conv, signed char num)
 				* converts a `signed char` into a `char *` and points `conv->substring` to it
