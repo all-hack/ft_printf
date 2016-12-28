@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_shiftstr.c                                :+:      :+:    :+:   */
+/*   ft_printf_shiftstr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -21,8 +21,6 @@ char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 	{
 		while (s1)
 		{
-			// printf("s1: %s\n", s1);
-			// printf("s2: %s\n", s2);
 			c1 = (unsigned char)*s1;
 			c2 = (unsigned char)*s2;
 			if (c1 != c2)
@@ -31,7 +29,7 @@ char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 				return (s1);
 			s1++;
 			s2++;
-		}				
+		}
 	}
 	return (s1);
 }
