@@ -27,7 +27,7 @@ int	ft_printf_stric(char const *s, char const *c, size_t *index)
 			{
 				if (s[i] == c[j])
 				{
-					*index = i;					
+					*index = i;
 					return (1);
 				}
 			}

@@ -18,7 +18,10 @@ the library has a particular file structure to ease finding shit
 			* int	ft_printf_strchri(char const *s, char const c, size_t *index)
 				* searches `s` for character `c` sets `*index` to the position of the character `c` in `s`
 				* returns 1 if any symbol is found, 0 if none are found, -1 for error
-				
+			* int	ft_printf_stric(char const *s, char const *c, size_t *index)
+				* searches `s` for many one character symbols passed to function in `c` and sets `*index` to the position of the first symbol in `c` found in `s`
+				* returns 1 if any symbol is found, 0 if none are found, -1 for error
+
 		* char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 			* increments `s1` until it has a value not equal to `s2`, returning `s1`
 		* void	ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end)
@@ -40,6 +43,14 @@ the library has a particular file structure to ease finding shit
 			* prints a string to stdout
 		* char	*ft_printf_strcat(char *s1, const char *s2)
 			* concatenates `s2` into `s1`
+		* int	ft_printf_strcmp(const char *s1, const char *s2)
+			* compares `s1` to `s2` returns the lexicalgraphic difference between the two
+		* char	*ft_printf_strcpy(char *dst, char const *src)
+			* copies string `src` into `dst`
+		* void	ft_printf_strdel(char **as)
+			* free's memory in a safe manner
+		* char	*ft_printf_strdup(const char *s1)
+			* creates a new malloced string and copies into it the value of `s1`
 
 
 	* data_transformation
