@@ -15,6 +15,10 @@ the library has a particular file structure to ease finding shit
 			* int	ft_printf_nchr_1sym(char const *s, char const **c, char **s_str)
 				* searches `s` for any one multi-character symbols passed to function in `c` and appends the found symbols into `s_str`
 				* returns 1 if any symbol is found, 0 if none are found, -1 for error
+			* int	ft_printf_strchri(char const *s, char const c, size_t *index)
+				* searches `s` for character `c` sets `*index` to the position of the character `c` in `s`
+				* returns 1 if any symbol is found, 0 if none are found, -1 for error
+				
 		* char const	*ft_printf_shiftstr(char const *s1, char const *s2)
 			* increments `s1` until it has a value not equal to `s2`, returning `s1`
 		* void	ft_printf_fstrinsert(char **printit, char *substr, size_t strt, size_t end)
@@ -34,6 +38,9 @@ the library has a particular file structure to ease finding shit
 			* free's `s1`
 		* int	ft_printf_putstr(char const *s, t_mod *conv)
 			* prints a string to stdout
+		* char	*ft_printf_strcat(char *s1, const char *s2)
+			* concatenates `s2` into `s1`
+
 
 	* data_transformation
 		* data_type_converters

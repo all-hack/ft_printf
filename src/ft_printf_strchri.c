@@ -16,20 +16,19 @@ int	ft_printf_strchri(char const *s, char const c, size_t *index)
 {
 	size_t	i;
 
-
 	if (s && c)
-	{		
-		i = 0;	
+	{
+		i = 0;
 		while (s[i])
-		{				
+		{
 			if (s[i] == c)
 			{
 				*index = i;
 				return (1);
 			}
 			i++;
-		}		
+		}
 		return (0);
-	}	
+	}
 	return (-1);
 }
