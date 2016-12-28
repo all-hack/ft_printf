@@ -57,7 +57,11 @@ the library has a particular file structure to ease finding shit
 			* copies up to `len` characters from `src` into `dst`
 		* char	*ft_printf_strncat(char *s1, unsigned char const *s2, size_t n)
 			* concatenates up to `n` characters from `s2` into `s1`
-		
+		* char	*ft_printf_strnew(size_t size)
+			* a safe way to create a new string
+		* char	*ft_printf_strupper(char *str)
+			* makes every character in `str` an upper case character
+		* 
 
 	* data_transformation
 		* data_type_converters

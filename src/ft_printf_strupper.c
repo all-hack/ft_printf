@@ -18,15 +18,15 @@ char	*ft_printf_strupper(char *str)
 
 	i = 0;
 	if (str)
-	{		
-		while (str[i])				
-		{			
+	{
+		while (str[i])
+		{
 			if (str[i] > 96 && str[i] < 123)
 			{
-				str[i] = str[i] - 32;				
+				str[i] = str[i] - 32;
 			}
 			i++;
-		}			
+		}
 		return (str);
 	}
 	return (NULL);
