@@ -19,7 +19,7 @@ char	*ft_printf_strsub(char const *s, size_t start, size_t len)
 	if (s)
 	{
 		FT_PRINTF_NULLGUARD(nstr = ft_printf_strnew(len));
-		ft_printf_strncat(nstr, ((unsigned char *) s) + start, len);
+		ft_printf_strncat(nstr, ((unsigned char *)s) + start, len);
 		return (nstr);
 	}
 	return (NULL);

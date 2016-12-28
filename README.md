@@ -51,7 +51,13 @@ the library has a particular file structure to ease finding shit
 			* free's memory in a safe manner
 		* char	*ft_printf_strdup(const char *s1)
 			* creates a new malloced string and copies into it the value of `s1`
-
+		* size_t	ft_printf_strlen(const char *s)
+			* returns the size of `s`
+		* char	*ft_printf_strncpy(char *dst, const char *src, size_t len)
+			* copies up to `len` characters from `src` into `dst`
+		* char	*ft_printf_strncat(char *s1, unsigned char const *s2, size_t n)
+			* concatenates up to `n` characters from `s2` into `s1`
+		
 
 	* data_transformation
 		* data_type_converters
