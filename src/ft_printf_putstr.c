@@ -21,6 +21,7 @@ int	ft_printf_putstr(char const *s, t_mod *conv)
 	{
 		len += ft_printf_strlen(s);
 		write(1, s, len);
+		len += conv->skips;
 	}
 	ft_printf_free_struct(&conv);
 	return (len);

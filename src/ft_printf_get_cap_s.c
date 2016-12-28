@@ -12,7 +12,13 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_get_cap_s(t_mod *conv, va_list args)
+static	void	norm_cheat00(t_mod *conv)
+{
+	conv->substring = ft_printf_strdup("(null)");
+	conv->num = 0;
+}
+
+void			ft_printf_get_cap_s(t_mod *conv, va_list args)
 {
 	wchar_t		*tmp1;
 	intmax_t	i;
@@ -21,7 +27,9 @@ void	ft_printf_get_cap_s(t_mod *conv, va_list args)
 	if (!(conv->length))
 	{
 		tmp1 = va_arg(args, wchar_t*);
-		if (conv->prec >= 0)
+		if (!tmp1)
+			norm_cheat00(conv);
+		else if (conv->prec >= 0)
 		{
 			conv->substring = ft_printf_fstrmcat(conv->substring,
 								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
@@ -30,12 +38,8 @@ void	ft_printf_get_cap_s(t_mod *conv, va_list args)
 								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
 		}
 		else
-		{
-			conv->substring = ft_printf_fstrmcat(conv->substring,
-								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
-			while (tmp1[i++])
+			while (tmp1[i])
 				conv->substring = ft_printf_fstrmcat(conv->substring,
-								ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
-		}
+								ft_printf_chng_wchar_t(conv, tmp1[i++], NULL));
 	}
 }

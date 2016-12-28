@@ -16,7 +16,12 @@ static	void	norm_cheat00(t_mod *conv, va_list args,
 											intmax_t i, wchar_t *tmp1)
 {
 	tmp1 = va_arg(args, wchar_t*);
-	if (conv->prec >= 0)
+	if (!tmp1)
+	{
+		conv->substring = ft_printf_strdup("(null)");
+		conv->num = 0;
+	}
+	else if (conv->prec >= 0)
 	{
 		conv->substring = ft_printf_fstrmcat(conv->substring,
 							ft_printf_chng_wchar_t(conv, tmp1[i], NULL));
@@ -34,6 +39,12 @@ static	void	norm_cheat00(t_mod *conv, va_list args,
 	}
 }
 
+static	void	norm_cheat01(t_mod *conv)
+{
+	conv->substring = ft_printf_strdup("(null)");
+	conv->num = 0;
+}
+
 void			ft_printf_get_s(t_mod *conv, va_list args)
 {
 	unsigned char	*tmp;
@@ -44,7 +55,9 @@ void			ft_printf_get_s(t_mod *conv, va_list args)
 	if (!(conv->length))
 	{
 		tmp = va_arg(args, unsigned char*);
-		if (conv->prec >= 0)
+		if (!tmp)
+			norm_cheat01(conv);
+		else if (conv->prec >= 0)
 		{
 			conv->substring = ft_printf_fstrappend(conv->substring, tmp[i]);
 			while (tmp[i++] && i < conv->prec)

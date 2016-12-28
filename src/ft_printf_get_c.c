@@ -22,7 +22,7 @@ void	ft_printf_get_c(t_mod *conv, va_list args)
 								va_arg(args, wchar_t), NULL);
 	if (conv->substring[0] == '\0')
 	{
-		ft_printf_fstrinsert(&(conv->substring), "0", 0, 1);
+		conv->substring = ft_printf_strdup("");
 		conv->skips += 1;
 		conv->num = 0;
 	}
