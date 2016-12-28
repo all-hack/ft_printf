@@ -30,6 +30,10 @@ int	main()
 
 
 	printf("\n");
+
+	printf("( %d )\n", ft_printf("ft_printf: -->%c%c<--", 0,0));	
+	printf("( %d )\n",	   printf("   printf: -->%c%c<--", 0,0));
+
 	// wide char test
 	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
    	   // printf("   printf: -->%S<--\n", L"00 € 00");
