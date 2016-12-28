@@ -167,8 +167,8 @@ the library has a particular file structure to ease finding shit
 				* uses the one character many symbol search algorithm
 
 		* handling
-			* void	ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater, va_list *arg, char c)
-				* sets the value of `charcater` to the grabbed number from the ellipsis
+			* void	ft_printf_proc_setchar_prec(t_mod *conv, char chr)
+				* sets the value of `conv->prec` to the grabbed number from the ellipsis and sets `conv->cprec` to the appropriate character
 			* void	ft_printf_proc_precision(t_mod *conv)
 				* handles the core logic of setting what is in the precision buffer in the structure
 			* void	ft_printf_proc_mfieldwidth(t_mod *conv)

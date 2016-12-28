@@ -12,13 +12,13 @@
 
 #include "libftprintf.h"
 
-void	ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater,
-														va_list *arg, char c)
+void	ft_printf_proc_setchar_prec(t_mod *conv, char chr)
 {
 	size_t i;
-	if (ft_printf_strchri(*data, '*', &i) == 1)
-		*size = va_arg(*arg, int);
+
+	if (ft_printf_strchri(conv->precision, '*', &i) == 1)
+		conv->prec = va_arg(conv->arg_list, int);
 	else
-		*size = ft_printf_atoi(*data);
-	*charcater = c;		
+		conv->prec = ft_printf_atoi(conv->precision);
+	conv->cprec = chr;
 }

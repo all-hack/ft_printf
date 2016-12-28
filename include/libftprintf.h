@@ -67,7 +67,7 @@ void		ft_printf_reset_struct(t_mod **this);
 
 
 // handling
-void		ft_printf_proc_setchar(char **data, intmax_t *size, char *charcater, va_list *arg, char c);
+void		ft_printf_proc_setchar_prec(t_mod *conv, char chr);
 void		ft_printf_proc_precision(t_mod *conv);
 void		ft_printf_proc_mfieldwidth(t_mod *conv);
 

@@ -15,7 +15,7 @@
 int	ft_printf_nchr_1sym(char const *s, char const **c, char **s_str)
 {
 	size_t		i;
-	char		*d;
+	char const	*d;
 
 	if (s && c && *c)
 	{

@@ -28,13 +28,15 @@ int	main()
 	short k = 270;
 	intmax_t f = -4;
 
+
+	printf("\n");
 	// wide char test
 	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
    	   // printf("   printf: -->%S<--\n", L"00 € 00");
 
 	// * 
-	// ft_printf("ft_printf: -->%*.*d<--\n", 5, 3, 99);	
-   	   // printf("   printf: -->%*.*d<--\n", 5, 3, 99);
+	// ft_printf("ft_printf: -->%*.*d<--\n", 10, 3, 99);	
+   	   // printf("   printf: -->%*.*d<--\n", 10, 3, 99);
 
 	// binary
 	// ft_printf("ft_printf: -->%b<--\n", 4000);	   	   

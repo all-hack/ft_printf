@@ -14,12 +14,14 @@
 
 void	ft_printf_proc_mfieldwidth(t_mod *conv)
 {
-	size_t	num;
-	char	fake;
+	size_t i;
 
 	if (conv->mfieldwidth)
 	{
-		ft_printf_proc_setchar(&(conv->mfieldwidth), &(conv->mfw),
-											&(fake), &(conv->arg_list), '^');
+		if (ft_printf_strchri(conv->mfieldwidth, '*', &i) == 1)
+			conv->mfw = va_arg(conv->arg_list, int);
+		else
+			conv->mfw = ft_printf_atoi(conv->mfieldwidth);
+		conv->cmfw = ' ';
 	}
 }

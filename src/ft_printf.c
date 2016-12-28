@@ -29,8 +29,8 @@ void	(*g_printf_parse[6]) (char **seq, t_mod *conv) =
 };
 void	(*g_printf_process[4]) (t_mod *conv) =
 {
-	ft_printf_proc_precision,
 	ft_printf_proc_mfieldwidth,
+	ft_printf_proc_precision,
 	ft_printf_proc_flags,
 	0
 };
