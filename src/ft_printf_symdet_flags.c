@@ -13,8 +13,8 @@
 #include "libftprintf.h"
 
 void	ft_printf_symdet_flags(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
+{
+	size_t	delim_index;
 	size_t	i;
 
 	i = 0;
@@ -25,6 +25,6 @@ void	ft_printf_symdet_flags(char **seq, t_mod *conv)
 		{
 			(*seq)++;
 			i++;
-		}	
+		}
 	}
 }
