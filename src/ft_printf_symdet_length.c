@@ -13,19 +13,18 @@
 #include "libftprintf.h"
 
 void	ft_printf_symdet_length(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
+{
+	size_t	delim_index;
 	size_t	i;
 
 	i = 0;
 	delim_index = 0;
 	if (ft_printf_nchr_1sym(*seq, g_length_symbols, &(conv->length)) == 1)
-	{		
+	{
 		while (i < ft_printf_strlen(conv->length))
 		{
 			(*seq)++;
 			i++;
-		}	
+		}
 	}
-
 }
