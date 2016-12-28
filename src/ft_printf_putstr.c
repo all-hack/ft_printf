@@ -16,16 +16,12 @@ int	ft_printf_putstr(char const *s, t_mod *conv)
 {
 	size_t	len;
 
-	// printf("skips: %d\n", conv->skips);
-	// printf("s->%s\n", s);
 	len = 0;
 	if (s)
 	{
-		// while ((conv->skips)-- > 0)				
-			len += ft_printf_strlen(s);	
-		// printf("len: %d\n", len);
+		len += ft_printf_strlen(s);
 		write(1, s, len);
 	}
-	ft_printf_free_struct(&conv);	
+	ft_printf_free_struct(&conv);
 	return (len);
 }
