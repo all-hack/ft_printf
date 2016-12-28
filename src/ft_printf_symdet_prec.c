@@ -13,8 +13,8 @@
 #include "libftprintf.h"
 
 void	ft_printf_symdet_prec(char **seq, t_mod *conv)
-{	
-	size_t	delim_index;	
+{
+	size_t	delim_index;
 	size_t	i;
 	char	*tmp;
 
@@ -22,15 +22,13 @@ void	ft_printf_symdet_prec(char **seq, t_mod *conv)
 	delim_index = 0;
 	tmp = NULL;
 	if (ft_printf_1chr_nsym(*seq, g_precision_symbols, &tmp) == 1)
-	{				
+	{
 		conv->precision = ft_printf_strdup(tmp + 1);
-		
 		ft_printf_strdel(&tmp);
 		while (i < ft_printf_strlen(conv->precision) + 1)
 		{
 			(*seq)++;
 			i++;
-		}		
-		// printf("conv->precision: %s\n", conv->precision);
+		}
 	}
 }
