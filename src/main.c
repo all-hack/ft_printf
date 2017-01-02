@@ -31,8 +31,8 @@ int	main()
 
 	printf("\n");
 
-	printf("( %d )\n", ft_printf("ft_printf: -->%c%c<--", 0,0));	
-	printf("( %d )\n",	   printf("   printf: -->%c%c<--", 0,0));
+	// printf("( %d )\n", ft_printf("ft_printf: -->%c%c<--", 0,0));	
+	// printf("( %d )\n",	   printf("   printf: -->%c%c<--", 0,0));
 
 	// wide char test
 	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
@@ -91,7 +91,7 @@ int	main()
 
 	// test 0061
 	// null string seg faulting
-	// ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
+	ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
   	   // printf("   printf: -->%5.2s is a string<--\n", "");    		  	  
 
 	// test 0065

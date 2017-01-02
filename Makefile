@@ -6,7 +6,7 @@
 #    By: obelange <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 00:08:23 by obelange          #+#    #+#              #
-#    Updated: 2016/11/12 00:08:25 by obelange         ###   ########.fr        #
+#    Updated: 2016/12/30 07:52:27 by obelange         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,10 @@ WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))  $(SYMDET_OBJ)
 
 C_FLAGS = -Wall -Werror -Wextra
 DEV_FLAGS = $(C_FLAGS) -fsanitize=address
+
+ifdef ALLOCWRAP
+	C_FLAGS += $(HOME)/Desktop/offence/tools/alloc_wrap.c -ldl
+endif 
 
 .PHONY : all clean fclean dev re
 
