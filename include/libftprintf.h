@@ -119,7 +119,7 @@ size_t		ft_printf_strlen(const char *s);
 char		*ft_printf_strdup(const char *s1);
 char		*ft_printf_itoa_base(uintmax_t num, int base, int neg);
 char		*ft_printf_itoa(int nb);
-int			ft_printf_putstr(char const *s, t_mod *conv);
+int			ft_printf_putstr(char *s, t_mod *conv);
 void		ft_printf_strdel(char **as);
 int			ft_printf_stric(char const *s, char const *c, size_t *index);
 char		*ft_printf_strmcat(char const *s1, char const *s2);

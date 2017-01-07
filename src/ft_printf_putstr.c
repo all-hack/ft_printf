@@ -12,13 +12,15 @@
 
 #include "libftprintf.h"
 
-int	ft_printf_putstr(char const *s, t_mod *conv)
+int	ft_printf_putstr(char  *s, t_mod *conv)
 {
 	size_t	len;
+	char 	*free;
 
 	len = 0;
 	if (s)
 	{
+		free = s;
 		len += ft_printf_strlen(s);
 		while (*s)
 		{
@@ -29,6 +31,7 @@ int	ft_printf_putstr(char const *s, t_mod *conv)
 			s++;
 		}
 	}
-	ft_printf_free_struct(&conv);
+	ft_printf_free_struct(&conv);	
+	ft_printf_strdel(&free);
 	return (len);
 }

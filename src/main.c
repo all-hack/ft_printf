@@ -34,16 +34,24 @@ int	main()
 	// printf("( %d )\n", ft_printf("ft_printf: -->%c%c<--", 0,0));	
 	// printf("( %d )\n",	   printf("   printf: -->%c%c<--", 0,0));
 
-	// wide char test
+	// wide char test leaks
 	// ft_printf("ft_printf: -->%S<--\n", L"00 € 00");	
    	   // printf("   printf: -->%S<--\n", L"00 € 00");
+
+
+	// ft_printf("ft_printf: -->%C<--\n", L'€');	
+
+	// ft_printf("ft_printf: -->%s<--\n", "cool");	
 
 	// * 
 	// ft_printf("ft_printf: -->%*.*d<--\n", 10, 3, 99);	
    	   // printf("   printf: -->%*.*d<--\n", 10, 3, 99);
 
 	// binary
-	// ft_printf("ft_printf: -->%b<--\n", 4000);	   	   
+	// ft_printf("ft_printf: -->%b<--\n", 4000);
+
+	// %
+	// ft_printf("ft_printf: -->%%<--\n");
 
 	// kills malloc	
 	//    printf("-->%#08x<--", 42);
@@ -91,7 +99,7 @@ int	main()
 
 	// test 0061
 	// null string seg faulting
-	ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
+	// ft_printf("ft_printf: -->%5.2s is a string<--\n", "");  	   
   	   // printf("   printf: -->%5.2s is a string<--\n", "");    		  	  
 
 	// test 0065

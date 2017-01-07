@@ -66,11 +66,11 @@ int	ft_printf(const char *format, ...)
 	va_start(conv->arg_list, format);
 	printit = NULL;
 	while (ft_printf_stric((format + curr), g_sequence_symbols, &index) == 1)
-	{
-		ft_printf_format_parsing(format + curr, conv, conv->arg_list);
+	{		
+		ft_printf_format_parsing(format + curr, conv, conv->arg_list);	
 		tmp = ft_printf_strsub(format, curr, conv->srt_seq);
 		printit = ft_printf_fstrmcat(printit, tmp);
-		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);
+		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);		
 		curr =
 		(conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
 		ft_printf_strdel(&tmp);

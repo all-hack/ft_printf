@@ -16,6 +16,7 @@ void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args)
 {
 	char	*fsub;
 	char	*rem;
+	char	*free;
 
 	if (conv)
 	{
@@ -24,7 +25,9 @@ void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args)
 			g_conversion_symbols, &(conv->end_seq));
 		fsub = ft_printf_strsub(format, conv->srt_seq + 1,
 			conv->end_seq + 1);
+		free = fsub;
 		conv->end_seq += conv->srt_seq + 1;
 		ft_printf_flow(&fsub, conv, args);
+		ft_printf_strdel(&free);
 	}
 }

@@ -58,7 +58,7 @@ ft_printf_strncat ft_printf_strnew ft_printf_strdup \
 
 
 
-FILE += main
+# FILE += main
 
 
 
@@ -86,7 +86,7 @@ WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))  $(SYMDET_OBJ)
 
 C_FLAGS = -Wall -Werror -Wextra
 DEV_FLAGS = $(C_FLAGS) -fsanitize=address
-
+LEAK_F = $(C_FLAGS) $(HOME)/Desktop/offence/tools/alloc_wrap.c -ldl
 ifdef ALLOCWRAP
 	C_FLAGS += $(HOME)/Desktop/offence/tools/alloc_wrap.c -ldl
 endif 
@@ -100,6 +100,9 @@ $(NAME): build $(C_OBJ)
 
 run : fclean build $(C_OBJ)
 	gcc $(C_FLAGS) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
+
+leak : fclean build $(C_OBJ)
+	gcc $(LEAK_F) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
 
 wrun : fclean build $(WC_OBJ)
 	gcc $(C_FLAGS) -o $(RUN) $(WC_OBJ) -I ./include && ./$(RUN)
