@@ -14,34 +14,18 @@
 
 void	ft_printf_flow(char **seq, t_mod *conv, va_list args)
 {
-	int	i;
+	int		i;
 	char	*tmp;
 
 	i = 0;
 	tmp = *seq;
-	// printf("*seq: %p\n", *seq);
-	// printf("seq: %p\n", seq);
-
-	// printf("flow: 1\n");
 	while (*g_printf_parse[i] != 0)
 		(*g_printf_parse[i++])(seq, conv);
 	i = 0;
-	// printf("flow: 2\n");
 	while (*g_printf_process[i] != 0)
-	{
 		(*g_printf_process[i++])(conv);
-	}
 	i = 0;
-	// printf("flow: 3\n");
 	while (*g_printf_apply[i] != 0)
-	{
 		(*g_printf_apply[i++])(conv);
-	}
-	
-	
-	// printf("tmp: %p\n", tmp);
-	// printf("*seq: %p\n", *seq);
-	// printf("seq: %p\n", seq);
 	free(tmp);
-	
 }

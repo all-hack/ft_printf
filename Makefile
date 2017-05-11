@@ -58,7 +58,7 @@ ft_printf_strncat ft_printf_strnew ft_printf_strdup \
 
 
 
-FILE += main
+# FILE += main
 
 
 

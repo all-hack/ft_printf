@@ -19,7 +19,6 @@ int	ft_printf_putstr(char const *s, t_mod *conv)
 
 	len = 0;
 	str = s;
-	// printf("s: %p\n", s);
 	if (s)
 	{
 		len += ft_printf_strlen(s);

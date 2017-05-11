@@ -22,10 +22,8 @@ void	ft_printf_format_parsing(char const *format, t_mod *conv, va_list args)
 		ft_printf_stric(format, g_sequence_symbols, &(conv->srt_seq));
 		ft_printf_stric(&((format)[conv->srt_seq + 1]),
 			g_conversion_symbols, &(conv->end_seq));
-		// printf("fsub 0\n");
 		fsub = ft_printf_strsub(format, conv->srt_seq + 1,
 			conv->end_seq + 1);
-		// printf("fsub 1\n");
 		conv->end_seq += conv->srt_seq + 1;
 		ft_printf_flow(&fsub, conv, args);
 	}

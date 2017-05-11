@@ -60,7 +60,6 @@ int	ft_printf(const char *format, ...)
 	size_t	index;
 	char	*tmp;
 
-	// printf("\nstaring ft_printf format: %s\n", format);
 	curr = 0;
 	if (!(conv = ft_printf_init_struct()))
 		return (-1);
@@ -68,23 +67,15 @@ int	ft_printf(const char *format, ...)
 	printit = NULL;
 	while (ft_printf_stric((format + curr), g_sequence_symbols, &index) == 1)
 	{
-		// printf("\nft_printf loop: 1\n");
 		ft_printf_format_parsing(format + curr, conv, conv->arg_list);
-		// printf("ft_printf loop: 2\n");
 		tmp = ft_printf_strsub(format, curr, conv->srt_seq);
-		// printf("ft_printf loop: 3\n");
 		printit = ft_printf_fstrmcat(printit, tmp);
-		// printf("ft_printf loop: 4\n");
 		printit = ft_printf_fstrmcat_conv(printit, conv->substring, conv);
-		// printf("ft_printf loop: 5\n");
 		curr =
 		(conv->end_seq - conv->srt_seq) + curr + ft_printf_strlen(tmp) + 1;
-		// printf("ft_printf loop: 6\n");
 		ft_printf_strdel(&tmp);
-		// printf("ft_printf loop: 7\n");
 		ft_printf_reset_struct(&conv);
-		// printf("ft_printf loop: 8\n");
-	}	
+	}
 	if (format[curr])
 		printit = ft_printf_fstrmcat(printit, format + curr);
 	return (ft_printf_putstr(printit, conv));
