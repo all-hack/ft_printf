@@ -18,11 +18,17 @@ void	ft_printf_fstrinsert(char **printit, char *substr,
 	char	*tmp;
 	char	*str;
 
-	str = *printit;
+	str = *printit;	
 	tmp = ft_printf_fstrmcat(ft_printf_strsub(str, 0, strt), substr);
+	// printf("finsert 2\n");
 	if (*tmp == '\0' && *(str + end) == '\0')
+	{
 		*printit = NULL;
+		ft_printf_strdel(&tmp);	
+	}
 	else
+	{		
 		*printit = ft_printf_fstrmcat(tmp, (str + end));
+	}
 	ft_printf_strdel(&str);
 }

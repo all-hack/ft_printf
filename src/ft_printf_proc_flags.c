@@ -54,7 +54,11 @@ void			ft_printf_proc_flags(t_mod *conv)
 		if (ft_printf_strchri(conv->flag, '#', &strt) == 1)
 		{
 			if (ft_printf_stric(conv->conversion, "cdDipSCscuU", &index) == 1)
+			{
+				// printf("allocating #\n");
 				ft_printf_fstrinsert(&(conv->flag), "", strt, strt + 1);
+				// printf("allocated #\n");
+			}
 		}
 		norm_cheat00(conv, index, strt, s);
 	}
