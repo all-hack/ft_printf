@@ -6,7 +6,7 @@
 #    By: obelange <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 00:08:23 by obelange          #+#    #+#              #
-#    Updated: 2016/12/30 07:52:27 by obelange         ###   ########.fr        #
+#    Updated: 2016/11/12 00:08:25 by obelange         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ ft_printf_strncat ft_printf_strnew ft_printf_strdup \
 
 
 
-# FILE += main
+FILE += main
 
 
 
@@ -86,10 +86,6 @@ WC_OBJ = $(addsuffix .o, $(WC_OBJ_PRE))  $(SYMDET_OBJ)
 
 C_FLAGS = -Wall -Werror -Wextra
 DEV_FLAGS = $(C_FLAGS) -fsanitize=address
-LEAK_F = $(C_FLAGS) $(HOME)/Desktop/offence/tools/alloc_wrap.c -ldl
-ifdef ALLOCWRAP
-	C_FLAGS += $(HOME)/Desktop/offence/tools/alloc_wrap.c -ldl
-endif 
 
 .PHONY : all clean fclean dev re
 
@@ -100,9 +96,6 @@ $(NAME): build $(C_OBJ)
 
 run : fclean build $(C_OBJ)
 	gcc $(C_FLAGS) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
-
-leak : fclean build $(C_OBJ)
-	gcc $(LEAK_F) -o $(RUN) $(C_OBJ) -I ./include && ./$(RUN)
 
 wrun : fclean build $(WC_OBJ)
 	gcc $(C_FLAGS) -o $(RUN) $(WC_OBJ) -I ./include && ./$(RUN)
@@ -115,7 +108,6 @@ $(B_PATH)%.o: $(S_PATH)%.c
 
 w : build $(WC_OBJ)
 	ar rc $(NAME) $(WC_OBJ)
-
 
 build : 
 	mkdir build
