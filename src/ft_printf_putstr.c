@@ -18,7 +18,7 @@ int	ft_printf_putstr(char const *s, t_mod *conv)
 	char	*str;
 
 	len = 0;
-	str = s;
+	str = (char*)s;
 	if (s)
 	{
 		len += ft_printf_strlen(s);
